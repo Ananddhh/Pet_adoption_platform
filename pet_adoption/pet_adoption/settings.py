@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "users",
+    "pets",
+    "core",
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,8 @@ ROOT_URLCONF = "pet_adoption.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [Path(__file__).resolve().parent.parent / 'templates'], #os.path.join(BASE_DIR, 'users', 'templates'),
+            # os.path.join(BASE_DIR, 'pets', 'templates'),
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -66,6 +70,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = "pet_adoption.wsgi.application"
 

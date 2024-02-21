@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section>
+    <h2>Register</h2>
+    <!-- Add registration form here -->
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <!-- Add form fields for username, email, password, etc. -->
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <!-- Add more form fields as needed -->
+        <button type="submit">Register</button>
+    </form>
+</section>
+{% endblock %}

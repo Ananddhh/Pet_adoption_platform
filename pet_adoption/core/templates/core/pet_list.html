@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet List</title>
+    
+</head>
+<body>
+    <h1>Pet List</h1>
+    <ul>
+    {% for pet in pets %}
+        <li>{{ pet.name }} - {{ pet.species }} - {{ pet.breed }} - {{ pet.age }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
+
+<!-- Inside home.html -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Your HTML content here -->
+<!-- </body> -->
+<!-- </html> -->

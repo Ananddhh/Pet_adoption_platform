@@ -1,43 +1,50 @@
 {% block title %}
-   About us
+   Home
 {% endblock %}
 {% block content %}
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            color: #96f0db;
+            margin: 0;
+            padding: 0;
+        }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-h1, h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(213, 255, 209);
+        }
 
-.blog-posts, .gallery-images, .testimonials {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
+        .blog-posts, .gallery-images, .testimonials {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-.blog-post, .gallery-images img, .testimonial {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+        .blog-post, .gallery-images img, .testimonial {
+            background-color: lightyellow;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-.blog-post h3, .testimonial strong {
-    color: #333;
-}
+        .blog-post h3, .testimonial strong {
+            color: black;
+        }
 
-.gallery-images img {
-    max-width: 100%;
-    height: auto;
-}
-
+        .gallery-images img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -85,4 +92,4 @@ h1, h2 {
         </section>
         
     </div>
-    {% endblock %}
+{% endblock %}

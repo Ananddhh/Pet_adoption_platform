@@ -1,0 +1,88 @@
+{% block title %}
+   About us
+{% endblock %}
+{% block content %}
+    <style>
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.blog-posts, .gallery-images, .testimonials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog-post, .gallery-images img, .testimonial {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3, .testimonial strong {
+    color: #333;
+}
+
+.gallery-images img {
+    max-width: 100%;
+    height: auto;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to our Pet Adoption Platform!</h1>
+        
+        <!-- Blog Section -->
+        <section class="blog-section">
+            <h2>Latest Articles</h2>
+            <div class="blog-posts">
+                <!-- Display recent blog posts dynamically -->
+                {% for post in recent_posts %}
+                    <div class="blog-post">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.summary }}</p>
+                        <a href="{% url 'blog_detail' post.id %}">Read More</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+        <!-- Photo Gallery -->
+        <section class="photo-gallery">
+            <h2>Photo Gallery</h2>
+            <div class="gallery-images">
+                <!-- Display gallery images dynamically -->
+                {% for image in gallery_images %}
+                    <img src="{{ image.url }}" alt="{{ image.title }}">
+                {% endfor %}
+            </div>
+        </section>
+        
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <h2>Testimonials</h2>
+            <div class="testimonials">
+                <!-- Display testimonials dynamically -->
+                {% for testimonial in testimonials %}
+                    <div class="testimonial">
+                        <p>{{ testimonial.content }}</p>
+                        <p><strong>{{ testimonial.author }}</strong></p>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+        
+    </div>
+    {% endblock %}

@@ -1,0 +1,12 @@
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Book Appointment for {{ pet.name }}</h1>
+    <form action="{% url 'book_appointment' %}" method="post">
+        {% csrf_token %}
+        <!-- booking form fields here -->
+        <button type="submit">Book Now</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,11 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Event Details</title>
+{% block title %}
+   event details
+{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Event Details</h1>
-    <!-- Your code for event details goes here -->
+    <header>
+        <h1>Event Details</h1>
+    </header>
+    <main>
+        <p>Pet Name: {{ event.name }}</p>
+        <p>Species: {{ event.species }}</p>
+        <p>Breed: {{ event.breed }}</p>
+        <p>Age: {{ event.age }}</p>
+    </main>
 </body>
 </html>
+{% endblock %}

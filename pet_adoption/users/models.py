@@ -2,11 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    # Add custom fields here if needed
+    username = models.CharField(max_length = 200, unique = True)
+
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
 
-    # Change related_name arguments to resolve conflicts
+    
     groups = models.ManyToManyField(
         'auth.Group',
         verbose_name='groups',

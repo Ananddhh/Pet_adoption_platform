@@ -1,11 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>List of Pets</title>
+{% block title %}
+   pet 
+{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        main {
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <h1>List of Pets</h1>
-    <!-- Your code to display a list of pets goes here -->
-</body>
-</html>
+    <header>
+        <h1>List of Pets</h1>
+    </header>
+    <main>
+        <ul>
+            {% for pet in pets %}
+            <li>{{ pet.name }} - {{ pet.species }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+    <div class="container">
+        <h1>{{ pet.name }}</h1>
+        <p>Species: {{ pet.species }}</p>
+        <p>Breed: {{ pet.breed }}</p>
+        <p>Age: {{ pet.age }}</p>
+        <p>Available: {% if pet.available %}Yes{% else %}No{% endif %}</p>
+    </div>
+    {% endblock %}
+

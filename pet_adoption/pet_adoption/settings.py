@@ -56,10 +56,9 @@ ROOT_URLCONF = "pet_adoption.urls"
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [Path(__file__).resolve().parent.parent / 'templates'], #os.path.join(BASE_DIR, 'users', 'templates'),
-            # os.path.join(BASE_DIR, 'pets', 'templates'),
-        "APP_DIRS": True,
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",

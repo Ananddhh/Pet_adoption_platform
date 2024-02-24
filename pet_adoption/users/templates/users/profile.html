@@ -1,31 +1,44 @@
 {% block title %}
-   About us
+    About Us
 {% endblock %}
+
 {% block content %}
     <style>
-        /* CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #333; /* Dark gray text color */
         }
+
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #fff; /* White container background */
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
+
         h1 {
             text-align: center;
-            color: #333;
+            color: #007bff; /* Blue color for header */
+            margin-bottom: 20px;
         }
+
         .user-info {
             margin-top: 20px;
         }
-        /*  styles as needed */
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #555; /* Medium gray text color */
+        }
     </style>
 </head>
 <body>
@@ -33,8 +46,8 @@
         <h1>User Profile</h1>
         <div class="user-info">
             <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
             
         </div>
     </div>
 {% endblock %}
-

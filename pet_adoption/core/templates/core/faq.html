@@ -23,17 +23,8 @@
             color: #ffd700; /* Light Yellow */
         }
 
-        p {
-            line-height: 1.6;
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
+        .faq-item {
+            margin-bottom: 30px;
         }
 
         .question {
@@ -43,26 +34,36 @@
 
         .answer {
             margin-left: 20px;
+            color: #03a9f4; /* Light Blue */
+        }
+
+        .faq-odd .answer {
+            color: #4caf50; /* Light Green */
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Frequently Asked Questions</h1>
-        <ul>
-            <li>
-                <span class="question">Question 1:</span>
-                <span class="answer">Answer 1</span>
-            </li>
-            <li>
-                <span class="question">Question 2:</span>
-                <span class="answer">Answer 2</span>
-            </li>
-            <li>
-                <span class="question">Question 3:</span>
-                <span class="answer">Answer 3</span>
-            </li>
-            <!-- Add more FAQs as needed -->
-        </ul>
+        <div class="faq-item">
+            <p class="question">Q: What is the adoption process?</p>
+            <p class="answer">A: The adoption process involves filling out an application, meeting the pet, and completing necessary paperwork.</p>
+        </div>
+        <div class="faq-item">
+            <p class="question">Q: Can I adopt a pet if I live in an apartment?</p>
+            <p class="answer">A: Yes, many pets can thrive in apartment living. Consider factors like size and energy level when choosing a pet.</p>
+        </div>
+        <div class="faq-item">
+            <p class="question">Q: How do I introduce my new pet to my existing pets?</p>
+            <p class="answer">A: Introduce pets gradually in a neutral space, supervise interactions, and provide positive reinforcement.</p>
+        </div>
+        <div class="faq-item">
+            <p class="question">Q: Are all pets at the shelter spayed or neutered?</p>
+            <p class="answer">A: Yes, all pets available for adoption are spayed or neutered to help control pet overpopulation.</p>
+        </div>
+        <div class="faq-item">
+            <p class="question">Q: How can I help if I can't adopt?</p>
+            <p class="answer">A: You can volunteer, foster, donate, or spread awareness about pet adoption to help pets in need.</p>
+        </div>
     </div>
 {% endblock %}

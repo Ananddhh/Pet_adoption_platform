@@ -1,8 +1,78 @@
 {% block title %}Lost & Found Pets{% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Lost & Found Pets</h1>
-    
-</div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9; /* Light gray background */
+            color: #333; /* Dark gray text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White container background */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333; /* Dark text color */
+            text-align: center;
+        }
+
+        .pet-card {
+            background-color: #f5f5f5; /* Light gray background */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .pet-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .pet-info {
+            color: #333; /* Dark gray text color */
+            margin-bottom: 10px;
+        }
+
+        .pet-info p {
+            margin: 5px 0;
+        }
+
+        .found {
+            background-color: #ffc107; /* Yellow background for found pets */
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="container">
+        <h1>Lost & Found Pets</h1>
+        
+        <!-- Example of a found pet card -->
+        <div class="pet-card">
+            <img class="pet-image" src="https://via.placeholder.com/200" alt="Found Pet">
+            <div class="pet-info">
+                <h2>Fluffy</h2>
+                <p><strong>Species:</strong> Cat</p>
+                <p><strong>Breed:</strong> Persian</p>
+                <p><strong>Age:</strong> 3 years</p>
+                <p><strong>Status:</strong> <span class="found">Found</span></p>
+            </div>
+        </div>
+
+        
+
+    </div>
 {% endblock %}

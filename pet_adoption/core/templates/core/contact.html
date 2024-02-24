@@ -1,5 +1,7 @@
+{% extends 'base.html' %}
+
 {% block title %}
-   Contact Us
+    Contact Us
 {% endblock %}
 
 {% block content %}
@@ -8,7 +10,7 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #000;
-            color: #f8f9fa; /* Light yellow text */
+            color: #fff;
             margin: 0;
             padding: 0;
         }
@@ -22,7 +24,6 @@
         h1, h2 {
             text-align: center;
             margin-bottom: 20px;
-            color: #f8f9fa; /* Light yellow text */
         }
 
         p {
@@ -32,7 +33,7 @@
 
         /* Contact Form Styles */
         .contact-form-section {
-            background-color: #000;
+            background-color: #222;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -47,7 +48,6 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #f8f9fa; /* Light yellow text */
         }
 
         input[type="text"],
@@ -55,17 +55,17 @@
         textarea {
             width: 100%;
             padding: 10px;
-            border: 1px solid #f8f9fa; /* Light yellow border */
+            border: 1px solid #333;
             border-radius: 5px;
             margin-top: 5px;
-            color: #d1fae6; /* Light yellow text */
-            background-color: #000; /* Black input background */
+            color: #fff;
+            background-color: #111;
         }
 
         button[type="submit"] {
             padding: 10px 20px;
-            background-color: #f8f9fa; /* Light yellow background */
-            color: #000; /* Black text */
+            background-color: #007bff;
+            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -73,12 +73,12 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #d1d3d4; /* Light gray background on hover */
+            background-color: #0056b3;
         }
 
         /* Contact Info Styles */
         .contact-info-section {
-            background-color: #000;
+            background-color: #222;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -87,7 +87,7 @@
 
         /* Map Styles */
         .map-section {
-            background-color: #000;
+            background-color: #222;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -103,23 +103,23 @@
     </style>
 
     <div class="container">
-        <h1>Contact Us</h1>
+        <h1 style="color: #ff9800;">Contact Us</h1>
 
         <!-- Contact Form -->
         <section class="contact-form-section">
-            <h2>Send us a Message</h2>
+            <h2 style="color: #4caf50;">Send us a Message</h2>
             <form action="{% url 'contact_submit' %}" method="post" class="contact-form">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="name">Your Name:</label>
+                    <label for="name" style="color: #ffeb3b;">Your Name:</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Your Email:</label>
+                    <label for="email" style="color: #ffeb3b;">Your Email:</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="message">Your Message:</label>
+                    <label for="message" style="color: #ffeb3b;">Your Message:</label>
                     <textarea id="message" name="message" rows="4" required></textarea>
                 </div>
                 <button type="submit">Send Message</button>
@@ -128,7 +128,7 @@
 
         <!-- Contact Information -->
         <section class="contact-info-section">
-            <h2>Contact Information</h2>
+            <h2 style="color: #ff5722;">Contact Information</h2>
             <p><strong>Email:</strong> {{ contact_email }}</p>
             <p><strong>Phone:</strong> {{ contact_phone }}</p>
             <p><strong>Address:</strong> {{ contact_address }}</p>
@@ -136,7 +136,7 @@
 
         <!-- Map -->
         <section class="map-section">
-            <h2>Find Us on the Map</h2>
+            <h2 style="color: #03a9f4;">Find Us on the Map</h2>
             <!-- Embed Google Maps iframe -->
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.678910111213!2d{{ longitude }}!3d{{ latitude }}!4m5!3m4!1s0x0:0x0!8m2!3d{{ latitude }}!4d{{ longitude }}" allowfullscreen="" loading="lazy"></iframe>
         </section>

@@ -1,34 +1,98 @@
 {% block title %}
-   About us
+   User Login
 {% endblock %}
-{% block content %}
 
+{% block content %}
     <style>
-        /*  CSS styles here */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+            background-color: #f9f9f9; /* Light gray background */
+            color: #333; /* Dark gray text color */
         }
+
         .container {
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff; /* White container background */
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
+
         h1 {
             text-align: center;
-            color: #333;
+            color: #007bff; /* Blue color for header */
+            margin-bottom: 20px;
         }
-        /*  styles as needed */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #007bff; /* Blue background color for button */
+            color: #fff; /* White text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue background color on hover */
+        }
+
+        .signup-link {
+            text-align: center;
+        }
+
+        .signup-link a {
+            color: #007bff; /* Blue color for signup link */
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline; /* Underline on hover for signup link */
+        }
     </style>
-</head>
-<body>
+
     <div class="container">
         <h1>User Login</h1>
-        <!--  login form here -->
+        <form action="{% url 'user_login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="signup-link">
+            <p>Don't have an account? <a href="{% url 'user_register' %}">Sign up</a></p>
+        </div>
     </div>
-    {% endblock %}
+{% endblock %}

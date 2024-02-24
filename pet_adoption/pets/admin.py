@@ -1,5 +1,12 @@
 from django.contrib import admin
 from .models import Pet
+from .models import LostPet, FoundPet
+from .models import AdoptionApplication
+
+
+admin.site.register(LostPet)
+admin.site.register(FoundPet)
+admin.site.register(AdoptionApplication)
 
 @admin.register(Pet)
 class PetAdmin(admin.ModelAdmin):

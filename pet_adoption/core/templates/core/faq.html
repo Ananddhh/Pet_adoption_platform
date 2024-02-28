@@ -4,15 +4,15 @@
 {% block content %}
     <style>
         body {
-        font-family: Arial, sans-serif;
-        background-color: #000;
-        color: #fff;
-        margin: 0;
-        padding: 0;
-        background-image: url('images/static/pets.jpg'); 
-        background-size: cover;
-        background-position: center; 
-        background-repeat: repeat;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            background-image: url('../static/images/pets.jpg'); 
+            background-size: cover;
+            background-position: center; 
+            background-repeat: repeat;
         }
 
         .container {
@@ -27,57 +27,88 @@
             color: #ffd700; /* Light Yellow */
         }
 
-        .faq-item {
+        .faq-box {
+            background-color: rgba(0, 0, 0, 0.518);
+            padding: 20px;
+            border-radius: 10px;
             margin-bottom: 30px;
+            transition: opacity 0.3s ease;
+            display: none; /* Hide all FAQ items by default */
+        }
+
+        .faq-box:first-child {
+            display: block; 
         }
 
         .question {
             font-weight: bold;
-            color: #ffd700; /* Light Yellow */
+            color: #ffd700; 
+            margin-bottom: 10px;
         }
 
         .answer {
+            color: #fff; /* White */
             margin-left: 20px;
-            color: #03a9f4; /* Light Blue */
+            margin-bottom: 20px;
         }
 
-        .faq-odd .answer {
-            color: #4caf50; /* Light Green */
+        .faq-controls {
+            text-align: center;
         }
-        .cat-picture {
-            position: absolute;
-            bottom: 0px; /* Adjust distance from bottom */
-            left: 0px; /* Adjust distance from left */
-            max-width: 250px; /* Adjust maximum width */
+
+        .next-button {
+            background-color: #3b3f3b; /* Green */
+            color: #fff; /* White */
+            padding: 10px 20px;
+            border: none;
             border-radius: 5px;
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .next-button:hover {
+            background-color: #000e01; 
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Frequently Asked Questions</h1>
-        <div class="faq-item">
+        <div class="faq-box">
             <p class="question">Q: What is the adoption process?</p>
             <p class="answer">A: The adoption process involves filling out an application, meeting the pet, and completing necessary paperwork.</p>
         </div>
-        <div class="faq-item">
+        <div class="faq-box">
             <p class="question">Q: Can I adopt a pet if I live in an apartment?</p>
             <p class="answer">A: Yes, many pets can thrive in apartment living. Consider factors like size and energy level when choosing a pet.</p>
         </div>
-        <div class="faq-item">
+        <div class="faq-box">
             <p class="question">Q: How do I introduce my new pet to my existing pets?</p>
             <p class="answer">A: Introduce pets gradually in a neutral space, supervise interactions, and provide positive reinforcement.</p>
         </div>
-        <div class="faq-item">
+        <div class="faq-box">
             <p class="question">Q: Are all pets at the shelter spayed or neutered?</p>
             <p class="answer">A: Yes, all pets available for adoption are spayed or neutered to help control pet overpopulation.</p>
         </div>
-        <div class="faq-item">
+        <div class="faq-box">
             <p class="question">Q: How can I help if I can't adopt?</p>
             <p class="answer">A: You can volunteer, foster, donate, or spread awareness about pet adoption to help pets in need.</p>
         </div>
+        
+        <div class="faq-controls">
+            <button class="next-button" onclick="nextQuestion()">Q & A</button>
+        </div>
     </div>
-    
-    </body>
+
+    <script>
+        let currentIndex = 0;
+        const faqItems = document.querySelectorAll('.faq-box');
+
+        function nextQuestion() {
+            // faqItems[currentIndex].style.display = 'none'; // Hide current question
+            currentIndex = (currentIndex + 1) % faqItems.length; // Update current index
+            faqItems[currentIndex].style.display = 'block'; // Show next question
+        }
+    </script>
+</body>
 {% endblock %}

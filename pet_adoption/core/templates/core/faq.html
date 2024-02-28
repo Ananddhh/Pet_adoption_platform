@@ -4,11 +4,15 @@
 {% block content %}
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #000;
-            color: #fff;
-            margin: 0;
-            padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        background-image: url('images/static/pets.jpg'); 
+        background-size: cover;
+        background-position: center; 
+        background-repeat: repeat;
         }
 
         .container {
@@ -40,6 +44,14 @@
         .faq-odd .answer {
             color: #4caf50; /* Light Green */
         }
+        .cat-picture {
+            position: absolute;
+            bottom: 0px; /* Adjust distance from bottom */
+            left: 0px; /* Adjust distance from left */
+            max-width: 250px; /* Adjust maximum width */
+            border-radius: 5px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+        }
     </style>
 </head>
 <body>
@@ -66,4 +78,6 @@
             <p class="answer">A: You can volunteer, foster, donate, or spread awareness about pet adoption to help pets in need.</p>
         </div>
     </div>
+    
+    </body>
 {% endblock %}

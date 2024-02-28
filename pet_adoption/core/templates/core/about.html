@@ -1,32 +1,108 @@
+{% load static %}
 {% block title %}
     About Us
 {% endblock %}
 
 {% block content %}
-    <div class="container" style="padding: 40px; background-color: #000; color: #fff;">
-        <h1 style="color: #007bff; text-align: center; margin-bottom: 30px;">About Us</h1>
-        <p>Welcome to our pet adoption platform!</p>
-        
-        <h2 style="color: #28a745; margin-top: 40px;">Our Mission</h2>
-        <p>At our platform, our mission is to connect pets in need with loving families. We strive to provide a seamless adoption experience for both pets and adopters, ensuring that every pet finds their forever home.</p>
-        
-        <h2 style="color: #dc3545; margin-top: 40px;">Our Team</h2>
-        <p>Meet the dedicated team behind our platform:</p>
-        <ul>
-            <li>John Doe - Founder & CEO</li>
-            <li>Jane Smith - Head of Operations</li>
-            <li>Michael Johnson - Lead Developer</li>
-        </ul>
-        
-        <h2 style="color: #6610f2; margin-top: 40px;">Why Choose Us?</h2>
-        <p>Here are some reasons why you should choose our platform for pet adoption:</p>
-        <ul>
-            <li>Wide Selection: We have a diverse range of pets available for adoption, including dogs, cats, and other animals.</li>
-            <li>Easy Process: Our adoption process is simple and straightforward, making it easy for you to find your perfect pet.</li>
-            <li>Expert Support: Our team of experts is here to assist you at every step of the adoption journey, ensuring a smooth experience.</li>
-        </ul>
-        
-        <h2 style="color: #ffc107; margin-top: 40px;">Contact Us</h2>
-        <p>Have questions or feedback? Feel free to <a href="{% url 'contact' %}" style="color: #6c757d; text-decoration: underline;">contact us</a> - we'd love to hear from you!</p>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Set black background color */
+            color: #fff; /* Set text color to white */
+        }
+
+        .container {
+            padding: 40px;
+            position: relative; /* Position relative for absolute positioning */
+        }
+
+        .background-img {
+            position: absolute;
+            top: 0;
+            right: 0; /* Align image to top right corner */
+            width: 45%; /* Adjust width as needed */
+            max-height: 100%; /* Ensure image doesn't overflow */
+            object-fit: cover;
+            opacity: 0.5; /* Adjust image opacity as needed */
+        }
+
+        .content-wrapper {
+            padding-right: 50%; /* Reserve space for the image */
+        }
+
+        .section-heading {
+            color: #d8ffde;
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-top: 60px;
+        }
+
+        h2 {
+            color: #fff; /* Set heading color to white */
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .team-list,
+        .reasons-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .team-list li,
+        .reasons-list li {
+            margin-bottom: 10px;
+        }
+
+        .contact-link {
+            color: #6c757d;
+            text-decoration: underline;
+        }
+
+        .contact-link:hover {
+            color: #fff;
+        }
+    </style>
+
+    <div class="container">
+        <img src="{% static 'images/pety.jpg' %}" alt="Background Image" class="background-img">
+        <div class="content-wrapper">
+            <h1 class="section-heading">About Us</h1>
+            <div class="section mission-section">
+                <h2>Our Mission</h2>
+                <p>Welcome to our pet adoption platform! At our platform, our mission is to connect pets in need with loving families. We strive to provide a seamless adoption experience for both pets and adopters, ensuring that every pet finds their forever home.</p>
+            </div>
+
+            <div class="section team-section">
+                <h2>Our Team</h2>
+                <p>Meet the dedicated team behind our platform:</p>
+                <ul class="team-list">
+                    <li>John Doe - Founder & CEO</li>
+                    <li>Jane Smith - Head of Operations</li>
+                    <li>Michael Johnson - Lead Developer</li>
+                </ul>
+            </div>
+
+            <div class="section reasons-section">
+                <h2>Why Choose Us?</h2>
+                <p>Here are some reasons why you should choose our platform for pet adoption:</p>
+                <ul class="reasons-list">
+                    <li>Wide Selection: We have a diverse range of pets available for adoption, including dogs, cats, and other animals.</li>
+                    <li>Easy Process: Our adoption process is simple and straightforward, making it easy for you to find your perfect pet.</li>
+                    <li>Expert Support: Our team of experts is here to assist you at every step of the adoption journey, ensuring a smooth experience.</li>
+                </ul>
+            </div>
+
+            <div class="section contact-section">
+                <h2>Contact Us</h2>
+                <p>Have questions or feedback? Feel free to <a href="{% url 'contact' %}" class="contact-link">contact us</a> - we'd love to hear from you!</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

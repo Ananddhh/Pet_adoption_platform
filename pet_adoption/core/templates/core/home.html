@@ -1,193 +1,239 @@
+{% load static %}
 {% block title %}
    Home
 {% endblock %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-image: url('pets.jpeg'); 
-    
-            background-image: url('static/images/pets.jpg'); 
-    
-            background-repeat: no-repeat; /* Prevent the background image from repeating */
-            background-size: cover; /* Cover the entire viewport */
-            background-position: center; /* Center the background image */
-    /* background-color: #000000; Light gray */
-            color: #333333; /* Dark gray */
-            margin: 0;
-            padding: 0;
+    <head>
+          
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                position: relative;
             }
+        
+            /* Background Image */
+            .container {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+            }
+        
+            .background-img {
+                width: 55%;
+                height: 100%;
+                padding-left: 855px;
+                object-fit: cover;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        
+            /* Buttons */
+            .btn {
+                display: inline-block;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+        
+            .btn-primary {
+                background-color: #000000;
+                color: #ffffff;
+                transition: background-color 0.3s ease;
+            }
+        
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
+        
+            /* Adoption Events */
+            .adoption-events {
+                padding: 40px 20px;
+                background-color: #000000;
+            }
+        
+            .adoption-event-title {
+                font-size: 20px;
+                color: #000000;
+                margin-bottom: 10px;
+            }
+        
+            .adoption-event-details {
+                font-size: 16px;
+                color: #666;
+                margin-bottom: 15px;
+            }
+        
+            .adoption-event-link {
+                display: inline-block;
+                background-color: #000000;
+                color: #ffffff;
+                text-decoration: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+        
+            .adoption-event-link:hover {
+                background-color: #dde7dc;
+            }
+        
+            .adoption-events-content {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+        
+            .adoption-event {
+                width: 48%;
+                background-color: #dde7dc;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+        
+            /* Text Overlay */
+            .text-overlay {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 10%;
+                color: #000000;
+                text-align: left;
+                padding: 20px;
+                background-color: rgba(238, 238, 238, 0);
+            }
+        
+            .text-overlay h1 {
+                font-size: 36px;
+                margin-bottom: 10px;
+            }
+        
+            .text-overlay p {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        
+            /* Testimonial */
+            .testimonial-section {
+                padding: 40px 20px;
+                background-color: #000000;
+                margin-top: -20px;
+            }
+        
+            .testimonial-title {
+                font-size: 24px;
+                margin-bottom: 30px;
+                color: #333;
+                text-align: center;
+            }
+        
+            .testimonial-cards-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        
+            .testimonial-card {
+                background-color: #fff;
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 20px;
+                margin: 10px;
+                width: 300px;
+                max-width: 90%;
+            }
+        
+            .testimonial-card p {
+                font-size: 16px;
+                color: #666;
+                margin-bottom: 20px;
+            }
+        
+            .testimonial-card strong {
+                font-weight: bold;
+            }
+        </style>
+        
 
-
-        h1 {
-            color: aliceblue;
-            text-align: center;
-            padding: 17px;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 10px;
-        }
-
-        .section {
-            margin-bottom: 50px;
-        }
-
-        .section h2 {
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
-        .latest-articles {
-            color: #ffffff; /* Blue */
-            font-family: "Times New Roman", Times, serif;
-            font-size: 36px;
-            text-decoration: wavy;
-            text-decoration-color: #ff6347; /* Tomato */
-            text-decoration-thickness: 2px;
-        }
-
-        .photo-gallery {
-            color: #ffffff;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 32px;
-            font-style: italic;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .testimonials {
-            color: #ffffff; /* Blue violet */
-            font-family: Arial Black, Gadget, sans-serif;
-            font-size: 40px;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        .section-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #ffffff; /* White */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            flex-basis: calc(33.33% - 20px);
-        }
-
-        .card h3 {
-            color: #0070e0; /* Blue */
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #550000; /* Gray */
-            margin-bottom: 15px;
-        }
-
-        .read-more-link {
-            display: block;
-            text-align: center;
-            color: #031e3b; /* Blue */
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .read-more-link:hover {
-            color: #0056b3; /* Darker blue */
-        }
-    </style>
-</head>
+   </head>
 <body>
     <div class="container">
-        <h1>Welcome to Our Advanced Pet Adoption Platform!</h1>
-        
-        <!-- Blog Section -->
-        <section class="section">
-            <h2 class="latest-articles">Latest Articles</h2>
-            <div class="section-content">
-                <!-- Sample blog posts -->
-                <div class="card">
-                    <h3>How to Care for Your New Pet</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum tortor est, eu cursus nunc finibus ut.</p>
-                    <a href="#" class="read-more-link">Read More</a>
-                </div>
-                <div class="card">
-                    <h3>10 Tips for Training Your Dog</h3>
-                    <p>Integer id justo nec odio bibendum finibus. Proin auctor justo vitae nisi venenatis, ac ultrices urna cursus.</p>
-                    <a href="#" class="read-more-link">Read More</a>
-                </div>
-                <!-- Add more blog posts as needed -->
-                <div class="card">
-                    <h3>Choosing the Right Cat Food</h3>
-                    <p>Vivamus nec turpis sit amet dui fringilla cursus vitae sit amet ex. Morbi ut risus ut libero laoreet fermentum.</p>
-                    <a href="#" class="read-more-link">Read More</a>
-                </div>
-                <div class="card">
-                    <h3>Preparing Your Home for a New Pet</h3>
-                    <p>Sed fermentum leo sed elit bibendum, nec finibus mi sodales. Fusce tempus sapien at velit mollis, vel varius lorem luctus.</p>
-                    <a href="#" class="read-more-link">Read More</a>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Photo Gallery -->
-        <section class="section">
-            <h2 class="photo-gallery">Photo Gallery</h2>
-            <div class="section-content">
-                <!-- Sample gallery images -->
-                <div class="card">
-                    <img src="static/images/pet1.jpg" alt="Pet 1">
-                </div>
-                <div class="card">
-                    <img src="static/images/pet2.jpg" alt="Pet 2">
-                </div>
-                <!-- Add more gallery images as needed -->
-                <div class="card">
-                    <img src="static/images/pet3.jpg" alt="Pet 3">
-                </div>
-                <div class="card">
-                    <img src="static/images/pet4.jpg" alt="Pet 4">
-                </div>
-            </div>
-        </section>
-        
-        <!-- Testimonial Section -->
-        <section class="section">
-            <h2 class="testimonials">Testimonials</h2>
-            <div class="section-content">
-                <!-- Sample testimonials -->
-                <div class="card">
-                    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod ex vel odio aliquet, quis malesuada velit sodales."</p>
-                    <p><strong>John Doe</strong></p>
-                </div>
-                <div class="card">
-                    <p>"Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."</p>
-                    <p><strong>Jane Smith</strong></p>
-                </div>
-                <!-- Add more testimonials as needed -->
-                <div class="card">
-                    <p>"Vivamus nec turpis sit amet dui fringilla cursus vitae sit amet ex. Morbi ut risus ut libero laoreet fermentum."</p>
-                    <p><strong>Emily Johnson</strong></p>
-                </div>
-                <div class="card">
-                    <p>"Donec ac malesuada risus. Phasellus malesuada efficitur tellus, vel fermentum mi commodo nec. Praesent sit amet viverra nunc."</p>
-                    <p><strong>Michael Brown</strong></p>
-                </div>
-            </div>
-        </section>
+        <img src="{% static 'images/dog-.jpg' %}" alt="Background Image" class="background-img">
+        <div class="text-overlay">
+            <h1>Welcome to Our Pet Adoption Community</h1>
+            <p> We are dedicated to providing loving homes for all homeless pets, ensuring they receive the care and attention they deserve.</p>
+            <a href="{% url 'about' %}" class="btn btn-primary">Learn More</a>
+
+        </div>
     </div>
+
+    <section class="adoption-events">
+        <div class="adoption-events-content">
+            
+            <h2 style="color: #ffffff;" class="adoption-events-title">Upcoming Adoption Events</h2>
+        
+        <p class="adoption-events-description">Join us for our upcoming adoption events and help us find loving homes for pets in need!</p>
+            <div class="adoption-event">
+                <h3 class="adoption-event-title">Pet Adoption Fair</h3>
+                <p class="adoption-event-details">Date: March 15, 2024</p>
+                <p class="adoption-event-details">Location: ABC Shelter, 123 Main St, City</p>
+                <p class="adoption-event-details">Time: 10:00 AM - 4:00 PM</p>
+                <a href="#" class="adoption-event-link">Learn More</a>
+            </div>
+            <div class="adoption-event">
+                <h3 class="adoption-event-title">Rescue Run 5K</h3>
+                <p class="adoption-event-details">Date: April 20, 2024</p>
+                <p class="adoption-event-details">Location: City Park</p>
+                <p class="adoption-event-details">Time: 8:00 AM</p>
+                <a href="#" class="adoption-event-link">Learn More</a>
+            </div>
+            <div class="adoption-event">
+                <h3 class="adoption-event-title">Pet Adoption Fair</h3>
+                <p class="adoption-event-details">Date: March 15, 2024</p>
+                <p class="adoption-event-details">Location: ABC Shelter, 123 Main St, City</p>
+                <p class="adoption-event-details">Time: 10:00 AM - 4:00 PM</p>
+                <a href="#" class="adoption-event-link">Learn More</a>
+            </div>
+            <div class="adoption-event">
+                <h3 class="adoption-event-title">Rescue Run 5K</h3>
+                <p class="adoption-event-details">Date: April 20, 2024</p>
+                <p class="adoption-event-details">Location: City Park</p>
+                <p class="adoption-event-details">Time: 8:00 AM</p>
+                <a href="#" class="adoption-event-link">Learn More</a>
+            </div>
+            
+        </div>
+    </section>
+    
+            
+    <!-- Testimonial Section -->
+<section class="testimonial-section">
+    <h2 style="color: #ffffff;" class="testimonial-title">Testimonials</h2>
+    <div class="testimonial-cards-container">
+        <div class="testimonial-card">
+            <p>"I adopted my furry friend from here, and it was the best decision I ever made. The staff was incredibly helpful, and the process was smooth from start to finish."</p>
+            <p><strong>Shekhar.</strong></p>
+        </div>
+        <div class="testimonial-card">
+            <p>"The shelter provided a loving environment for my new pet while I searched for the perfect match. I couldn't be happier with the support they offered."</p>
+            <p><strong>Kennedy.</strong></p>
+        </div>
+        <div class="testimonial-card">
+            <p>"The dedication of the shelter's team is truly inspiring. They go above and beyond to ensure every animal finds a loving home."</p>
+            <p><strong>Siya.</strong></p>
+        </div>
+        <div class="testimonial-card">
+            <p>"My pet has brought so much joy into my life. Thanks to the shelter's guidance, I found the perfect companion who fits seamlessly into my family."</p>
+            <p><strong>Diya.</strong></p>
+        </div>
+    </div>
+</section>
+
 </body>
-</html>
 {% endblock %}

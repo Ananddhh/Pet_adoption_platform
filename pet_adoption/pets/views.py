@@ -29,7 +29,6 @@ def lost_found_pets(request):
     return render(request, 'pets/lost_found.html', {'lost_items': lost_items})
 
 
-
 def pet_list(request):
     # Retrieve all pets from the database
     pets = Pet.objects.all()

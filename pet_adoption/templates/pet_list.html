@@ -1,6 +1,6 @@
-{% block title %}
-    Pet List
-{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
     <style>
         body {
@@ -52,7 +52,7 @@
     <main>
         {% for pet in pets %}
         <li>
-            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ pet.image.url }}" alt="{{ pet.name }}"></a>
+            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ pet.image.url }}" ></a>
             <div class="pet-info">
                 <h2>{{ pet.name }}</h2>
                 <p>Species: {{ pet.species }}</p>

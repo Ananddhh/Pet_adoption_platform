@@ -2,18 +2,18 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def homepage(request):
-    # Placeholder logic for the homepage view
+    #
     context = {
         'welcome_message': 'Welcome to our pet adoption platform!'
     }
-    return render(request, 'core/home.html', context)
+    return render(request, 'home.html', context)
 
 def about_page(request):
     # Placeholder logic for the About page view
     context = {
         'about_content': 'Learn more about our mission and goals here.'
     }
-    return render(request, 'core/about.html', context)
+    return render(request, 'about.html', context)
 
 def contact_page(request):
     # Placeholder logic for the Contact page view
@@ -24,7 +24,7 @@ def contact_page(request):
             'address': '123 Main Street, City, Country'
         }
     }
-    return render(request, 'core/contact.html', context)
+    return render(request, 'contact.html', context)
 
 
 def contact_submit_view(request):
@@ -47,4 +47,4 @@ def faq_page(request):
     context = {
         'faq_items': faq_items
     }
-    return render(request, 'core/faq.html', context)
+    return render(request, 'faq.html', context)

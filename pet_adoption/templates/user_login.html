@@ -1,6 +1,6 @@
-{% block title %}
-   User Login
-{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
     <style>
@@ -92,7 +92,7 @@
             <button type="submit">Login</button>
         </form>
         <div class="signup-link">
-            <p>Don't have an account? <a href="{% url 'user_register' %}">Sign up</a></p>
+            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
         </div>
     </div>
 {% endblock %}

@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from users.views import user_register 
 from .views import contact_page,contact_submit_view
 
 urlpatterns = [
@@ -8,5 +9,6 @@ urlpatterns = [
     path('contact/', views.contact_page, name='contact'),
     path('faq/', views.faq_page, name='faq'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
+    path('register/', user_register, name='user_register'),
 ]
     # Add more URL patterns for other core features as needed

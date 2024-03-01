@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+    /* Adoption Events */
+    .adoption-events {
+        padding: 40px 20px;
+        background-color: #000000;
+        color: #ffffff; /* Added text color for better visibility */
+    }
+
+    .adoption-event-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #000000;
+    }
+
+    .adoption-event-details {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #000000;
+    }
+
+    .adoption-event-link {
+        display: inline-block;
+        background-color: #000000;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .adoption-event-link:hover {
+        background-color: #dde7dc;
+    }
+
+    .adoption-events-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .adoption-event {
+        flex-basis: 48%;
+        background-color: #dde7dc;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="adoption-events">
+    <div class="adoption-events-content">
+        
+        <h2 style="color: #ffffff;" class="adoption-events-title">Upcoming Adoption Events</h2>
+    
+    <p class="adoption-events-description">Join us for our upcoming adoption events and help us find loving homes for pets in need!</p>
+        <div class="adoption-event">
+            <h3 class="adoption-event-title">Pet Adoption Fair</h3>
+            <p class="adoption-event-details">Date: March 15, 2024</p>
+            <p class="adoption-event-details">Location: ABC Shelter, 123 Main St, City</p>
+            <p class="adoption-event-details">Time: 10:00 AM - 4:00 PM</p>
+            <a href="#" class="adoption-event-link">Learn More</a>
+        </div>
+        <div class="adoption-event">
+            <h3 class="adoption-event-title">Rescue Run 5K</h3>
+            <p class="adoption-event-details">Date: April 20, 2024</p>
+            <p class="adoption-event-details">Location: City Park</p>
+            <p class="adoption-event-details">Time: 8:00 AM</p>
+            <a href="#" class="adoption-event-link">Learn More</a>
+        </div>
+        <div class="adoption-event">
+            <h3 class="adoption-event-title">Pet Adoption Fair</h3>
+            <p class="adoption-event-details">Date: March 15, 2024</p>
+            <p class="adoption-event-details">Location: ABC Shelter, 123 Main St, City</p>
+            <p class="adoption-event-details">Time: 10:00 AM - 4:00 PM</p>
+            <a href="#" class="adoption-event-link">Learn More</a>
+        </div>
+        <div class="adoption-event">
+            <h3 class="adoption-event-title">Rescue Run 5K</h3>
+            <p class="adoption-event-details">Date: April 20, 2024</p>
+            <p class="adoption-event-details">Location: City Park</p>
+            <p class="adoption-event-details">Time: 8:00 AM</p>
+            <a href="#" class="adoption-event-link">Learn More</a>
+        </div>
+        
+    </div>
+</section>
+
+{% endblock %}

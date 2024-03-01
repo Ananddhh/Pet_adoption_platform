@@ -48,3 +48,10 @@ def faq_page(request):
         'faq_items': faq_items
     }
     return render(request, 'faq.html', context)
+
+def adoption_event(request):
+    #
+    context = {
+        'events': 'events of the  pet adoption platform!'
+    }
+    return render(request, 'adoption_events.html', context)

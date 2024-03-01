@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
     <style>
         body {
@@ -13,10 +12,10 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 400px;
             margin: 50px auto;
             padding: 30px;
-            background-color: #fff; /* White container background */
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white container background */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
@@ -24,7 +23,7 @@
         h1 {
             text-align: center;
             color: #007bff; /* Blue color for header */
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .form-group {
@@ -35,22 +34,29 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
+            color: #555; /* Dark gray color for labels */
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc; /* Light gray border */
             border-radius: 5px;
             box-sizing: border-box;
             font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff; /* Blue border color on focus */
         }
 
         button[type="submit"] {
             width: 100%;
-            padding: 12px 20px;
-            background-color: #007bff; /* Blue background color for button */
+            padding: 12px;
+            background-color: #000000; /* Blue background color for button */
             color: #fff; /* White text color */
             border: none;
             border-radius: 5px;
@@ -60,7 +66,7 @@
         }
 
         button[type="submit"]:hover {
-            background-color: #0056b3; /* Darker blue background color on hover */
+            background-color: #000000; /* Darker blue background color on hover */
         }
 
         .signup-link {

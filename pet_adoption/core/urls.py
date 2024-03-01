@@ -10,5 +10,6 @@ urlpatterns = [
     path('faq/', views.faq_page, name='faq'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
     path('register/', user_register, name='user_register'),
-]
+    path('adoption_event/', views.adoption_event, name = 'adoption_event'),
+ ]
     # Add more URL patterns for other core features as needed

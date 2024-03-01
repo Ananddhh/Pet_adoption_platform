@@ -4,41 +4,53 @@
 {% block content %}
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
-            color: #fff;
+            background-image: url('{% static "images/wall.jpg" %}'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            color: #fff; /* Light text color for better contrast */
         }
         header {
-            background-color: #ffffff; 
-            color: #000000;
-            padding: 2px;
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for header */
+            color: #fff;
+            padding: 20px;
             text-align: center;
+            border-bottom: 2px solid #fff; /* White border */
+            margin-bottom: 20px;
         }
         main {
             padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            background-color: #333; 
+        .lii {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for each pet item */
             padding: 20px;
             margin-bottom: 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .lii:hover {
+            transform: translateY(-5px);
         }
         li img {
             max-width: 100%;
             height: auto;
-            border-radius: 5px;
+            border-radius: 10px;
             margin-bottom: 10px;
         }
         .pet-info {
-            color: #fff;
+            color: #333;
+        }
+        .pet-info h2 {
             margin-bottom: 10px;
+            color: #555;
         }
         .pet-info p {
             margin: 5px 0;
@@ -47,12 +59,12 @@
 </head>
 <body>
     <header>
-        <h1>List of Pets</h1>
+        <h1 style="color: rgb(255, 255, 255);">List of Pets</h1>
     </header>
     <main>
         {% for pet in pets %}
-        <li>
-            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ pet.image.url }}" ></a>
+        <li class="lii">
+            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ pet.image.url }}"></a>
             <div class="pet-info">
                 <h2>{{ pet.name }}</h2>
                 <p>Species: {{ pet.species }}</p>

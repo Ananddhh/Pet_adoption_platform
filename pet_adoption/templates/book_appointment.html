@@ -9,6 +9,8 @@
         padding: 0;
         background-color: #000;
         color: #fff;
+        background-image: url('{% static "images/cat1.jpeg" %}');
+        background-repeat: repeat;
     }
     header {
         background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for header */
@@ -66,12 +68,12 @@
 </style>
 
 <header>
-    <h1>Book Appointment for {{ pet.name }}</h1>
+    <h1>Book Appointment </h1>
 </header>
 
 <div class="container">
     <div class="appointment-form">
-        <h2 class="form-title">Book Appointment</h2>
+        <h2 class="form-title">Appointment</h2>
         <form action="{% url 'book_appointment' %}" method="post">
             {% csrf_token %}
             <div class="form-group">

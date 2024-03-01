@@ -186,7 +186,7 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a>
+                        <a class="nav-link" href="{% url 'user_login' %}" style="color: #ffffff;">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about' %}" style="color: #ffffff;">About</a>
@@ -207,8 +207,9 @@
                       </a>
                       <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
                           <li><a class="dropdown-item" href="{% url 'faq' %}" style="color: #ffffff;">FAQ</a></li>
-                          <li><a class="dropdown-item" href="{% url 'user_login' %}" style="color: #ffffff;">Login</a></li>
+                          <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" style="color: #ffffff;">Lost & found</a></li>
                           <li><a class="dropdown-item" href="{% url 'user_register' %}" style="color: #ffffff;">Register</a></li>
+                          <li><a class="dropdown-item"  href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a></li>
                       </ul>
                   </li>
                     </li>

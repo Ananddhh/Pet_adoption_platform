@@ -7,23 +7,26 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9; /* Light gray background */
-            color: #333; /* Dark gray text color */
+            background-image: url('{% static "images/dog3.jpeg" %}'); 
+            background-size: auto;
+            background-repeat: repeat;
+            background-position: center;
+            color: #fff; /* White text color */
         }
 
-        .container {
+        .containerr {
             max-width: 400px;
             margin: 50px auto;
             padding: 30px;
-            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white container background */
+            background-color: rgba(255, 255, 255, 0.4); /* Slightly transparent white container background */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
 
         h1 {
             text-align: center;
-            color: #007bff; /* Blue color for header */
-            margin-bottom: 30px;
+            color: #000000; 
+            margin-bottom: 38px;
         }
 
         .form-group {
@@ -34,7 +37,7 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #555; /* Dark gray color for labels */
+            color: #000000; /* Dark gray color for labels */
         }
 
         input[type="text"],
@@ -74,7 +77,7 @@
         }
 
         .signup-link a {
-            color: #007bff; /* Blue color for signup link */
+            color: #000000; /* Blue color for signup link */
             text-decoration: none;
         }
 
@@ -83,7 +86,7 @@
         }
     </style>
 
-    <div class="container">
+    <div class="containerr">
         <h1>User Login</h1>
         <form action="{% url 'user_login' %}" method="post">
             {% csrf_token %}
@@ -98,7 +101,7 @@
             <button type="submit">Login</button>
         </form>
         <div class="signup-link">
-            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            <p style="color: #000000;">Don't have an account? <a style="color: #ffffff;" href="{% url 'register' %}">Register</a></p>
         </div>
     </div>
 {% endblock %}

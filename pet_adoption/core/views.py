@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from  users.models import Profile
+from django.contrib.auth.decorators import login_required
 
 def homepage(request):
     #
@@ -55,3 +57,12 @@ def adoption_event(request):
         'events': 'events of the  pet adoption platform!'
     }
     return render(request, 'adoption_events.html', context)
+
+
+
+@login_required
+def profile(request):
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    adoption_status = profile.adoption_status
+    return render(request, 'profile.html', {'adoption_status': adoption_status})

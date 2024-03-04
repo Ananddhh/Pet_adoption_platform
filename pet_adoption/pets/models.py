@@ -65,8 +65,15 @@ class Appointment(models.Model):
 class AdoptionApplication(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = models.CharField(max_length=20)  
+    phone = models.CharField(max_length=20, default='')
     message = models.TextField()
+
+    STATUS_CHOICES = (
+        ('Pending', 'Pending'),
+        ('Approved', 'Approved'),
+        ('Rejected', 'Rejected'),
+    )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
 
     def __str__(self):
         return self.name
@@ -81,4 +88,4 @@ class AdoptionRequest(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
-    # fields for tracking the adoption process
+    

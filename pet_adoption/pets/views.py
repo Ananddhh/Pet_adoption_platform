@@ -6,9 +6,40 @@ from .forms import AppointmentForm
 from django.contrib import messages
 from django.http import HttpResponse
 from .models import AdoptionApplication
+from .models import Pet, AdoptionRequest
 from .forms import AdoptionApplicationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404,redirect
+# from django.urls import reverse
+
+# url = reverse('pet_detail', kwargs={'pk': 1})
+
+
+def adopt_pet(request, pet_id):
+    pet = get_object_or_404(Pet, pk=pet_id)
+    
+    
+    user = request.user
+    
+    
+    existing_request = AdoptionRequest.objects.filter(user=user, pet=pet).first()
+    if existing_request:
+    
+        messages.warning(request, "You have already submitted a request for this pet.")
+        return redirect('pet_detail', pet_id=pet.id)
+    
+    
+    adoption_request = AdoptionRequest.objects.create(user=user, pet=pet)
+    
+    
+    admin_email = 'admin@example.com'  # admin email
+    subject = f"New Adoption Request for {pet.name}"
+    message = f"User {user.username} has submitted an adoption request for {pet.name}."
+    
+    messages.success(request, f"Your adoption request for {pet.name} has been submitted successfully.")
+    
+    
+    return redirect('pet_detail', pet_id=pet.id)
 
 def adoption_submit(request):
     if request.method == 'POST':
@@ -17,14 +48,14 @@ def adoption_submit(request):
         email = request.POST.get('email')
         message = request.POST.get('message')
 
-        # Save the form data to the database
+        
         application = AdoptionApplication(name=name, email=email, message=message)
         application.save()
 
-        # Redirect to a success page or render a success message
+        
         return HttpResponse("Form submitted successfully. Thank you!")
     else:
-        # If request method is not POST, render the form page
+       
         return render(request, 'adoption_process.html')
 
 def adoption_process(request):

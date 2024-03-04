@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+<!-- {% url 'pet_detail' pk=1 %} -->
+
 
 
 {% block content %}
@@ -69,5 +71,6 @@
         <p><strong>Breed:</strong> {{ pet.breed }}</p>
         <p><strong>Age:</strong> {{ pet.age }}</p>
         <p><strong>Available:</strong> <span class="availability">{% if pet.available %}Yes{% else %}No{% endif %}</span></p>
+        <a href="{% url 'adopt_pet' pet_id=pet.id %}" class="btn btn-primary">Adopt</a>
     </div>
 {% endblock %}

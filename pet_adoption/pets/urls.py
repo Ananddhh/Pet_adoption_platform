@@ -9,5 +9,6 @@ urlpatterns = [
     path('lost-found/', views.lost_found_pets, name='lost_found_pets'),
     path('book-appointment/', views.book_appointment, name='book_appointment'),
     path('adoption-submit/', views.adoption_submit, name='adoption_submit'),
+    path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
     # path('adoption/process/', views.adoption_process, name='adoption_process'),
     ]

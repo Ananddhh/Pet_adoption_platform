@@ -10,9 +10,21 @@ from .models import Pet, AdoptionRequest
 from .forms import AdoptionApplicationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404,redirect
-# from django.urls import reverse
+from .models import ContactSubmission  # Import the ContactSubmission model
 
-# url = reverse('pet_detail', kwargs={'pk': 1})
+def contact_submit_view(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            # Save the form data to the ContactSubmission model
+            contact_submission = form.save(commit=False)  # Create an instance of ContactSubmission model
+            contact_submission.save()  # Save the instance to the database
+
+            # Optionally, you can display a success message or redirect to a success page
+            return render(request, 'contact_success.html')  # Redirect to a success page
+    else:
+        form = ContactForm()
+    return render(request, 'lost_found.html', {'form': form})
 
 
 def adopt_pet(request, pet_id):
@@ -106,16 +118,16 @@ def book_appointment(request):
 
 
 
-def contact_submit_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
+# def contact_submit_view(request):
+#     if request.method == 'POST':
+#         form = ContactForm(request.POST)
+#         if form.is_valid():
             
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
+#             name = form.cleaned_data['name']
+#             email = form.cleaned_data['email']
+#             message = form.cleaned_data['message']
             
-            return render(request, 'contact_success.html')  # Redirect to a success page
-    else:
-        form = ContactForm()
-    return render(request, 'lost_found.html', {'form': form})
+#             return render(request, 'contact_success.html')  # Redirect to a success page
+#     else:
+#         form = ContactForm()
+#     return render(request, 'lost_found.html', {'form': form})

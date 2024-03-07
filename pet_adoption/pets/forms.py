@@ -1,19 +1,18 @@
 from django import forms
 from .models import Appointment
+from .models import ContactSubmission
+from django import forms
+from .models import AdoptionApplication
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['name', 'email', 'date', 'time']  # Assuming these are the fields in our Appointment model
-
-
-class ContactForm(forms.Form):
-    name = forms.CharField(max_length=100)
-    email = forms.EmailField()
-    message = forms.CharField(widget=forms.Textarea)
-
-from django import forms
-from .models import AdoptionApplication
+        fields = ['name', 'email', 'date', 'time']  
+  
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactSubmission
+        fields = ['name', 'email', 'message']
 
 class AdoptionApplicationForm(forms.ModelForm):
     class Meta:

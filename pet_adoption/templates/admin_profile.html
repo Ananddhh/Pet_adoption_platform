@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.containerr {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.status-link {
+        padding: 5px 10px;
+        border-radius: 3px;
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        border: 1px solid #007bff;
+        margin-right: 5px;
+    }
+
+    .status-link:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+    /* Style for the "Reject" link */
+    .reject-link {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .reject-link:hover {
+        background-color: #bd2130;
+        border-color: #bd2130;
+    }
+</style>
+    <div class="containerr">
+        <h1>Welcome, Admin!</h1>
+        <h2>Adoption Form Submissions:</h2>
+        <ul>
+            {% for form in adoption_forms %}
+            <li>
+                <strong>Name:</strong> {{ form.name }}<br>
+                <strong>Email:</strong> {{ form.email }}<br>
+                <strong>Phone:</strong> {{ form.phone }}<br>
+                <strong>Message:</strong> {{ form.message }}<br>
+                <strong>Status:</strong> {{ form.status }}<br>
+                
+                {% if form.status != 'Approved' %}
+                    <a href="{% url 'update_status' form.pk 'Approved' %}">Approve</a>
+                {% endif %}
+                {% if form.status != 'Rejected' %}
+                    <a href="{% url 'update_status' form.pk 'Rejected' %}">Reject</a>
+                {% endif %}
+               
+            </li>
+            {% endfor %}
+        </ul>
+        
+        <a href="{% url 'admin_logout' %}">Logout</a>
+    </div>
+{% endblock %}

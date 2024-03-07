@@ -89,3 +89,10 @@ class AdoptionRequest(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
     
+class ContactSubmission(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"

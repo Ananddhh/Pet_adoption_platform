@@ -1,0 +1,62 @@
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        background-image: url('{% static "images/cat1.jpeg" %}');
+        background-repeat: repeat;
+    }
+    header {
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background for header */
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 2px solid #fff; /* White border */
+        margin-bottom: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .appointment-form {
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background for form */
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    .form-title {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    label {
+        font-weight: bold;
+        color: #555;
+    }
+    input[type="date"],
+    input[type="time"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        font-size: 16px;
+    }
+    button {
+        background-color: #000000; /* Blue button color */
+        color: #fff;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }

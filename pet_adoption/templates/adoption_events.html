@@ -1,57 +1,5 @@
 {% extends 'base.html' %}
-
-{% block style %}
-<style>
-    /* Adoption Events */
-    .adoption-events {
-        padding: 40px 20px;
-        background-color: #000000;
-        color: #ffffff; /* Added text color for better visibility */
-    }
-
-    .adoption-event-title {
-        font-size: 20px;
-        margin-bottom: 10px;
-        color: #000000;
-    }
-
-    .adoption-event-details {
-        font-size: 16px;
-        margin-bottom: 15px;
-        color: #000000;
-    }
-
-    .adoption-event-link {
-        display: inline-block;
-        background-color: #000000;
-        color: #ffffff;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
-
-    .adoption-event-link:hover {
-        background-color: #dde7dc;
-    }
-
-    .adoption-events-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .adoption-event {
-        flex-basis: 48%;
-        background-color: #dde7dc;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-
-</style>
-{% endblock %}
+<link rel="stylesheet" type="text/css" href = "{% static 'css/adoption_events.css' %}">
 
 {% block content %}
 <section class="adoption-events">

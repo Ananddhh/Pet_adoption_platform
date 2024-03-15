@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href = "{% static 'css/coordinator_login.css' %}">
+{% block content %}
+    <div class="containerr">
+        <h2>Coordinato Login</h2>
+        {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form action="{% url 'coordinator_login' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-login btn-block">Login</button>
+        </form>
+    </div>
+</body>
+{%endblock%}

@@ -66,3 +66,7 @@ def profile(request):
     profile = Profile.objects.get(user=user)
     adoption_status = profile.adoption_status
     return render(request, 'profile.html', {'adoption_status': adoption_status})
+
+def coordinator_dashboard(request):
+    # Logic to render the coordinator dashboard template
+    return render(request, 'coordinator_home.html')

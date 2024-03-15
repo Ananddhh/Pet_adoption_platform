@@ -11,25 +11,51 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import UserLoginForm, UserRegistrationForm
 from pets.models import AdoptionApplication
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from pets.forms import AdoptionApplicationForm, ContactForm, AppointmentForm
+
+
+@login_required
+def submit_adoption_request(request):
+    if request.method == 'POST':
+        form = AdoptionApplicationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('adoption_success')
+    else:
+        form = AdoptionApplicationForm()
+    return render(request, 'adoption_request.html', {'form': form})
+
+
+@login_required
+def submit_contact_message(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.send_message()
+            return redirect('contact_success')
+    else:
+        form = ContactForm()
+    return render(request, 'contact.html', {'form': form})
+
+@login_required
+def book_appointment(request):
+    if request.method == 'POST':
+        form = AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('appointment_success')
+    else:
+        form = AppointmentForm()
+    return render(request, 'book_appointment.html', {'form': form})
 
 def admin_profile(request):
     
     adoption_forms = AdoptionApplication.objects.all()
     return render(request, 'admin_profile.html', {'adoption_forms': adoption_forms})
 
-def admin_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_staff:  
-            login(request, user)
-            return redirect('admin_profile')  # Redirect to admin profile
-        else:
-            error_message = "Invalid username or password."
-            return render(request, 'admin_login.html', {'error_message': error_message})
-    else:
-        return render(request, 'admin_login.html')
+
 
 def update_status(request, form_id, new_status):
     
@@ -40,9 +66,6 @@ def update_status(request, form_id, new_status):
     
     return redirect('admin_profile')
 
-def admin_logout(request):
-    logout(request)
-    return redirect('home')
 
 
 def user_login(request):

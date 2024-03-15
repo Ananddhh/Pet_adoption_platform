@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000; 
+    color: #fff; /* Set text color to white */
+}
+
+.container {
+    padding: 40px;
+    position: relative; 
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    right: 0; 
+    width: 45%; 
+    max-height: 100%; 
+    object-fit: cover;
+    opacity: 0.5; 
+}
+
+.content-wrapper {
+    padding-right: 50%; 
+}
+
+.section-heading {
+    color: #d8ffde;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-top: 60px;
+}
+
+h2 {
+    color: #fff; 
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+.team-list,
+.reasons-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.team-list li,
+.reasons-list li {
+    margin-bottom: 10px;
+}
+
+.contact-link {
+    color: #6c757d;
+    text-decoration: underline;
+}
+
+.contact-link:hover {
+    color: #fff;
+}

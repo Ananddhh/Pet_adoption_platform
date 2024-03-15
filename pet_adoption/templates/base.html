@@ -23,10 +23,14 @@
         }
         .dropdown-item {
         background-color: rgba(255, 255, 255, 0); 
+        color: #ffffff;
         }
         .footer {
             margin :0 ;
-    }
+        }
+        .dropdown-item:hover {
+            color: #000000;
+        }
 
     </style>
 </head>
@@ -37,9 +41,9 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
       <div class="container-fluid">
           <!-- Logo -->
-          <a  class="navbar-brand" href="{% url 'home' %}">
-              <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
-          </a>
+          <a  class="navbar-brand" href="{% url 'homepage'%}">
+            <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
+        </a>
           <!-- Toggler/collapsibe Button -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
               aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,10 +73,10 @@
                         More
                     </a>
                     <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'faq' %}" style="color: #ffffff;">FAQ</a></li>
-                        <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" style="color: #ffffff;">Lost & found</a></li>
-                        <li><a class="dropdown-item" href="{% url 'user_register' %}" style="color: #ffffff;">Register</a></li>
-                        <li><a class="dropdown-item"  href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a></li>
+                        <li><a class="dropdown-item" href="{% url 'faq' %}" >FAQ</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" >Lost & found</a></li>
+                        <li><a class="dropdown-item" href="{% url 'user_register' %}" >Register</a></li>
+                        <li><a class="dropdown-item"  href="{% url 'adoption_process' %}">Adoption</a></li>
                     </ul>
                 </li>
                   </li>

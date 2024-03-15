@@ -129,7 +129,7 @@
     .testimonial-title {
         font-size: 24px;
         margin-bottom: 30px;
-        color: #333;
+        color: #f3efef;
         text-align: center;
     }
 
@@ -174,7 +174,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
         <div class="container-fluid">
             <!-- Logo -->
-            <a  class="navbar-brand" href="{% url 'home' %}">
+            <a  class="navbar-brand" href="{% url 'homepage' %}">
                 <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
             </a>
             <!-- Toggler/collapsibe Button -->
@@ -209,8 +209,9 @@
                           <li><a class="dropdown-item" href="{% url 'faq' %}" style="color: #ffffff;">FAQ</a></li>
                           <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" style="color: #ffffff;">Lost & found</a></li>
                           <li><a class="dropdown-item" href="{% url 'user_register' %}" style="color: #ffffff;">Register</a></li>
-                          <li><a class="dropdown-item"  href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a></li>
-                      </ul>
+                          <li><a class="dropdown-item" href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a></li>
+                          <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}" style="color: #ffffff;">Coordinator Dashboard</a></li>
+                        </ul>
                   </li>
                     </li>
                 </ul>

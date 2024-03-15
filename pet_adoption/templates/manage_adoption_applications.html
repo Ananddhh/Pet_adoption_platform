@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .application-list {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .application-item {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        padding: 15px;
+    }
+
+    .applicant-name {
+        font-weight: bold;
+    }
+
+    .applicant-email {
+        color: #666;
+    }
+
+    .applicant-message {
+        display: block;
+        margin-top: 10px;
+    }
+</style>
+
+{% block content %}
+<div class="container">
+    <h1>Manage Adoption Applications</h1>
+    <ul class="application-list">
+        {% for application in adoption_applications %}
+            <li class="application-item">
+                <span class="applicant-name">{{ application.name }}</span>
+                <span class="applicant-email">{{ application.email }}</span>
+                <span class="applicant-message">{{ application.message }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

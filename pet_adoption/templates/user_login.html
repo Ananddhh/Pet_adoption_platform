@@ -37,7 +37,7 @@
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
-            color: #000000; /* Dark gray color for labels */
+            color: #000000; 
         }
 
         input[type="text"],
@@ -101,7 +101,7 @@
             <button type="submit">Login</button>
         </form>
         <div class="signup-link">
-            <p style="color: #000000;">Don't have an account? <a style="color: #ffffff;" href="{% url 'register' %}">Register</a></p>
+            <p style="color: #000000;">Don't have an account? <a style="color: #ffffff;" href="{% url 'user_register' %}">Register</a></p>
         </div>
     </div>
 {% endblock %}

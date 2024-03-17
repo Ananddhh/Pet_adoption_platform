@@ -1,10 +1,112 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href = "{% static 'css/contact.css' %}">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-{% block content %}
 
-    
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .navbar {
+            background-color: #020d19;
+            color: #ffffff;
+        }
+        .custom-dropdown {
+            background-color: #000000;
+        }
+        .dropdown-item {
+        background-color: rgba(255, 255, 255, 0); 
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #fff; 
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-section {
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            background-color: #f8f9fa; 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 5px;
+            color: #555;
+        }
+
+        button[type="submit"] {
+            padding: 12px 24px;
+            background-color: #000000; 
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; 
+        }
+
+        /* Contact Info Styles */
+        .contact-info-section {
+            padding: 15px; 
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background-color: #f8f9fa; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+
+        /* Dog Picture Styles */
+        .dog-picture {
+            position: absolute;
+            bottom: 0px; /* Adjust distance from bottom */
+            right: 0px; /* Adjust distance from left */
+            max-width: 250px; /* Adjust maximum width */
+            border-radius: 5px;
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+        }
+    </style>
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
         <div class="container-fluid">
             <!-- Logo -->

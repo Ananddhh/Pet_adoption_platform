@@ -1,8 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
 
-{% block content %}
-    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f9f9f9; /* Light gray background */
@@ -131,77 +127,4 @@
             background-color: #0056b3; /* Darker blue background color on hover */
         }
 
-    </style>
-
-    <div class="container">
-        <h1>Lost & Found Pets</h1>
-
-        <div class="pet-container">
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/caty.jpg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="lost">Lost</span></p>
-                </div>
-            </div
-            
-            <div class="pet-container">
-                <div class="pet-card">
-                    <img class="pet-image" src="../static/images/caty.jpg" alt="Found Pet">
-                    <div class="pet-info">
-                        <h2>Fluffy</h2>
-                        <p><strong>Species:</strong> Cat</p>
-                        <p><strong>Breed:</strong> Persian</p>
-                        <p><strong>Age:</strong> 3 years</p>
-                        <p><strong>Status:</strong> <span class="lost">Lost</span></p>
-                    </div>
-                </div>
-
-            
-
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/caty.jpg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="found">Found</span></p>
-                </div>
-            </div>
-
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/caty.jpg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="found">Found</span></p>
-                </div>
-            </div>
-
-            
-
-        </div>
-    </div>
-
-    <div class="contact-form-container">
-        <h2>Contact Us</h2>
-        <p>If you have found one of the lost pets listed above, please use the form below to contact us:</p>
-        <form action="{% url 'contact_submit' %}" method="post">
-            {% csrf_token %}
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-
-{% endblock %}
+   

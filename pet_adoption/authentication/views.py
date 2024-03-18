@@ -27,7 +27,7 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('user_home' if user.is_staff else 'admin_home')
+                return redirect('homepage')  #if user.is_staff else 'admin_home'
             else:
                 messages.error(request, 'Invalid username or password.')
     else:

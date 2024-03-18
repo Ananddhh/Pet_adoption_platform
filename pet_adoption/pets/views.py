@@ -101,12 +101,15 @@ def event_details(request, event_id):
     event = get_object_or_404(Pet, pk=event_id)
     return render(request, 'event_details.html', {'event': event})
 
+
 def book_appointment(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()  # Save the form data to the database
             messages.success(request, 'Your appointment has been booked successfully.')
+            print('appointment booked success')
+
             return redirect('appointment_success')  # Redirect to a success page
         else:
             # Form data is invalid, display form with errors
@@ -116,7 +119,8 @@ def book_appointment(request):
     
     return render(request, 'book_appointment.html', {'form': form})
 
-
+def appointment_success(request):
+    return render(request, 'appointment_success.html')
 
 # def contact_submit_view(request):
 #     if request.method == 'POST':

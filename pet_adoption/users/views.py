@@ -39,16 +39,16 @@ def submit_contact_message(request):
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
 
-@login_required
-def book_appointment(request):
-    if request.method == 'POST':
-        form = AppointmentForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('appointment_success')
-    else:
-        form = AppointmentForm()
-    return render(request, 'book_appointment.html', {'form': form})
+# @login_required
+# def book_appointment(request):
+#     if request.method == 'POST':
+#         form = AppointmentForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('appointment_success')
+#     else:
+#         form = AppointmentForm()
+#     return render(request, 'book_appointment.html', {'form': form})
 
 def admin_profile(request):
     
@@ -77,7 +77,7 @@ def user_login(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('homepage')
             else:
                 messages.error(request, 'Invalid username or password.')
     else:
@@ -121,6 +121,6 @@ def custom_logout(request):
     logout(request)
     return redirect('home')
 
-def home(request):
+def homepge(request):
     # Your view logic here
     return render(request, 'home.html')

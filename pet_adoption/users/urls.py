@@ -17,6 +17,7 @@ urlpatterns = [
     path('submit-adoption-request/', views.submit_adoption_request, name='submit_adoption_request'),
     path('submit-contact-message/', views.submit_contact_message, name='submit_contact_message'),
     path('book-appointment/', views.book_appointment, name='book_appointment'),
+    path('', views.homepage, name='homepage'),
     # Other URL patterns...
 ]
 # from django.urls import path

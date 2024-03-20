@@ -61,20 +61,49 @@ def update_coordinator_profile(request):
         form = CoordinatorProfileForm(instance=profile)
     return render(request, 'update_profile.html', {'form': form})
 
+# coordinator/views.py
+
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from .forms import CoordinatorRegistrationForm, CoordinatorLoginForm
+
+def coordinator_register(request):
+    if request.method == 'POST':
+        form = CoordinatorRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('coordinator_login')
+    else:
+        form = CoordinatorRegistrationForm()
+    return render(request, 'coordinator_register.html', {'form': form})
 
 def coordinator_login(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
-        if user is not None and user.is_coordinator:
-            login(request, user)
-            return redirect('coordinator_home.html')
-        else:
-            # Authentication failed
-            return render(request, 'coordinator\coordinator_login.html', {'error': 'Invalid username or password'})
+        form = CoordinatorLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(username=username, password=password)
+            if user is not None and user.is_coordinator:
+                login(request, user)
+                return redirect('coordinator_dashboard')
     else:
-        return render(request, 'coordinator\coordinator_login.html')
+        form = CoordinatorLoginForm()
+    return render(request, 'coordinator_login.html', {'form': form})
+
+# def coordinator_login(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         user = authenticate(username=username, password=password)
+#         if user is not None and user.is_coordinator:
+#             login(request, user)
+#             return redirect('coordinator_home.html')
+#         else:
+#             # Authentication failed
+#             return render(request, 'coordinator_login.html', {'error': 'Invalid username or password'})
+#     else:
+#         return render(request, 'coordinator_login.html')
 
 
 def coordinator_home(request):
@@ -82,6 +111,14 @@ def coordinator_home(request):
         return render(request, 'coordinator_home.html')
     else:
         # unauthorized access
-        return redirect('coordinator\coordinator_login')
+        return redirect('coordinator_login')
+
+def admin_profile(request):
+    
+    adoption_forms = AdoptionApplication.objects.all()
+    return render(request, 'admin_profile.html', {'adoption_forms': adoption_forms})
+
 
 # profile is not working
+#AttributeError at /coordinator_login/
+# 'User' object has no attribute 'is_coordinator' user cant login validtion

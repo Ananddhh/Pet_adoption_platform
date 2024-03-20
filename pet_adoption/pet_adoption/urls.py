@@ -21,7 +21,7 @@ from django.conf.urls.static import static
 from authentication import views as auth_views  # custom authentication views
 
 urlpatterns = [
-    path('admin/login/', auth_views.admin_login, name='admin_login'),  # Custom admin login URL
+    # path('admin/login/', auth_views.admin_login, name='admin_login'),  # Custom admin login URL
     path('admin/', admin.site.urls),  # Django administration URLs
     path('auth/', include('authentication.urls')),  # authentication app URLs
     path('', include('core.urls')),  # Include core app URLs

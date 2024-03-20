@@ -8,5 +8,7 @@ urlpatterns = [
     path('manage_appointments/', views.manage_appointments, name='manage_appointments'),
     path('coordinator_profile/', views.coordinator_profile, name='coordinator_profile'),
     path('update_coordinator_profile/', views.update_coordinator_profile, name='update_coordinator_profile'),
-    path('coordinator_login/', views.coordinator_login, name='coordinator_login'),
+    path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
+    path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
+    path('admin-profile/', views.admin_profile, name='admin_profile'),
 ]

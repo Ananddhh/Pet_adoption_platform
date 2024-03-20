@@ -7,7 +7,7 @@ from .models import AdoptionApplication
 class AppointmentForm(forms.ModelForm):
     class Meta:
         model = Appointment
-        fields = ['name', 'email', 'date', 'time']  
+        fields = ['name', 'date', 'time'] 
   
 class ContactForm(forms.ModelForm):
     class Meta:

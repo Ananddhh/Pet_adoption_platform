@@ -1,7 +1,9 @@
+from pets.models import AdoptionApplication
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
+from pets.forms import AdoptionApplicationForm, ContactForm, AppointmentForm
 from .forms import UserRegistrationForm
 from django.contrib.auth.decorators import login_required
 
@@ -38,23 +40,30 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
-def admin_login(request):
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None and user.is_staff:  
-            login(request, user)
-            return redirect('admin_profile')  
-        else:
-            error_message = "Invalid username or password."
-            return render(request, 'admin_login.html', {'error_message': error_message})
-    else:
-        return render(request, 'admin_login.html')
+# def admin_login(request):
+#     if request.method == 'POST':
+#         username = request.POST.get('username')
+#         password = request.POST.get('password')
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None and user.is_staff:  
+#             login(request, user)
+#             return redirect('admin_profile')  
+#         else:
+#             error_message = "Invalid username or password."
+#             return render(request, 'admin_login.html', {'error_message': error_message})
+#     else:
+#         return render(request, 'admin_login.html')
+
+
+def admin_profile(request):
     
-def admin_logout(request):
-    logout(request)
-    return redirect('home')
+    adoption_forms = AdoptionApplication.objects.all()
+    return render(request, 'admin_profile.html', {'adoption_forms': adoption_forms})
+
+
+# def admin_logout(request):
+#     logout(request)
+#     return redirect('home')
 
 def coordinator_login(request):
     if request.method == 'POST':

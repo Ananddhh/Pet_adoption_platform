@@ -1,6 +1,8 @@
 from .models import Pet
 from .models import LostItem
 from .forms import ContactForm
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from .models import Appointment
 from .forms import AppointmentForm
 from django.contrib import messages
@@ -101,23 +103,25 @@ def event_details(request, event_id):
     event = get_object_or_404(Pet, pk=event_id)
     return render(request, 'event_details.html', {'event': event})
 
+from django.http import HttpResponseRedirect  # Import HttpResponseRedirect
 
 def book_appointment(request):
     if request.method == 'POST':
         form = AppointmentForm(request.POST)
         if form.is_valid():
-            form.save()  # Save the form data to the database
+            appointment = form.save()  # Save the form data to the database
             messages.success(request, 'Your appointment has been booked successfully.')
-            print('appointment booked success')
-
-            return redirect('appointment_success')  # Redirect to a success page
+            print('Form is valid! Redirecting to appointment success page.')  # Add a print statement for debugging
+            return HttpResponseRedirect(reverse('appointment_success'))  # Use HttpResponseRedirect instead of redirect
         else:
-            # Form data is invalid, display form with errors
+            print(form.errors)
             messages.error(request, 'Please correct the errors below.')
+            print('Form is not valid! Rendering the same page with errors.')  # Add a print statement for debugging
     else:
         form = AppointmentForm()
     
     return render(request, 'book_appointment.html', {'form': form})
+
 
 def appointment_success(request):
     return render(request, 'appointment_success.html')

@@ -39,21 +39,12 @@ def submit_contact_message(request):
         form = ContactForm()
     return render(request, 'contact.html', {'form': form})
 
-# @login_required
-# def book_appointment(request):
-#     if request.method == 'POST':
-#         form = AppointmentForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('appointment_success')
-#     else:
-#         form = AppointmentForm()
-#     return render(request, 'book_appointment.html', {'form': form})
 
-def admin_profile(request):
+
+# def admin_profile(request):
     
-    adoption_forms = AdoptionApplication.objects.all()
-    return render(request, 'admin_profile.html', {'adoption_forms': adoption_forms})
+#     adoption_forms = AdoptionApplication.objects.all()
+#     return render(request, 'admin_profile.html', {'adoption_forms': adoption_forms})
 
 
 
@@ -75,6 +66,7 @@ def user_login(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
+            messages.success(request, 'successful log in.')
             if user is not None:
                 login(request, user)
                 return redirect('homepage')

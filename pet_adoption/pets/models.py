@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import User
 
 class Pet(models.Model):
@@ -78,6 +79,8 @@ class AdoptionApplication(models.Model):
     def __str__(self):
         return self.name
     
+
+
 class AdoptionRequest(models.Model):
     STATUS_CHOICES = (
         ('Pending', 'Pending'),
@@ -85,9 +88,10 @@ class AdoptionRequest(models.Model):
         ('Rejected', 'Rejected'),
     )
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+
     
 class ContactSubmission(models.Model):
     name = models.CharField(max_length=100)

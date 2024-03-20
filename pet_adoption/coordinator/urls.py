@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from django.urls import path
+from . import views
+
 
 urlpatterns = [
     path('manage_adoption_applications/', views.manage_adoption_applications, name='manage_adoption_applications'),
@@ -10,5 +13,10 @@ urlpatterns = [
     path('update_coordinator_profile/', views.update_coordinator_profile, name='update_coordinator_profile'),
     path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
     path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
-    path('admin-profile/', views.admin_profile, name='admin_profile'),
 ]
+
+# urlpatterns = [
+#     path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
+#     path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
+#     path('dashboard/', views.coordinator_dashboard, name='coordinator_dashboard'),
+# ]

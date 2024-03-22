@@ -1,8 +1,23 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
 from django.contrib.auth import get_user_model
+from pets.models import Pet
+from django.conf import settings
+from pets.models import Pet  # Import the Pet model from the pets app
 
+class AdoptionRequest(models.Model):
+    STATUS_CHOICES = [
+        ('Pending', 'Pending'),
+        ('Approved', 'Approved'),
+        ('Rejected', 'Rejected'),
+    ]
+
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='coordinator_adoption_requests')
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, related_name='coordinator_adoption_requests')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='Pending')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.pet.name}"
 
 class Coordinator(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -12,31 +27,28 @@ class Coordinator(models.Model):
     def __str__(self):
         return self.user.username
 
-# models.py
+
+
 
 User = get_user_model()
 
-class AdoptionApplication(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # Other fields for AdoptionApplication model
-    pet_name = models.CharField(max_length=100)
-    reason_for_adoption = models.TextField()
-    status = models.CharField(max_length=20, default='Pending')
+class BookingAppointment(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    date = models.DateField()
+    time = models.TimeField()
 
-class ContactMessage(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # Other fields for ContactMessage model
-    subject = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name
+
+
+class ContactSubmission(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
     message = models.TextField()
-    date_sent = models.DateTimeField(auto_now_add=True)
 
-class Appointment(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    # Other fields for Appointment model
-    appointment_date = models.DateField()
-    appointment_time = models.TimeField()
-    notes = models.TextField(blank=True, null=True)
-
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"
 class CoordinatorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     responsibilities = models.TextField()
@@ -44,3 +56,12 @@ class CoordinatorProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return f"Message from {self.name} ({self.email})"

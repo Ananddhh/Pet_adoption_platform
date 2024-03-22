@@ -18,12 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from authentication import views as auth_views  # custom authentication views
+  # custom authentication views
 
 urlpatterns = [
     # path('admin/login/', auth_views.admin_login, name='admin_login'),  # Custom admin login URL
     path('admin/', admin.site.urls),  # Django administration URLs
-    path('auth/', include('authentication.urls')),  # authentication app URLs
     path('', include('core.urls')),  # Include core app URLs
     path('', include('pets.urls')),  # Include pets app URLs
     path('', include('coordinator.urls')),  # Include coordinator app URLs

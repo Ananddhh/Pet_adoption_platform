@@ -8,12 +8,20 @@
         .navbar {
             background-color: #020d19;
             color: #ffffff;
+            margin :0 ;
         }
         .custom-dropdown {
             background-color: #000000;
         }
         .dropdown-item {
         background-color: rgba(255, 255, 255, 0); 
+        color: #ffffff;
+        }
+        .footer {
+            margin :0 ;
+        }
+        .dropdown-item:hover {
+            color: #000000;
         }
         body {
             font-family: 'Roboto', sans-serif;
@@ -107,48 +115,53 @@
             /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
         }
     </style>
+    
+</head>
+
+<body>
+
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
-        <div class="container-fluid">
-            <!-- Logo -->
-            <a  class="navbar-brand" href="{% url 'homepage'%}">
-                <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
-            </a>
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navbar Links -->
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'adoption_process' %}" style="color: #ffffff;">Adoption</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'about' %}" style="color: #ffffff;">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'contact' %}" style="color: #ffffff;">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'pet_list' %}" style="color: #ffffff;">Pets</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'book_appointment' %}" style="color: #ffffff;">Book Appointment</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                          data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
-                          More
-                      </a>
-                      <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="{% url 'faq' %}" style="color: #ffffff;">FAQ</a></li>
-                          <li><a class="dropdown-item" href="{% url 'user_login' %}" style="color: #ffffff;">Login</a></li>
-                          <li><a class="dropdown-item" href="{% url 'user_register' %}" style="color: #ffffff;">Register</a></li>
-                      </ul>
+      <div class="container-fluid">
+          <!-- Logo -->
+          <a  class="navbar-brand" href="{% url 'homepage'%}">
+            <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
+        </a>
+          <!-- Toggler/collapsibe Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navbar Links --> 
+           <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ms-auto">
+                  
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'about' %}" style="color: #ffffff;">About</a>
                   </li>
-                    </li>
-                </ul>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact' %}" style="color: #ffffff;">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'pet_list' %}" style="color: #ffffff;">Pets</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'book_appointment' %}" style="color: #ffffff;">Book Appointment</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
+                        More
+                    </a>
+                    <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="{% url 'faq' %}" >FAQ</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" >Lost & found</a></li>
+                        
+                        <li><a class="dropdown-item"  href="{% url 'adoption_process' %}">Adoption</a></li>
+                    </ul>
+                </li>
+                  </li>
+              </ul>
             </div>
         </div>
     </nav>

@@ -1,14 +1,59 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from  users.models import Profile
+from users.models import Profile
+from users.forms import UserLoginForm, UserRegistrationForm
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 def homepage(request):
-    #
-    context = {
-        'welcome_message': 'Welcome to our pet adoption platform!'
-    }
-    return render(request, 'home.html', context)
+    
+    return render(request, 'home.html')
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')
+            else:
+                messages.error(request, 'Invalid username or password.')
+    else:
+        form = UserLoginForm()
+    return render(request, 'user_login.html', {'form': form})
+
+
+
+def user_register(request):
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            email = form.cleaned_data['email']
+            password = form.cleaned_data['password']
+            print("Form is valid. Proceeding with registration.")
+            try:
+                user = User.objects.create_user(username=username, email=email, password=password)
+                print("User created successfully:", user.username)  
+                messages.success(request, 'Registration successful. Please log in.')
+                return redirect('user_login')
+            except Exception as e:
+                print("Error creating user:", e)
+                messages.error(request, 'An error occurred during registration. Please try again later.')
+        else:
+            print("Form is invalid. Errors:", form.errors)
+    else:
+        form = UserRegistrationForm()
+    return render(request, 'user_register.html', {'form': form})
+
+
+ 
 
 def about_page(request):
     # Placeholder logic for the About page view

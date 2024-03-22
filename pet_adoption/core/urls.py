@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
-from users.views import user_register 
-from .views import contact_page,contact_submit_view
+from users.views import user_register , user_login
+from .views import contact_submit_view
 
 urlpatterns = [
     path('', views.homepage, name='homepage'),
@@ -10,6 +10,7 @@ urlpatterns = [
     path('faq/', views.faq_page, name='faq'),
     path('contact_submit/', contact_submit_view, name='contact_submit'),
     path('register/', user_register, name='user_register'),
+    path('login/',views.user_login, name = 'user_login'),
     path('adoption_event/', views.adoption_event, name = 'adoption_event'),
     path('coordinator-dashboard/', views.coordinator_dashboard, name='coordinator_dashboard'),
  ]

@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     "users",
     "pets",
     "core",
-    "authentication",
     "coordinator",
 ]
 

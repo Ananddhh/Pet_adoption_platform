@@ -30,7 +30,7 @@ def coordinator_login(request):
         if user is not None:
             login(request, user)
             # Redirect to coordinator dashboard or desired page
-            return redirect('coordinator_home')
+            return redirect('coordinator_dashboard')
         else:
             # Handle invalid login
             return render(request, 'coordinator_login.html', {'error': 'Invalid credentials'})
@@ -40,7 +40,7 @@ def coordinator_login(request):
         return render(request, 'coordinator_login.html', {'form': form})
 
 def coordinator_dashboard(request):
-    # Implement logic to display coordinator dashboard
+    
     return render(request, 'coordinator_home.html')
 
 def manage_adoption_applications(request):

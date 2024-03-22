@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load static %}
 
 <style>
@@ -9,7 +9,7 @@
         padding: 0;
     }
 
-    .container {
+    .containerr {
         max-width: 800px;
         margin: 0 auto;
         padding: 20px;
@@ -40,12 +40,12 @@
 
     .message p {
         margin-bottom: 10px;
-        color: #333;
+        color: #290d0d;
         }
     </style>
 {% block content %}
-<div class="container">
-    <h1>User Messages</h1>
+<div class="containerr">
+    <h1>admin/coord User Messages</h1>
     {% if messages %}
         {% for message in messages %}
             <div class="message">

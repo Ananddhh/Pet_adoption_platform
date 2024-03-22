@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.contrib import messages
 from .forms import UserSettingsForm
+from users.models import CustomUser
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -66,8 +67,6 @@ def update_status(request, form_id, new_status):
     
     return redirect('admin_profile')
 
-
-
 def user_login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
@@ -90,15 +89,22 @@ def user_register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            password = form.cleaned_data['password']
-            User.objects.create_user(username=username, email=email, password=password)
-            messages.success(request, 'Registration successful. Please log in.')
-            return redirect('user_login')
+            password = form.cleaned_data['password1']  # Use 'password1' instead of 'password'
+            print("Form is valid. Proceeding with registration.")
+            try:
+                user = CustomUser.objects.create_user(username=username, email=email, password=password)
+                print("User created successfully:", user.username)
+                messages.success(request, 'Registration successful. Please log in.')
+                return redirect('user_login')
+            except Exception as e:
+                print("Error creating user:", e)
+                messages.error(request, 'An error occurred during registration. Please try again later.')
+        else:
+            print("Form is invalid. Errors:", form.errors)
     else:
         form = UserRegistrationForm()
     return render(request, 'user_register.html', {'form': form})
 
-    
 @login_required
 def user_settings(request):
     if request.method == 'POST':
@@ -119,8 +125,8 @@ def user_profile(request, username):
 
 def custom_logout(request):
     logout(request)
-    return redirect('home')
+    return redirect('homepage')
 
-def homepge(request):
+def homepage(request):
     # Your view logic here
     return render(request, 'home.html')

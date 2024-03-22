@@ -1,38 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% load static %}
-
 
 {% block content %}
     <style>
         body {
             background-color: #f8f9fa;
+            background-image: url("{% static 'images/faq.jpg' %}");
+            background-repeat: repeat;
+            /* background-size: cover; */
+            background-position: center;
         }
         .containerr {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* background-color: rgba(255, 255, 255, 0.5); Transparent white background */
+        }
+        .login-form {
             max-width: 400px;
-            margin: auto;
-            margin-top: 50px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 8px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.5)
         }
         h2 {
             text-align: center;
             margin-bottom: 30px;
+            color: #000000;
         }
         .form-group {
             margin-bottom: 20px;
         }
         label {
             font-weight: bold;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
         .btn-login {
-            background-color: #007bff;
-            color: #fff;
+            background-color: #050506;
+            color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 3px;
+            padding: 12px 20px;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         .btn-login:hover {
             background-color: #0056b3;
@@ -43,27 +68,27 @@
             color: #888;
         }
     </style>
-</head>
-<body>
+
     <div class="containerr">
-        <h2>Coordinato Login</h2>
-        {% if error %}
-            <div class="alert alert-danger" role="alert">
-                {{ error }}
-            </div>
-        {% endif %}
-        <form action="{% url 'coordinator_login' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-login btn-block">Login</button>
-        </form>
+        <div class="login-form">
+            <h2>Coordinator Login</h2>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form action="{% url 'coordinator_login' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-login btn-block">Login</button>
+            </form>
+        </div>
     </div>
-</body>
-{%endblock%}
+{% endblock %}

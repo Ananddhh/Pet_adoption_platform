@@ -46,7 +46,7 @@ def adopt_pet(request, pet_id):
     adoption_request = AdoptionRequest.objects.create(user=user, pet=pet)
     
     
-    admin_email = 'admin@example.com'  # admin email
+    admin_email = 'admin@gmail.com'  # admin email
     subject = f"New Adoption Request for {pet.name}"
     message = f"User {user.username} has submitted an adoption request for {pet.name}."
     

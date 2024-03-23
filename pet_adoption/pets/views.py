@@ -10,9 +10,10 @@ from django.http import HttpResponse
 from .models import AdoptionApplication
 from .models import Pet, AdoptionRequest
 from .forms import AdoptionApplicationForm
-from django.contrib.auth.decorators import login_required
+from .models import Pet, LostPet, FoundPet, Appointment, AdoptionRequest, ContactSubmission
+# from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404,redirect
-from .models import ContactSubmission  # Import the ContactSubmission model
+# from .models import ContactSubmission
 
 def contact_submit_view(request):
     if request.method == 'POST':
@@ -139,3 +140,21 @@ def appointment_success(request):
 #     else:
 #         form = ContactForm()
 #     return render(request, 'lost_found.html', {'form': form})
+
+# from django.shortcuts import render
+# from .models import Pet, LostPet, FoundPet, Appointment, AdoptionRequest, ContactSubmission
+
+# def all_messages(request):
+#     contact_messages = ContactSubmission.objects.all()
+#     lost_pets = LostPet.objects.all()
+#     found_pets = FoundPet.objects.all()
+#     adoption_requests = AdoptionRequest.objects.all()
+#     appointments = Appointment.objects.all()
+    
+#     return render(request, 'all_messages.html', {
+#         'contact_messages': contact_messages,
+#         'lost_pets': lost_pets,
+#         'found_pets': found_pets,
+#         'adoption_requests': adoption_requests,
+#         'appointments': appointments,
+#     })

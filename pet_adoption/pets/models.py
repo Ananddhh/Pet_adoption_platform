@@ -95,7 +95,7 @@ class AdoptionRequest(models.Model):
     
 class ContactSubmission(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
+    email = models.EmailField(default='example@example.com')
     message = models.TextField()
 
     def __str__(self):

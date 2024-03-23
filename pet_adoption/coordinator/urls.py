@@ -1,8 +1,6 @@
 from django.urls import path
 from . import views
-from django.urls import path
-from . import views
-
+from .views import all_messages
 
 urlpatterns = [
     path('manage_adoption_applications/', views.manage_adoption_applications, name='manage_adoption_applications'),
@@ -13,10 +11,5 @@ urlpatterns = [
     path('update_coordinator_profile/', views.update_coordinator_profile, name='update_coordinator_profile'),
     path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
     path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
+    path('all-messages/', all_messages, name='all_messages'),
 ]
-
-# urlpatterns = [
-#     path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
-#     path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
-#     path('dashboard/', views.coordinator_dashboard, name='coordinator_dashboard'),
-# ]

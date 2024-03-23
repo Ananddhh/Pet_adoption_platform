@@ -2,20 +2,13 @@
 {% load static %}
 
 
-{% block content %}
-    <style>
-        body {
+<style>
+body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
     margin: 0;
     padding: 0;
 }
-
-/* .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-} */
 
 h1 {
     font-size: 24px;
@@ -23,65 +16,27 @@ h1 {
     margin-bottom: 20px;
 }
 
-.message-list {
-    list-style-type: none;
-    padding: 0;
-}
 
-.message-item {
+.containerr {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 15px;
-}
-
-.message-name {
-    font-weight: bold;
-}
-
-.message-email {
-    color: #666;
-}
-
-.message-text {
-    display: block;
-    margin-top: 10px;
-}
-
-    .containerr {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
 
 </style>
 {% block content %}
-<div class="containerr">
-    <h1>Contact Messages</h1>
-    <ul class="message-list">
-        {% for message in contact_messages %}
-            <li class="message-item">
-                <span class="message-name">{{ message.name }}</span>
-                <span class="message-email">{{ message.email }}</span>
-                <span class="message-text">{{ message.message }}</span>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <h1>Lost and Found Messages</h1>
-    <ul class="message-list">
-        {% for message in lost_found_messages %}
-            <li class="message-item">
-                <span class="message-name">{{ message.name }}</span>
-                <span class="message-email">{{ message.email }}</span>
-                <span class="message-text">{{ message.message }}</span>
-            </li>
-        {% endfor %}
-    </ul>
+<div class="container">
+    <h1>Coordinator Profile</h1>
+    {% if coordinator_profile %}
+        <p>Username: {{ coordinator_profile.user.username }}</p>
+        <!-- <p>Responsibilities: {{ coordinator_profile.responsibilities }}</p>
+        <p>Contact Number: {{ coordinator_profile.contact_number }}</p> -->
+    {% else %}
+        <p>No profile found for the current user.</p>
+    {% endif %}
 </div>
 {% endblock %}

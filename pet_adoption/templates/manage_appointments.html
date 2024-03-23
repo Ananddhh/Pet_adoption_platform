@@ -47,17 +47,20 @@
         <table>
             <thead>
                 <tr>
+                    <th>Name</th>
+                    <!-- <th>Email</th> -->
                     <th>Date</th>
                     <th>Time</th>
-                    <th>Notes</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 {% for appointment in appointments %}
                     <tr>
+                        <td>{{ appointment.name }}</td>
+                        <!-- <td>{{ appointment.email }}</td> -->
                         <td>{{ appointment.date }}</td>
                         <td>{{ appointment.time }}</td>
-                        <td>{{ appointment.notes }}</td>
                     </tr>
                 {% endfor %}
             </tbody>

@@ -45,13 +45,13 @@
     </style>
 {% block content %}
 <div class="containerr">
-    <h1>admin/coord User Messages</h1>
-    {% if messages %}
-        {% for message in messages %}
+    <h1>User Messages</h1>
+    {% if contact_messages %}
+        {% for message in contact_messages %}
             <div class="message">
-                <h2>{{ message.subject }}</h2>
-                <p>From: {{ message.sender }}</p>
-                <p>{{ message.content }}</p>
+                <h2>{{ message.name }}</h2>
+                <p>From: {{ message.email }}</p>
+                <p>{{ message.message }}</p>
             </div>
         {% endfor %}
     {% else %}

@@ -3,7 +3,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from pets.models import Pet
 from django.conf import settings
-from pets.models import Pet  # Import the Pet model from the pets app
+from pets.models import Pet  
 
 class AdoptionRequest(models.Model):
     STATUS_CHOICES = [
@@ -27,9 +27,6 @@ class Coordinator(models.Model):
     def __str__(self):
         return self.user.username
 
-
-
-
 User = get_user_model()
 
 class BookingAppointment(models.Model):
@@ -49,6 +46,7 @@ class ContactSubmission(models.Model):
 
     def __str__(self):
         return f"Message from {self.name} ({self.email})"
+    
 class CoordinatorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     responsibilities = models.TextField()

@@ -6,6 +6,38 @@ from .models import Coordinator, CoordinatorProfile
 from pets.forms import AdoptionApplicationForm  
 from pets.models import AdoptionApplication, Appointment
 from pets.models import ContactSubmission as ContactMessage
+from django.shortcuts import render
+from .models import ContactSubmission
+from pets.models import FoundPet
+from coordinator.models import AdoptionRequest, BookingAppointment
+# from .views import all_messages
+from django.shortcuts import render
+from pets.models import LostPet, FoundPet, Appointment, AdoptionRequest, ContactSubmission
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Coordinator
+
+@login_required
+def coordinator_profile(request):
+    try:
+        coordinator_profile = Coordinator.objects.get(user=request.user)
+    except Coordinator.DoesNotExist:
+        coordinator_profile = None
+    return render(request, 'coordinator_profile.html', {'coordinator_profile': coordinator_profile})
+
+def all_messages(request):
+    contact_messages = ContactSubmission.objects.all()
+    lost_pets = LostPet.objects.all()
+    found_pets = FoundPet.objects.all()
+    adoption_requests = AdoptionRequest.objects.all()
+    appointments = Appointment.objects.all()
+    
+    return render(request, 'all_messages.html', {
+        'contact_messages': contact_messages,
+        'lost_pets': lost_pets,
+        'found_pets': found_pets,
+        'adoption_requests': adoption_requests,
+    })
 
 
 def coordinator_register(request):
@@ -73,11 +105,12 @@ def manage_appointments(request):
     appointments = Appointment.objects.all()
     return render(request, 'manage_appointments.html', {'appointments': appointments})
 
-@login_required
-def coordinator_profile(request):
-    profile = CoordinatorProfile.objects.get(user=request.user)
-    return render(request, 'coordinator_profile.html', {'profile': profile})
 
+# @login_required
+# def coordinator_profile(request):
+#     # Get the coordinator profile for the currently logged-in user
+#     coordinator_profile = get_object_or_404(Coordinator, user=request.user)
+#     return render(request, 'coordinator_profile.html', {'coordinator_profile': coordinator_profile})
 @login_required
 def update_coordinator_profile(request):
     profile = CoordinatorProfile.objects.get(user=request.user)

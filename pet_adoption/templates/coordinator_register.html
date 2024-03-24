@@ -1,39 +1,88 @@
+{% extends 'base1.html' %}
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <h2>Coordinator Registration</h2>
-    <form method="post">
-        {% csrf_token %}
-        <div>
-            <label for="id_username">Username:</label>
-            {{ form.username }}
-            {% if form.username.errors %}
-                <p class="error">{{ form.username.errors }}</p>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_email">Email:</label>
-            {{ form.email }}
-            {% if form.email.errors %}
-                <p class="error">{{ form.email.errors }}</p>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_password1">Password:</label>
-            {{ form.password1 }}
-            {% if form.password1.errors %}
-                <p class="error">{{ form.password1.errors }}</p>
-            {% endif %}
-        </div>
-        <div>
-            <label for="id_password2">Confirm Password:</label>
-            {{ form.password2 }}
-            {% if form.password2.errors %}
-                <p class="error">{{ form.password2.errors }}</p>
-            {% endif %}
-        </div>
-        <button type="submit">Register</button>
-    </form>
-</div>
+    <style>
+        .containerr {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Adjust input width properly */
+        }
+
+        .error {
+            color: red;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <div class="containerr">
+        <h2>Coordinator Registration</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Username:</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <p class="error">{{ form.username.errors }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email:</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <p class="error">{{ form.email.errors }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Password:</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <p class="error">{{ form.password1.errors }}</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Confirm Password:</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <p class="error">{{ form.password2.errors }}</p>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
 {% endblock %}

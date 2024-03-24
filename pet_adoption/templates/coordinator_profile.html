@@ -1,42 +1,71 @@
 {% extends 'base1.html' %}
 {% load static %}
 
-
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-
-.containerr {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
     }
 
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
 
+    h1 {
+        font-size: 36px;
+        color: #343a40;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    p {
+        font-size: 18px;
+        color: #6c757d;
+        margin-bottom: 15px;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
 </style>
+
 {% block content %}
 <div class="container">
     <h1>Coordinator Profile</h1>
-    {% if coordinator_profile %}
-        <p>Username: {{ coordinator_profile.user.username }}</p>
-        <!-- <p>Responsibilities: {{ coordinator_profile.responsibilities }}</p>
-        <p>Contact Number: {{ coordinator_profile.contact_number }}</p> -->
+    {% if coordinator %}
+    <p>Username: {{ coordinator.user.username }}</p>
+    <!-- <p>Contact Number: {{ coordinator.contact_number }}</p> -->
     {% else %}
-        <p>No profile found for the current user.</p>
+    <p>No coordinator found for the current user.</p>
     {% endif %}
+    <form action="{% url 'coord_logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
 </div>
+
 {% endblock %}

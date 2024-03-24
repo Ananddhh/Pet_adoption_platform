@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import CoordinatorRegistrationForm, CoordinatorLoginForm, CoordinatorProfileForm
 from .models import Coordinator, CoordinatorProfile
@@ -9,34 +9,56 @@ from pets.models import ContactSubmission as ContactMessage
 from django.shortcuts import render
 from .models import ContactSubmission
 from pets.models import FoundPet
-from coordinator.models import AdoptionRequest, BookingAppointment
+from coordinator.models import  BookingAppointment
 # from .views import all_messages
 from django.shortcuts import render
 from pets.models import LostPet, FoundPet, Appointment, AdoptionRequest, ContactSubmission
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Coordinator
+from .models import CoordinatorProfile
+from pets.models import AdoptionRequest
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+# from .models import CoordinatorProfile
+from pets.models import AdoptionApplication
+# coordinator/views.py
+from .models import Coordinator
 
 @login_required
 def coordinator_profile(request):
     try:
-        coordinator_profile = Coordinator.objects.get(user=request.user)
+        coordinator = Coordinator.objects.get(user=request.user)
+        
     except Coordinator.DoesNotExist:
-        coordinator_profile = None
-    return render(request, 'coordinator_profile.html', {'coordinator_profile': coordinator_profile})
+        coordinator = None
+        
+    return render(request, 'coordinator_profile.html', {'coordinator': coordinator})
+
+
+@login_required
+def adoption_requests(request):
+    try:
+        coordinator = Coordinator.objects.get(user=request.user)
+        adoption_requests = AdoptionApplication.objects.all()
+    except Coordinator.DoesNotExist:
+        coordinator = None
+        adoption_requests = None
+        
+    return render(request, 'adoption_req.html', {'coordinator': coordinator, 'adoption_requests': adoption_requests})
 
 def all_messages(request):
     contact_messages = ContactSubmission.objects.all()
     lost_pets = LostPet.objects.all()
     found_pets = FoundPet.objects.all()
-    adoption_requests = AdoptionRequest.objects.all()
-    appointments = Appointment.objects.all()
+    adoption_requests = AdoptionApplication.objects.all()
+    # appointments = Appointment.objects.all()
     
     return render(request, 'all_messages.html', {
         'contact_messages': contact_messages,
         'lost_pets': lost_pets,
         'found_pets': found_pets,
-        'adoption_requests': adoption_requests,
+        # 'adoption_requests': adoption_requests,
     })
 
 
@@ -55,6 +77,7 @@ def coordinator_register(request):
 def coordinator_login(request):
     if request.method == 'POST':
         # Handle POST request for logging in
+        
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
@@ -76,7 +99,7 @@ def coordinator_dashboard(request):
 
 @login_required
 def manage_adoption_applications(request):
-    applications = AdoptionApplication.objects.all()
+    applications = AdoptionRequest.objects.all()
     return render(request, 'manage_adoption_applications.html', {'applications': applications})
 
 @login_required
@@ -122,3 +145,7 @@ def update_coordinator_profile(request):
     else:
         form = CoordinatorProfileForm(instance=profile)
     return render(request, 'update_profile.html', {'form': form})
+
+def coordinator_logout(request):
+    logout(request)
+    return redirect('coordinator_login') 

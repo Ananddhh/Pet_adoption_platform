@@ -4,6 +4,9 @@ from django.contrib.auth import get_user_model
 from pets.models import Pet
 from django.conf import settings
 from pets.models import Pet  
+from django.db import models
+from django.contrib.auth.models import User
+from pets.models import AdoptionRequest
 
 class AdoptionRequest(models.Model):
     STATUS_CHOICES = [
@@ -18,17 +21,16 @@ class AdoptionRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.pet.name}"
+User = get_user_model()
 
 class Coordinator(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     responsibilities = models.TextField()
     contact_number = models.CharField(max_length=15)
 
     def __str__(self):
         return self.user.username
-
-User = get_user_model()
-
+    
 class BookingAppointment(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -47,10 +49,12 @@ class ContactSubmission(models.Model):
     def __str__(self):
         return f"Message from {self.name} ({self.email})"
     
+
 class CoordinatorProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     responsibilities = models.TextField()
     contact_number = models.CharField(max_length=15)
+    adoption_requests = models.ManyToManyField(AdoptionRequest, blank=True)
 
     def __str__(self):
         return self.user.username

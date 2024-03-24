@@ -75,16 +75,16 @@
 
 {% block content %}
 <div class="container">
-    <h1>Manage Adoption Applications</h1>
-    <ul class="application-list">
-        {% for application in applications %}
-            <li class="application-item">
-                <span class="applicant-name">{{ application.name }}</span>
-                <span class="applicant-email">{{ application.email }}</span>
-                <p class="applicant-message">{{ application.message }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    <h2>Adoption Requests:</h2>
+{% if applications %}
+<ul>
+    {% for application in applications %}
+    <li>User: {{ application.user.username }} - Pet: {{ application.pet.name }} - Status: {{ application.status }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No adoption requests found.</p>
+{% endif %}
     <p class="additional-info">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum leo in magna tincidunt, non efficitur ligula efficitur. Phasellus consectetur urna ac nulla ultrices, non congue lectus tincidunt. Vivamus at nisi ultricies, ultrices ex id, elementum tortor. Aenean vitae sodales turpis. Vivamus tincidunt mauris vel purus consequat, in fermentum risus pellentesque. Nullam sed tellus purus. Fusce a magna tincidunt, fringilla justo eu, tincidunt libero. Maecenas pulvinar turpis et mauris rutrum, a tincidunt felis sodales.
     </p>

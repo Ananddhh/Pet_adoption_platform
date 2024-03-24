@@ -20,7 +20,7 @@
         <p>No contact messages found.</p>
     {% endif %}
 
-    <!-- <h2>Lost & Found Pets</h2>
+    <h2>Lost & Found Pets</h2>
     {% if lost_pets %}
         <ul>
             {% for pet in lost_pets %}
@@ -29,9 +29,9 @@
         </ul>
     {% else %}
         <p>No lost pets found.</p>
-    {% endif %} -->
+    {% endif %}
     
-    <!-- {% if found_pets %}
+    {% if found_pets %}
         <ul>
             {% for pet in found_pets %}
                 <li>Found Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
@@ -39,19 +39,7 @@
         </ul>
     {% else %}
         <p>No found pets found.</p>
-    {% endif %} -->
-
-    <h2>Adoption Requests</h2>
-    {% if adoption_requests %}
-        <ul>
-            {% for request in adoption_requests %}
-                <li>{{ request.user.username }} - {{ request.pet.name }} - Status: {{ request.status }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No adoption requests found.</p>
     {% endif %}
-
 
 </div>
 {% endblock %}

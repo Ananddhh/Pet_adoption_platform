@@ -93,6 +93,10 @@ def pet_list(request):
     pets = Pet.objects.all()
     return render(request, 'pet_list.html', {'pets': pets})
 
+def pet_list1(request):
+    pets = Pet.objects.all()
+    return render(request, 'pet_list1.html', {'pets': pets})
+
 def pet_detail(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
     return render(request, 'pet_detail.html', {'pet': pet})

@@ -6,6 +6,7 @@ from .views import book_appointment, appointment_success
 urlpatterns = [
     # path('all-messages/', all_messages, name='all_messages'),
     path('pets/', views.pet_list, name='pet_list'),
+    path('petss/', views.pet_list1, name='pet_list1'),
     path('pets/<int:pk>/', views.pet_detail, name='pet_detail'),
     path('adoption/', views.adoption_process, name='adoption_process'),
     # path('events/<int:event_id>/', views.event_details, name='event_details'),

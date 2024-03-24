@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-from .views import all_messages
+from .views import all_messages,adoption_requests
 
 urlpatterns = [
     path('manage_adoption_applications/', views.manage_adoption_applications, name='manage_adoption_applications'),
@@ -12,4 +12,7 @@ urlpatterns = [
     path('coordinator-register/', views.coordinator_register, name='coordinator_register'),
     path('coordinator-login/', views.coordinator_login, name='coordinator_login'),
     path('all-messages/', all_messages, name='all_messages'),
+    path('adoption_req/', adoption_requests, name='adoption_req'),
+    path('coord_logout/', views.coordinator_logout, name='coord_logout'),
 ]
+

@@ -1,0 +1,50 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .adoption-requests {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .request {
+        width: 70%;
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+
+<div class="container">
+    <h2>Adoption Messages & Status:</h2>
+    <div class="adoption-requests">
+        {% if adoption_requests %}
+        {% for request in adoption_requests %}
+        <div class="request">
+            <p>User: {{ request.name }} - Pet: {{ request.pet }} - Status: {{ request.status }}</p>
+            <!-- Add additional details if needed -->
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No adoption requests found.</p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

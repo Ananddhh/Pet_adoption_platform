@@ -18,6 +18,13 @@
         box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
 
+    .profile-info {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
     h1 {
         font-size: 36px;
         color: #343a40;
@@ -56,12 +63,14 @@
 {% block content %}
 <div class="container">
     <h1>Coordinator Profile</h1>
-    {% if coordinator %}
-    <p>Username: {{ coordinator.user.username }}</p>
-    <!-- <p>Contact Number: {{ coordinator.contact_number }}</p> -->
-    {% else %}
-    <p>No coordinator found for the current user.</p>
-    {% endif %}
+    <div class="profile-info">
+        {% if coordinator %}
+        <p>Username: {{ coordinator.user.username }}</p>
+        <!-- <p>Contact Number: {{ coordinator.contact_number }}</p> -->
+        {% else %}
+        <p>No coordinator found for the current user.</p>
+        {% endif %}
+    </div>
     <form action="{% url 'coord_logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Logout</button>

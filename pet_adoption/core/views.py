@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from coordinator.decorators import coordinator_required
+
 
 def homepage(request):
     
@@ -73,7 +75,7 @@ def contact_page(request):
     }
     return render(request, 'contact.html', context)
 
-
+@login_required
 def contact_submit_view(request):
     # Placeholder logic for handling form submission
     if request.method == 'POST':
@@ -112,6 +114,7 @@ def profile(request):
     adoption_status = profile.adoption_status
     return render(request, 'profile.html', {'adoption_status': adoption_status})
 
+@coordinator_required
 def coordinator_dashboard(request):
     # Logic to render the coordinator dashboard template
     return render(request, 'coordinator_home.html')

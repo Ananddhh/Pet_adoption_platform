@@ -24,8 +24,10 @@ from django.contrib.auth.decorators import login_required
 from pets.models import AdoptionApplication
 # coordinator/views.py
 from .models import Coordinator
+from .decorators import coordinator_required
 
-@login_required
+
+@coordinator_required
 def coordinator_profile(request):
     try:
         coordinator = Coordinator.objects.get(user=request.user)
@@ -36,7 +38,7 @@ def coordinator_profile(request):
     return render(request, 'coordinator_profile.html', {'coordinator': coordinator})
 
 
-@login_required
+@coordinator_required
 def adoption_requests(request):
     try:
         coordinator = Coordinator.objects.get(user=request.user)
@@ -46,7 +48,7 @@ def adoption_requests(request):
         adoption_requests = None
         
     return render(request, 'adoption_req.html', {'coordinator': coordinator, 'adoption_requests': adoption_requests})
-
+@coordinator_required
 def all_messages(request):
     contact_messages = ContactSubmission.objects.all()
     lost_pets = LostPet.objects.all()
@@ -92,17 +94,17 @@ def coordinator_login(request):
         # Handle GET request for displaying login form
         form = CoordinatorLoginForm()  # Assuming you have a form for login
         return render(request, 'coordinator_login.html', {'form': form})
-
+@coordinator_required
 def coordinator_dashboard(request):
     
     return render(request, 'coordinator_home.html')
 
-@login_required
+@coordinator_required
 def manage_adoption_applications(request):
     applications = AdoptionRequest.objects.all()
     return render(request, 'manage_adoption_applications.html', {'applications': applications})
 
-@login_required
+@coordinator_required
 def update_request_status(request, application_id):
     application = get_object_or_404(AdoptionApplication, id=application_id)
     if request.method == 'POST':
@@ -117,13 +119,12 @@ def update_request_status(request, application_id):
     return render(request, 'update_request_status.html', {'form': form, 'application': application})
 
 
-@login_required
+@coordinator_required
 def view_user_messages(request):
     contact_messages = ContactMessage.objects.all()
     return render(request, 'view_user_messages.html', {'contact_messages': contact_messages})
 
-
-@login_required
+@coordinator_required
 def manage_appointments(request):
     appointments = Appointment.objects.all()
     return render(request, 'manage_appointments.html', {'appointments': appointments})
@@ -134,7 +135,7 @@ def manage_appointments(request):
 #     # Get the coordinator profile for the currently logged-in user
 #     coordinator_profile = get_object_or_404(Coordinator, user=request.user)
 #     return render(request, 'coordinator_profile.html', {'coordinator_profile': coordinator_profile})
-@login_required
+@coordinator_required
 def update_coordinator_profile(request):
     profile = CoordinatorProfile.objects.get(user=request.user)
     if request.method == 'POST':

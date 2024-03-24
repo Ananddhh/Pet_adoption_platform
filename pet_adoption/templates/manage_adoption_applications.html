@@ -1,90 +1,59 @@
 {% extends 'base1.html' %}
 {% load static %}
 <style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
-
     .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    h1 {
-        font-size: 24px;
-        color: #333333;
-        margin-bottom: 20px;
-        text-align: center;
-    }
+h2 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-    .application-list {
-        list-style-type: none;
-        padding: 0;
-    }
+.application-list {
+    list-style-type: none;
+    padding: 0;
+}
 
-    .application-item {
-        background-color: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        padding: 20px;
-    }
+.application-item {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+}
 
-    .applicant-name {
-        font-weight: bold;
-        color: #333333;
-    }
+.application-item span {
+    color: #333;
+}
 
-    .applicant-email {
-        color: #666666;
-    }
+.additional-info {
+    text-align: justify;
+    margin-top: 30px;
+    color: #333;
+}
 
-    .applicant-message {
-        margin-top: 10px;
-        color: #333333;
-    }
-
-    .additional-info {
-        text-align: justify;
-        margin-top: 30px;
-        color: #333333;
-    }
-
-    /* Creative background */
-    body::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url("{% static 'images/background.jpg' %}");
-        background-size: cover;
-        background-position: center;
-        filter: blur(5px);
-        z-index: -1;
-    }
 </style>
-
 {% block content %}
 <div class="container">
     <h2>Adoption Requests:</h2>
-{% if applications %}
-<ul>
-    {% for application in applications %}
-    <li>User: {{ application.user.username }} - Pet: {{ application.pet.name }} - Status: {{ application.status }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No adoption requests found.</p>
-{% endif %}
+    <ul class="application-list">
+        {% for application in applications %}
+        <li class="application-item">
+            <span>User: {{ application.user.username }} - Pet: {{ application.pet.name }} - Status: {{ application.status }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    {% if not applications %}
+    <p>No adoption requests found.</p>
+    {% endif %}
     <p class="additional-info">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis condimentum leo in magna tincidunt, non efficitur ligula efficitur. Phasellus consectetur urna ac nulla ultrices, non congue lectus tincidunt. Vivamus at nisi ultricies, ultrices ex id, elementum tortor. Aenean vitae sodales turpis. Vivamus tincidunt mauris vel purus consequat, in fermentum risus pellentesque. Nullam sed tellus purus. Fusce a magna tincidunt, fringilla justo eu, tincidunt libero. Maecenas pulvinar turpis et mauris rutrum, a tincidunt felis sodales.
     </p>

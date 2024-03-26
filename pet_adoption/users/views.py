@@ -121,7 +121,7 @@ def user_settings(request):
 def user_profile(request, username):
     # Retrieve user profile based on username
     user = get_object_or_404(User, username=username)
-    return render(request, 'profile.html', {'user': user})
+    return render(request, 'user_profile.html', {'user': user})
 
 def custom_logout(request):
     logout(request)

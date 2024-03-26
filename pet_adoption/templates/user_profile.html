@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block content %}
     <style>
         body {
@@ -12,7 +11,7 @@
             color: #333; /* Dark gray text color */
         }
 
-        .containerr {
+        .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
@@ -40,15 +39,16 @@
             color: #555; /* Medium gray text color */
         }
     </style>
-</head>
-<body>
-    <div class="containerr">
+
+    <div class="container">
         <h1>User Profile</h1>
         <div class="user-info">
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
             <p>Your Adoption Application Status: {{ adoption_status }}</p>
-
+            
+            
+            <!-- Form for logout -->
             <form action="{% url 'logout' %}" method="post" class="logout-form">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>

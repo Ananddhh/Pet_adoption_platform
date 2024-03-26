@@ -48,6 +48,7 @@ def adoption_requests(request):
         adoption_requests = None
         
     return render(request, 'adoption_req.html', {'coordinator': coordinator, 'adoption_requests': adoption_requests})
+
 @coordinator_required
 def all_messages(request):
     contact_messages = ContactSubmission.objects.all()

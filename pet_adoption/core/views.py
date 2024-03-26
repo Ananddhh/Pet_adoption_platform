@@ -114,7 +114,7 @@ def profile(request):
     adoption_status = profile.adoption_status
     return render(request, 'profile.html', {'adoption_status': adoption_status})
 
-@coordinator_required
+
 def coordinator_dashboard(request):
-    # Logic to render the coordinator dashboard template
+    
     return render(request, 'coordinator_home.html')

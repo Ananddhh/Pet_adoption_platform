@@ -117,11 +117,13 @@ def user_settings(request):
         form = UserSettingsForm(instance=request.user)
     return render(request, 'user_settings.html', {'form': form})
 
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 
 def user_profile(request, username):
-    # Retrieve user profile based on username
-    user = get_object_or_404(User, username=username)
+    user = get_object_or_404(get_user_model(), username=username)
     return render(request, 'user_profile.html', {'user': user})
+
 
 def custom_logout(request):
     logout(request)

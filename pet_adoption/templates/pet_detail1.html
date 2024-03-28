@@ -1,0 +1,76 @@
+{% extends 'base1.html' %}
+{% load static %}
+
+
+
+
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            color: #333; /* Dark gray text color */
+            background-image: url('{% static "images/dinos.jpg" %}');
+            background-repeat: repeat;
+            background-position: center;
+        }
+
+        header {
+            background-color: #000000; /* Dark gray header background */
+            color: #fff; /* White text color */
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .containerr {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff; /* White container background */
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #000000; /* Dark text color */
+        }
+
+        p {
+            margin-bottom: 5px;
+            color: #555; /* Medium gray text color */
+        }
+
+        .availability {
+            font-weight: bold;
+            color: #007bff; /* Blue color for availability */
+        }
+
+        .pet-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Rounded corners for the image */
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Image shadow */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 style="color: #ffffff;">{{ pet.name }} Details</h1>
+    </header>
+    <hr>
+    <div class="containerr">
+        <img class="pet-image" src="{{ pet.image.url }}" alt="{{ pet.name }}">
+        <h2>{{ pet.name }}</h2>
+        <p><strong>Species:</strong> {{ pet.species }}</p>
+        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+        <p><strong>Age:</strong> {{ pet.age }}</p>
+        <p><strong>Available:</strong> <span class="availability">{% if pet.available %}Yes{% else %}No{% endif %}</span></p>
+        
+    </div>
+{% endblock %}

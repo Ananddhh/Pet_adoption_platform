@@ -89,7 +89,7 @@ def user_register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']  # Use 'password1' instead of 'password'
+            password = form.cleaned_data['password1']  # 'password1' instead of 'password'
             print("Form is valid. Proceeding with registration.")
             try:
                 user = CustomUser.objects.create_user(username=username, email=email, password=password)
@@ -117,14 +117,18 @@ def user_settings(request):
         form = UserSettingsForm(instance=request.user)
     return render(request, 'user_settings.html', {'form': form})
 
-from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
-
-def user_profile(request, username):
-    user = get_object_or_404(get_user_model(), username=username)
-    return render(request, 'user_profile.html', {'user': user})
+from .models import UserProfile
 
 
+from .models import CustomUser
+
+def user_profile(request):
+    try:
+        user_profile = request.user.profile  # Assuming you have a OneToOneField named 'profile' in your custom user model
+    except CustomUser.profile.RelatedObjectDoesNotExist:
+        user_profile = None
+        
+    return render(request, 'user_profile.html', {'user_profile': user_profile})
 def custom_logout(request):
     logout(request)
     return redirect('homepage')

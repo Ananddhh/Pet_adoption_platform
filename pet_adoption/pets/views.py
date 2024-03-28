@@ -14,6 +14,7 @@ from .models import Pet, LostPet, FoundPet, Appointment, AdoptionRequest, Contac
 # from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404,redirect
 # from .models import ContactSubmission
+from coordinator.decorators import coordinator_required
 
 def contact_submit_view(request):
     if request.method == 'POST':
@@ -30,29 +31,29 @@ def contact_submit_view(request):
     return render(request, 'lost_found.html', {'form': form})
 
 
+
+
 def adopt_pet(request, pet_id):
     pet = get_object_or_404(Pet, pk=pet_id)
     
-    
-    user = request.user
-    
-    
-    existing_request = AdoptionRequest.objects.filter(user=user, pet=pet).first()
+    if not request.user.is_authenticated:
+        # Redirect to login page or handle the case where user is not authenticated
+        # For example:
+        return redirect('login')
+
+    existing_request = AdoptionRequest.objects.filter(user=request.user, pet=pet).first()
     if existing_request:
-    
         messages.warning(request, "You have already submitted a request for this pet.")
         return redirect('pet_detail', pet_id=pet.id)
     
-    
-    adoption_request = AdoptionRequest.objects.create(user=user, pet=pet)
-    
-    
-    admin_email = 'admin@gmail.com'  # admin email
-    subject = f"New Adoption Request for {pet.name}"
-    message = f"User {user.username} has submitted an adoption request for {pet.name}."
-    
-    messages.success(request, f"Your adoption request for {pet.name} has been submitted successfully.")
-    
+    try:
+        adoption_request = AdoptionRequest.objects.create(user=request.user, pet=pet)
+        messages.success(request, f"Your adoption request for {pet.name} has been submitted successfully.")
+    except Exception as e:
+        # Handle the exception (e.g., log the error, display a user-friendly message)
+        messages.error(request, "Failed to submit adoption request. Please try again later.")
+        # Redirect the user to an appropriate page
+        return redirect('pet_detail', pet_id=pet.id)
     
     return redirect('pet_detail', pet_id=pet.id)
 
@@ -68,7 +69,7 @@ def adoption_submit(request):
         application.save()
 
         
-        return HttpResponse("Form submitted successfully. Thank you!")
+        return render(request, 'adoption_success.html')
     else:
        
         return render(request, 'adoption_process.html')
@@ -93,13 +94,18 @@ def pet_list(request):
     pets = Pet.objects.all()
     return render(request, 'pet_list.html', {'pets': pets})
 
+def pet_detail(request, pk):
+    pet = get_object_or_404(Pet, pk=pk)
+    return render(request, 'pet_detail.html', {'pet': pet})
+
 def pet_list1(request):
     pets = Pet.objects.all()
     return render(request, 'pet_list1.html', {'pets': pets})
 
-def pet_detail(request, pk):
+@coordinator_required
+def pet_detail1(request, pk):
     pet = get_object_or_404(Pet, pk=pk)
-    return render(request, 'pet_detail.html', {'pet': pet})
+    return render(request, 'pet_detail1.html', {'pets': pet})
 
 
 

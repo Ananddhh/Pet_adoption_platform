@@ -56,14 +56,14 @@ def user_register(request):
 
 
  
-
+@login_required
 def about_page(request):
     # Placeholder logic for the About page view
     context = {
         'about_content': 'Learn more about our mission and goals here.'
     }
     return render(request, 'about.html', context)
-
+@login_required
 def contact_page(request):
     # Placeholder logic for the Contact page view
     context = {

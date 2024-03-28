@@ -95,6 +95,7 @@ def coordinator_login(request):
         # Handle GET request for displaying login form
         form = CoordinatorLoginForm()  # Assuming you have a form for login
         return render(request, 'coordinator_login.html', {'form': form})
+    
 @coordinator_required
 def coordinator_dashboard(request):
     
@@ -151,3 +152,4 @@ def update_coordinator_profile(request):
 def coordinator_logout(request):
     logout(request)
     return redirect('coordinator_login') 
+

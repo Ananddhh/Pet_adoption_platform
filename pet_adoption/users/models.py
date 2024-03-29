@@ -14,6 +14,7 @@ class UserProfile(models.Model):
         return self.user.username
 
 class CustomUser(AbstractUser):
+    is_regular_user = models.BooleanField(default=True)
     username = models.CharField(max_length=200, unique=True)
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)

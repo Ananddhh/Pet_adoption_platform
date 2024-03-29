@@ -14,5 +14,6 @@ urlpatterns = [
     path('all-messages/', all_messages, name='all_messages'),
     path('adoption_req/', adoption_requests, name='adoption_req'),
     path('coord_logout/', views.coordinator_logout, name='coord_logout'),
+    path('set_coordinator_credentials/', views.set_coordinator_credentials, name='set_coordinator_credentials'),
 ]
 

@@ -37,8 +37,6 @@ def adopt_pet(request, pet_id):
     pet = get_object_or_404(Pet, pk=pet_id)
     
     if not request.user.is_authenticated:
-        # Redirect to login page or handle the case where user is not authenticated
-        # For example:
         return redirect('login')
 
     existing_request = AdoptionRequest.objects.filter(user=request.user, pet=pet).first()
@@ -54,8 +52,6 @@ def adopt_pet(request, pet_id):
         messages.error(request, "Failed to submit adoption request. Please try again later.")
         # Redirect the user to an appropriate page
         return redirect('pet_detail', pet_id=pet.id)
-    
-    return redirect('pet_detail', pet_id=pet.id)
 
 def adoption_submit(request):
     if request.method == 'POST':

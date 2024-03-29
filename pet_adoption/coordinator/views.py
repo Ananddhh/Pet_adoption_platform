@@ -153,3 +153,23 @@ def coordinator_logout(request):
     logout(request)
     return redirect('coordinator_login') 
 
+from django.contrib.auth.models import User  # Add this import
+
+def set_coordinator_credentials(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        #if the coordinator already exists
+        coordinator = Coordinator.objects.first()  # Assuming there's only one coordinator
+        if coordinator:
+            user = coordinator.user
+            user.username = username
+            user.set_password(password)
+            user.save()
+        else:
+            
+            user = User.objects.create_user(username=username, password=password)
+            Coordinator.objects.create(user=user)
+        return redirect('coordinator_login')
+    else:
+        return render(request, 'set_coordinator_credentials.html')

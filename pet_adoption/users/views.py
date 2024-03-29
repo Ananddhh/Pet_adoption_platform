@@ -117,21 +117,19 @@ def user_settings(request):
         form = UserSettingsForm(instance=request.user)
     return render(request, 'user_settings.html', {'form': form})
 
-from .models import UserProfile
+# from .models import UserProfile
 
 
 from .models import CustomUser
 
 def user_profile(request):
-    try:
-        user_profile = request.user.profile  # Assuming you have a OneToOneField named 'profile' in your custom user model
-    except CustomUser.profile.RelatedObjectDoesNotExist:
-        user_profile = None
-        
-    return render(request, 'user_profile.html', {'user_profile': user_profile})
-def custom_logout(request):
-    logout(request)
-    return redirect('homepage')
+    regular_users = CustomUser.objects.filter(is_regular_user=True)
+    return render(request, 'user_profile.html', {'regular_users': regular_users})
+
+    
+# def custom_logout(request):
+#     logout(request)
+#     return redirect('homepage')
 
 def homepage(request):
     # Your view logic here

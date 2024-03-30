@@ -1,105 +1,165 @@
+{% extends 'base.html' %}
 {% load static %}
-    <link rel="stylesheet" type="text/css" href = "{% static 'css/about.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}">
+
 {% block content %}
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #000; 
-    color: #fff; /* Set text color to white */
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        /* Set text color to white */
+    }
+
+    .container {
+        position: relative;
+        text-align: center;
+    }
+
+    .background-img {
+        position: absolute;
+        /* top: 100; */
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        height: 80%;
+        object-fit: cover;
+        opacity: 0.5;
+        background-repeat: repeat;
+    }
+
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+        padding: 40px;
+    }
+
+    .section-heading {
+        color: #d8ffde;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .section {
+        margin-top: 60px;
+    }
+
+    h2 {
+        color: #fff;
+    }
+
+    p {
+        margin-bottom: 20px;
+    }
+
+    .mission-section,
+    .reasons-section,
+    .contact-section {
+        margin-bottom: 60px;
+    }
+
+    .mission-section:before,
+    .mission-section:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 15px;
+        z-index: -1;
+    }
+
+    .mission-section:before {
+        top: -20px;
+        bottom: auto;
+    }
+
+    .mission-section:after {
+        bottom: -20px;
+        top: auto;
+    }
+
+    .reasons-box {
+    background-color: rgba(255, 255, 255, 0.2); /* Transparent white background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Padding around the content */
+    margin-top: 20px; /* Adjust as needed */
 }
 
-.containerr {
-    padding: 40px;
-    position: relative; 
-}
+    /* .reasons-list {
+        list-style-type: none;
+        padding-left: 0;
+        text-align: center;
+    }
 
-.background-img {
-    position: absolute;
-    top: 0;
-    right: 0; 
-    width: 45%; 
-    max-height: 100%; 
-    object-fit: cover;
-    opacity: 0.5; 
-}
+    .reasons-list li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
 
-.content-wrapper {
-    padding-right: 50%; 
-}
+    .reasons-list li:before {
+        content: "\2022";
+        position: absolute;
+        left: 0;
+        color: #007bff;
+    } */
 
-.section-heading {
-    color: #d8ffde;
-    margin-bottom: 30px;
-}
+    .contact-section p {
+        margin-bottom: 0;
+    }
 
-.section {
-    margin-top: 60px;
-}
+    .contact-link {
+        color: #6c757d;
+        text-decoration: underline;
+    }
 
-h2 {
-    color: #fff; 
-}
+    .contact-link:hover {
+        color: #fff;
+    }
 
-p {
-    margin-bottom: 20px;
-}
-
-.team-list,
-.reasons-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.team-list li,
-.reasons-list li {
-    margin-bottom: 10px;
-}
-
-.contact-link {
-    color: #6c757d;
-    text-decoration: underline;
-}
-
-.contact-link:hover {
-    color: #fff;
-}
+    .team-list {
+        color: #6c757d;
+        text-decoration: underline;
+        position: relative;
+        z-index: 2;
+    }
 </style>
-    
-    <div class="container">
-        <img src="{% static 'images/pety.jpg' %}" alt="Background Image" class="background-img">
-        <div class="content-wrapper">
-            <h1 class="section-heading">About Us</h1>
-            <div class="section mission-section">
-                <h2>Our Mission</h2>
-                <p>Welcome to our pet adoption platform! At our platform, our mission is to connect pets in need with loving families. We strive to provide a seamless adoption experience for both pets and adopters, ensuring that every pet finds their forever home.</p>
-            </div>
 
-            <div class="section team-section">
-                <h2>Our Team</h2>
-                <p>Meet the dedicated team behind our platform:</p>
-                <ul class="team-list">
-                    <li>John Doe - Founder & CEO</li>
-                    <li>Jane Smith - Head of Operations</li>
-                    <li>Michael Johnson - Lead Developer</li>
-                </ul>
-            </div>
+<div class="container">
+    <img src="{% static 'images/pety.jpg' %}" alt="Background Image" class="background-img">
+    <div class="content-wrapper">
+        <h1 class="section-heading">About Us</h1>
 
-            <div class="section reasons-section">
-                <h2>Why Choose Us?</h2>
+        <div class="section mission-section">
+            <h2>Our Mission</h2>
+            <p>Welcome to our pet adoption platform! At our platform, our mission is to connect pets in need with loving families. We strive to provide a seamless adoption experience for both pets and adopters, ensuring that every pet finds their forever home.</p>
+        </div>
+
+        <div class="section reasons-section">
+            <h2>Why Choose Us?</h2>
+            <div class="reasons-box">
                 <p>Here are some reasons why you should choose our platform for pet adoption:</p>
                 <ul class="reasons-list">
-                    <li>Wide Selection: We have a diverse range of pets available for adoption, including dogs, cats, and other animals.</li>
-                    <li>Easy Process: Our adoption process is simple and straightforward, making it easy for you to find your perfect pet.</li>
-                    <li>Expert Support: Our team of experts is here to assist you at every step of the adoption journey, ensuring a smooth experience.</li>
+                    <li><strong>Wide Selection:</strong> We offer a diverse range of pets, including dogs, cats, rabbits, birds, and more, ensuring you'll find the perfect companion for your family.</li>
+                    <li><strong>Easy Process:</strong> Our adoption process is designed to be simple and user-friendly. From browsing available pets to completing the adoption paperwork, we make every step easy and stress-free.</li>
+                    <li><strong>Expert Support:</strong> Our dedicated team of animal experts is available to provide guidance and assistance throughout the entire adoption journey. Whether you have questions about pet care, behavior, or training, we're here to help.</li>
+                    <li><strong>Lifetime Care:</strong> We believe in providing lifelong support to both pets and their adoptive families. Our post-adoption services include resources, training programs, and access to veterinary care to ensure the well-being of your pet for years to come.</li>
                 </ul>
             </div>
+        </div>
 
-            <div class="section contact-section">
-                <h2>Contact Us</h2>
-                <p>Have questions or feedback? Feel free to <a href="{% url 'contact' %}" class="contact-link">contact us</a> - we'd love to hear from you!</p>
-            </div>
+        <div class="section contact-section">
+            <h2>Contact Us</h2>
+            <p>Have questions or feedback? Feel free to <a href="{% url 'contact' %}" class="contact-link">contact us</a> - we'd love to hear from you!</p>
+            <p>Explore our team list <a href="#team-list" class="team-list">here</a>.</p>
         </div>
     </div>
+</div>
+
 {% endblock %}

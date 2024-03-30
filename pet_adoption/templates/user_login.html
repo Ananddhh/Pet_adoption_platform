@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 
+        <br>
+        <br>
 {% block content %}
+        <br>
+        <br>
+        <br>
+        <br>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,15 +18,17 @@
             background-repeat: repeat;
             /* background-position: center; */
             color: #fff; /* White text color */
+            height: 100vh;
         }
 
         .containerr {
-            max-width: 400px;
+            max-width: 500px;
             margin: 50px auto;
             padding: 30px;
             background-color: rgba(255, 255, 255, 0.4); /* Slightly transparent white container background */
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            
         }
 
         h1 {
@@ -90,6 +98,13 @@
         </form>
         <div class="signup-link">
             <p style="color: #000000;">Don't have an account? <a style="color: #ffffff;" href="{% url 'user_register' %}">Register</a></p>
-        </div>
     </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
 {% endblock %}

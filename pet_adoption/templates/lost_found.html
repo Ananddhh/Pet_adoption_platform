@@ -12,22 +12,27 @@
             background-image: url('{% static "images/dinos.jpg" %}');
             background-repeat: repeat;
             background-position: center;
+            /* background-size: cover; */
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
+        .containerr {
+            height: fit-content;
+            max-width: 100%; /* Span the full width of the screen */
+            margin: 20px 0; /* Adjusted margins */
             padding: 20px;
         }
 
         h1 {
-            margin-bottom: 20px;
-            color: #ececec; /* White text color */
+            margin-top: 0; /* Ensure no top margin */
+            padding-top:40px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background for header */
+            color: #fff;
+           
             text-align: center;
-            font-weight: bold;
-            background-color: #000; /* Black background color */
-            padding: 12px;
-            border-radius: 5px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #fff; /* White border */
+            border-top-left-radius: 10px; /* Rounded corners for top left of header */
+            border-top-right-radius: 10px;
         }
 
         .pet-container {
@@ -40,14 +45,15 @@
         .pet-card {
             background-color: rgba(255, 255, 255, 0.8); /* Light gray background */
             padding: 20px;
-            width: calc(50% - 10px); /* Adjusted width to fit two cards side by side */
+            width: calc(20% - 0px); /* Adjusted width to fit two cards side by side */
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .pet-image {
-            max-width: 100%;
-            height: auto;
+            width: 290px; 
+            height: 300px; 
+            object-fit: cover; 
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -133,75 +139,124 @@
 
     </style>
 
-    <div class="container">
-        <h1>Lost & Found Pets</h1>
-
-        <div class="pet-container">
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/cats_wallpaper_cats_wallpaper_aesthetic_cats.jpg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="lost">Lost</span></p>
-                </div>
-            </div
-            
-            <div class="pet-container">
-                <div class="pet-card">
-                    <img class="pet-image" src="../static/images/cats_wallpaper_cats_wallpaper_aesthetic_cats.jpg" alt="Found Pet">
-                    <div class="pet-info">
-                        <h2>Fluffy</h2>
-                        <p><strong>Species:</strong> Cat</p>
-                        <p><strong>Breed:</strong> Persian</p>
-                        <p><strong>Age:</strong> 3 years</p>
-                        <p><strong>Status:</strong> <span class="lost">Lost</span></p>
-                    </div>
-                </div>
+<h1>Lost & Found Pets</h1>
+    
+<div class="containerr">
 
             
 
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/cat1.jpeg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="found">Found</span></p>
-                </div>
-            </div>
-
-            <div class="pet-card">
-                <img class="pet-image" src="../static/images/cat2.jpeg" alt="Found Pet">
-                <div class="pet-info">
-                    <h2>Fluffy</h2>
-                    <p><strong>Species:</strong> Cat</p>
-                    <p><strong>Breed:</strong> Persian</p>
-                    <p><strong>Age:</strong> 3 years</p>
-                    <p><strong>Status:</strong> <span class="found">Found</span></p>
-                </div>
-            </div>
-
-            
-
+<div class="pet-container">
+    <!-- Dog 1 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/dooggy.jpg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Rex</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> German Shepherd</p>
+            <p><strong>Age:</strong> 2 years</p>
+            <p><strong>Status:</strong> <span class="lost">Lost</span></p>
         </div>
     </div>
 
-    <div class="contact-form-container">
-        <h2>Contact Us</h2>
-        <p>If you have found one of the lost pets listed above, please use the form below to contact us:</p>
-        <form action="{% url 'contact_submit' %}" method="post">
-            {% csrf_token %}
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Dog 2 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/ddog4.jpeg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Buddy</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Labrador Retriever</p>
+            <p><strong>Age:</strong> 3 years</p>
+            <p><strong>Status:</strong> <span class="lost">Lost</span></p>
+        </div>
     </div>
+
+    <!-- Dog 3 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/dog2.jpeg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Rusty</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Golden Retriever</p>
+            <p><strong>Age:</strong> 4 years</p>
+            <p><strong>Status:</strong> <span class="lost">Lost</span></p>
+        </div>
+    </div>
+
+    <!-- Dog 4 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/ddog3.jpeg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Bella</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Siberian Husky</p>
+            <p><strong>Age:</strong> 1 year</p>
+            <p><strong>Status:</strong> <span class="lost">Lost</span></p>
+        </div>
+    </div>
+
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/cat1.jpeg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Whiskers</h2>
+            <p><strong>Species:</strong> Cat</p>
+            <p><strong>Breed:</strong> Siamese</p>
+            <p><strong>Age:</strong> 2 years</p>
+            <p><strong>Status:</strong> <span class="found">Found</span></p>
+        </div>
+    </div>
+        
+    <!-- Dog 5 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/god.jpg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Max</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Boxer</p>
+            <p><strong>Age:</strong> 3 years</p>
+            <p><strong>Status:</strong> <span class="found">Found</span></p>
+        </div>
+    </div>
+
+    <!-- Dog 6 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/dog.jpg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Bailey</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Beagle</p>
+            <p><strong>Age:</strong> 2 years</p>
+            <p><strong>Status:</strong> <span class="found">Found</span></p>
+        </div>
+    </div>
+
+    <!-- Dog 7 -->
+    <div class="pet-card">
+        <img class="pet-image" src="../static/images/dd.jpg" alt="Found Pet">
+        <div class="pet-info">
+            <h2>Daisy</h2>
+            <p><strong>Species:</strong> Dog</p>
+            <p><strong>Breed:</strong> Dachshund</p>
+            <p><strong>Age:</strong> 4 years</p>
+            <p><strong>Status:</strong> <span class="found">Found</span></p>
+        </div>
+    </div>
+</div>
+</div>
+        
+
+<div class="contact-form-container">
+    <h2>Contact Us</h2>
+    <p>If you have found one of the lost pets listed above, please use the form below to contact us:</p>
+    <form action="{% url 'contact_submit' %}" method="post">
+        {% csrf_token %}
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</div>
 
 {% endblock %}

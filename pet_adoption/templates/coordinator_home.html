@@ -47,15 +47,16 @@
         }
 
         
-        .text-overlay {
+        
+    .text-overlay {
         position: absolute;
         top: 50%;
-        left: 0;
-        transform: translateX(-100%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        padding: 20px;
-        width: 100%;
+        left: -100%; /*  from the left side */
+        transform: translateX(0); /* Initially hidden */
+        background-color: rgba(255, 255, 255, 0.5);
+        color: rgb(0, 0, 0);
+        padding: 30px;
+        width: 66%; /* Adjust width as needed */
         opacity: 0;
         animation: slideIn 1s forwards;
     }
@@ -63,14 +64,13 @@
     @keyframes slideIn {
         0% {
             opacity: 0;
-            transform: translateX(-100%);
+            left: -100%; 
         }
         100% {
             opacity: 1;
-            transform: translateX(0);
+            left: -30%; /* Move to the middle */
         }
-    }
-       
+    } 
         </style>
 
 </head>
@@ -93,6 +93,10 @@
                     <img src="{% static 'images/dog1.jpg' %}" alt="Background Image" class="background-img">
                     <div class="text-overlay">
                         <h1>Welcome to Coordinator Dashboard</h1>
+                        <p style="text-align: justify;"> Here, you can efficiently manage adoption requests,
+                             coordinate appointments, and stay updated on messages. 
+                            Your dedicated efforts contribute immensely to finding loving homes for our pets.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -131,11 +135,10 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{% url 'coordinator_profile' %}">Profile</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'homepage' %}">UserHome</a>
+                </li>
             </ul>
-            <form class="d-flex mt-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success text-white" type="submit">Search</button>
-            </form>
         </div>
     </div>
     

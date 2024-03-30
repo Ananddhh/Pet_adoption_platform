@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
     <style>
         body {
@@ -9,8 +8,10 @@
             padding: 0;
             background-color: #f9f9f9; 
             color: #000000; 
-            background-image: url('{% static "images/dog2.jpeg" %}');
+            background-image: url('{% static "images/ssw.jpg" %}');
             background-repeat: repeat;
+            background-position: center;
+            background-size: contain;
         }
 
         .containerr {
@@ -73,7 +74,9 @@
             background-color: #000000;
         }
     </style>
-
+<br>
+<br>
+<br>
     <div class="containerr">
         <h1>User Registration</h1>
         <form method="post">
@@ -130,4 +133,8 @@
         </form>
         
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
 {% endblock %}

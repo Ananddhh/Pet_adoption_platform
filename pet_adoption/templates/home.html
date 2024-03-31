@@ -25,7 +25,7 @@
 /* Global styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #000000;
 }
 
 .container {
@@ -60,7 +60,7 @@ header {
 }
 
 nav ul {
-  list-style-type: none;
+  list-style-type:georgian;
 }
 
 nav ul li {
@@ -68,8 +68,10 @@ nav ul li {
   margin-left: 20px;
 }
 
-nav ul li:first-child {
-  margin-left: 0;
+
+nav ul li:last-child {
+    display: inline-block;
+    margin-left: 20px;
 }
 
 nav ul li a {
@@ -307,6 +309,66 @@ nav ul li a {
 }
         
     </style>
+    <style>
+        
+    /* Navbar */
+    .navbar {
+        background-color: #020d19;
+        color: #ffffff;
+        margin: 0;
+    }
+
+    /* Align navbar items to the right */
+    .navbar-nav {
+        margin-left: auto;
+    }
+
+    /* Style navbar links */
+    .navbar-nav .nav-link {
+        position: relative;
+        color: #ffffff;
+        padding: 8px 15px;
+    }
+
+    /* Add bottom border to navbar links on hover */
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background-color: #ffffff;
+        transition: width 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover::after {
+        width: 100%;
+    }
+
+        /* Custom dropdown menu */
+        .custom-dropdown {
+            background-color: rgba(0, 0, 0, 0.7); /* Transparent black background */
+            border: none; /* Remove border */
+        }
+
+        /* Style dropdown items */
+        .custom-dropdown .dropdown-item {
+            color: #ffffff; /* Text color */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        /* Change background color on hover */
+        .custom-dropdown .dropdown-item:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Light transparent white */
+        }
+
+    .footer {
+        margin: 0;
+    }
+</style>
+
+    </style>
 </head>
 {% block content %}
 
@@ -317,8 +379,8 @@ nav ul li a {
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
       <div class="container-fluid">
           <!-- Logo -->
-          <a  class="navbar-brand" href="{% url 'homepage'%}">
-            <img style="height: 9%; width: 9%;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
+          <a class="navbar-brand" href="{% url 'homepage'%}" style="margin-right: auto;">
+            <img style="height: 30px; width: auto;" src="{% static 'images/3.jpg' %}" alt="PetPaw Logo">
         </a>
           <!-- Toggler/collapsibe Button -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
@@ -329,7 +391,7 @@ nav ul li a {
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                      <a class="nav-link" href="{% url 'user_login' %}" style="color: #ffffff;">Login</a>
+                      <a class="nav-link" href="{% url 'lost_found_pets' %}" style="color: #ffffff;">Lost & found</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'about' %}" style="color: #ffffff;">About</a>
@@ -343,26 +405,31 @@ nav ul li a {
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'book_appointment' %}" style="color: #ffffff;">Book Appointment</a>
                   </li>
+                  <li class="nav-item">
+                    <a class="nav-link"  href="{% url 'faq' %}"  style="color: #ffffff;">FAQ</a>
+                </li>
+                  
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
                         More
                     </a>
-                    <ul class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="{% url 'faq' %}" >FAQ</a></li>
-                        <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}" >Lost & found</a></li>
-                        <li><a class="dropdown-item" href="{% url 'user_register' %}" >Register</a></li>
-                        <li><a class="dropdown-item" href="{% url 'adoption_process' %}">Adoption</a></li>
-                        <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}">Coordinator Dashboard</a></li>
+                    <ul class="dropdown-menu custom-dropdown dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         
-
+                        <li><a class="dropdown-item" href="{% url 'user_login' %}" >Login</a></li>
+                        
+                        <li><a class="dropdown-item" href="{% url 'user_register' %}" >Register</a></li>
+                        <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}">Coordinator Dashboard</a></li>
                     </ul>
+                    
+                    
                 </li>
                   </li>
               </ul>
           </div>
       </div>
   </nav> 
+    <br>
     
 
 
@@ -377,7 +444,8 @@ nav ul li a {
 
         </div>
     </div>
-     
+    <br>
+    <br>
     
 
     <!-- Testimonials section -->

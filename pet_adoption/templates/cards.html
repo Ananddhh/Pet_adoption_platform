@@ -1,0 +1,128 @@
+<style>
+    .card-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.row {
+display: flex;
+justify-content: center;
+gap: 20px;
+}
+
+.card {
+width: 200px; /* Adjust as needed */
+background-color: black;
+border-radius: 10px;
+overflow: hidden;
+}
+
+.card a {
+display: block;
+text-align: center;
+text-decoration: none;
+color: white;
+}
+
+.card img {
+width: 100px; /* Adjust as needed */
+height: 100px; /* Adjust as needed */
+margin: 20px auto;
+}
+
+.card h3 {
+margin: 10px 0;
+}
+
+.card p.description {
+color: yellow;
+font-size: 14px;
+margin: 0;
+padding: 0 10px;
+}
+
+
+</style>
+<!-- Card section -->
+<div class="card-container">
+    <!-- First Row of Cards -->
+    <div class="row">
+        <div class="card">
+            <a href="{% url 'user_register' %}">
+                <img src="{% static 'images/register_icon.png' %}" alt="Register">
+                <h3>Register</h3>
+                <p class="description">Create an account to access exclusive features.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'user_login' %}">
+                <img src="{% static 'images/login_icon.png' %}" alt="Login">
+                <h3>Login</h3>
+                <p class="description">Already have an account? Log in here.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'book_appointment' %}">
+                <img src="{% static 'images/appointment_icon.png' %}" alt="Book Appointment">
+                <h3>Book Appointment</h3>
+                <p class="description">Schedule an appointment with our team.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'pet_list' %}">
+                <img src="{% static 'images/pets_icon.png' %}" alt="Pets">
+                <h3>Pets</h3>
+                <p class="description">Explore our available pets for adoption.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'adoption_process' %}">
+                <img src="{% static 'images/adoption_icon.png' %}" alt="Adoption">
+                <h3>Adoption Process</h3>
+                <p class="description">Learn about our adoption process.</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Second Row of Cards -->
+    <div class="row">
+        <div class="card">
+            <a href="{% url 'lost_found_pets' %}">
+                <img src="{% static 'images/lost_found_icon.png' %}" alt="Lost & Found Pets">
+                <h3>Lost & Found Pets</h3>
+                <p class="description">Report lost or found pets in your area.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'about' %}">
+                <img src="{% static 'images/about_icon.png' %}" alt="About">
+                <h3>About</h3>
+                <p class="description">Learn more about our organization and mission.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'contact' %}">
+                <img src="{% static 'images/contact_icon.png' %}" alt="Contact">
+                <h3>Contact</h3>
+                <p class="description">Get in touch with us for inquiries or support.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'faq' %}">
+                <img src="{% static 'images/faq_icon.png' %}" alt="FAQ">
+                <h3>FAQ</h3>
+                <p class="description">Find answers to frequently asked questions.</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'adoption_event' %}">
+                <img src="{% static 'images/adoption_event_icon.png' %}" alt="Adoption Event">
+                <h3>Adoption Event</h3>
+                <p class="description">Join us for our upcoming adoption events.</p>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+    <br>

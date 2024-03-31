@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from users.models import Profile
+# from users.models import Profile
 from users.forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages

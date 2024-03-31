@@ -1,25 +1,12 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, UserProfile, Profile
-from pets.models import AdoptionApplication
+from .models import CustomUser, UserProfile
 
-class AdoptionApplicationAdmin(admin.ModelAdmin):
-    def get_queryset(self, request):
-        qs = super().get_queryset(request)
-        if not request.user.is_superuser:  
-            qs = qs.none()
-        return qs
+class CustomUserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'email', 'is_regular_user']  # Customize the fields displayed in the admin list view
 
-admin.site.register(AdoptionApplication, AdoptionApplicationAdmin)
+admin.site.register(CustomUser, CustomUserAdmin)  # Register CustomUser model with the customized admin interface
 
-@admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'bio', 'profile_picture']
+    list_display = ['user', 'bio', 'adoption_status']  # Customize the fields displayed in the admin list view
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
-    list_display = ['user', 'bio', 'profile_pic', 'adoption_status']
-
-@admin.register(CustomUser)
-class CustomUserAdmin(UserAdmin):
-    list_display = ['username', 'email', 'first_name', 'last_name', 'is_staff']
+admin.site.register(UserProfile, UserProfileAdmin)  # Register UserProfile model with the customized admin interface

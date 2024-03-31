@@ -1,28 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block content %}
+{% block Styles %}
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* Light gray background */
-            color: #333; /* Dark gray text color */
+            background-color: #f8f9fa;
+            color: #333;
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff; /* White container background */
+            background-color: #fff; 
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
         }
 
         h1 {
             text-align: center;
-            color: #007bff; /* Blue color for header */
+            color: #007bff; 
             margin-bottom: 20px;
         }
 
@@ -39,16 +39,22 @@
             color: #555; /* Medium gray text color */
         }
     </style>
+{% endblock %}
+{% block content %}
 
     <div class="container">
         <h1>User Profile</h1>
         <div class="user-info">
             <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
             <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
-            <p>Your Adoption Application Status: {{ adoption_status }}</p>
+           
+            <!-- <p><strong>Bio:</strong> {{ user_profile.bio }}</p> -->
+         
+
+           
+            <p><strong>Your Adoption Application Status:</strong> {{ user_profile.adoption_status }}</p>
             
             
-            <!-- Form for logout -->
             <form action="{% url 'logout' %}" method="post" class="logout-form">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>

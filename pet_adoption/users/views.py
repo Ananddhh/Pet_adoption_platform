@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.contrib import messages
 from .forms import UserSettingsForm
-from users.models import CustomUser
+from .models import CustomUser, UserProfile
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
@@ -83,27 +83,30 @@ def user_login(request):
         form = UserLoginForm()
     return render(request, 'user_login.html', {'form': form})
 
+from .models import CustomUser, UserProfile
+
 def user_register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            password = form.cleaned_data['password1']  # 'password1' instead of 'password'
-            print("Form is valid. Proceeding with registration.")
+            password = form.cleaned_data['password1']
             try:
                 user = CustomUser.objects.create_user(username=username, email=email, password=password)
-                print("User created successfully:", user.username)
+                # Create a UserProfile instance for the registered user
+                UserProfile.objects.create(user=user)
                 messages.success(request, 'Registration successful. Please log in.')
                 return redirect('user_login')
+            except IntegrityError:
+                messages.error(request, 'Username already exists.')
             except Exception as e:
-                print("Error creating user:", e)
                 messages.error(request, 'An error occurred during registration. Please try again later.')
-        else:
-            print("Form is invalid. Errors:", form.errors)
     else:
         form = UserRegistrationForm()
     return render(request, 'user_register.html', {'form': form})
+
+
 
 @login_required
 def user_settings(request):
@@ -121,15 +124,18 @@ def user_settings(request):
 
 
 from .models import CustomUser
-
+@login_required
 def user_profile(request):
-    regular_users = CustomUser.objects.filter(is_regular_user=True)
-    return render(request, 'user_profile.html', {'regular_users': regular_users})
+    try:
+        profile = request.user.userprofile
+    except UserProfile.DoesNotExist:
+        profile = None
+    return render(request, 'user_profile.html', {'profile': profile})
 
-    
-# def custom_logout(request):
-#     logout(request)
-#     return redirect('homepage')
+def logout_view(request):
+    logout(request)
+ 
+    return redirect('homepage')
 
 def homepage(request):
     # Your view logic here

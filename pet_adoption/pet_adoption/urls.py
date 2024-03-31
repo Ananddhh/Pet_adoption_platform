@@ -22,10 +22,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # path('admin/login/', auth_views.admin_login, name='admin_login'),  # Custom admin login URL
-    path('admin/', admin.site.urls),  # Django administration URLs
-    path('', include('core.urls')),  # Include core app URLs
-    path('', include('pets.urls')),  # Include pets app URLs
-    path('', include('coordinator.urls')),  # Include coordinator app URLs
+    path('admin/', admin.site.urls),  
+    path('', include('core.urls')),  
+    path('', include('pets.urls')),  
+    path('', include('coordinator.urls')),
+    path('', include('users.urls')),  
 ]
  
 if settings.DEBUG:

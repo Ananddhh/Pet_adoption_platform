@@ -2,24 +2,27 @@
 {% load static %}
 
 {% block content %}
-<div class="container">
-    <h2 class="text-center mb-4">Adoption Messages</h2>
+<br>
+<br>
+<br>
+<div class="container" style="max-width: 800px; margin: 50px auto;">
+    <h2 class="text-center mb-4" style="font-size: 24px; color: #007bff;">Adoption Messages</h2>
     <div class="row">
         {% if adoption_requests %}
             {% for request in adoption_requests %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
+                <div class="col-md-4 mb-4" style="margin-bottom: 1rem;">
+                    <div class="card" style="border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
                         <div class="card-body">
-                            <h5 class="card-title">{{ request.name }}</h5>
-                            <p class="card-text">Message: {{ request.message }}</p>
-                            <p class="card-text">Status: {{ request.status }}</p>
+                            <h5 class="card-title" style="font-size: 20px; color: #333333;">{{ request.name }}</h5>
+                            <p class="card-text" style="color: #555555;">Message: {{ request.message }}</p>
+                            <p class="card-text" style="color: #555555;">Status: {{ request.status }}</p>
                         </div>
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-            <div class="col">
-                <p>No adoption requests found.</p>
+            <div class="col" style="margin-bottom: 1rem;">
+                <p style="font-size: 18px; color: #555555;">No adoption requests found.</p>
             </div>
         {% endif %}
     </div>

@@ -1,89 +1,41 @@
 {% extends 'base1.html' %}
 {% load static %}
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #ffffff;
-        border: 2px solid #007bff; /* Blue border */
-    }
-
-    h1, h2 {
-        font-size: 24px;
-        color: #007bff; /* Blue heading */
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    li {
-        background-color: #f9f9f9; /* Light gray background */
-        border-radius: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        padding: 20px;
-    }
-
-    li:nth-child(odd) {
-        background-color: #e9ecef; /* Alternate light gray background */
-    }
-
-    p {
-        text-align: justify;
-        color: #333333; /* Dark text color */
-    }
-</style>
-
 {% block content %}
-<div class="container">
-    <h1>All Messages</h1>
+<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #ffffff; border: 2px solid #007bff;">
+    <h1 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">All Messages</h1>
 
-    <h2>Contact Us Messages</h2>
+    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Contact Us Messages</h2>
     {% if contact_messages %}
-        <ul>
+        <ul style="list-style-type: none; padding: 0;">
             {% for message in contact_messages %}
-                <li>{{ message.name }} - {{ message.email }} - {{ message.message }}</li>
+                <li style="background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">{{ message.name }} - {{ message.email }} - {{ message.message }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No contact messages found.</p>
+        <p style="text-align: center; color: #333333;">No contact messages found.</p>
     {% endif %}
 
-    <h2>Lost & Found Pets</h2>
+    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Lost & Found Pets</h2>
     {% if lost_pets %}
-        <ul>
+        <ul style="list-style-type: none; padding: 0;">
             {% for pet in lost_pets %}
-                <li>Lost Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
+                <li style="background-color: #e9ecef; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">Lost Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No lost pets found.</p>
+        <p style="text-align: center; color: #333333;">No lost pets found.</p>
     {% endif %}
     
-    <h2>Found Pets</h2>
+    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Found Pets</h2>
     {% if found_pets %}
-        <ul>
+        <ul style="list-style-type: none; padding: 0;">
             {% for pet in found_pets %}
-                <li>Found Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
+                <li style="background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">Found Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No found pets found.</p>
+        <p style="text-align: center; color: #333333;">No found pets found.</p>
     {% endif %}
 </div>
 {% endblock %}

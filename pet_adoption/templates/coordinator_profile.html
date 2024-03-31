@@ -1,80 +1,23 @@
 {% extends 'base1.html' %}
 {% load static %}
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-        margin: 0;
-        padding: 0;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .profile-info {
-        border: 1px solid #ced4da;
-        border-radius: 5px;
-        padding: 15px;
-        margin-bottom: 20px;
-    }
-
-    h1 {
-        font-size: 36px;
-        color: #343a40;
-        margin-bottom: 20px;
-        text-align: center;
-    }
-
-    p {
-        font-size: 18px;
-        color: #6c757d;
-        margin-bottom: 15px;
-    }
-
-    form {
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-    }
-
-    button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
-</style>
-
 {% block content %}
-<div class="container">
-    <h1>Coordinator Profile</h1>
-    <div class="profile-info">
+<br>
+<br>
+<br>
+<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 36px; color: #343a40; margin-bottom: 20px; text-align: center;">Coordinator Profile</h1>
+    <div class="profile-info" style="border: 1px solid #ced4da; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
         {% if coordinator %}
-        <p>Username: {{ coordinator.user.username }}</p>
-        <!-- <p>Contact Number: {{ coordinator.contact_number }}</p> -->
+        <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">Username: {{ coordinator.user.username }}</p>
+        <!-- <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">Contact Number: {{ coordinator.contact_number }}</p> -->
         {% else %}
-        <p>No coordinator found for the current user.</p>
+        <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">No coordinator found for the current user.</p>
         {% endif %}
     </div>
-    <form action="{% url 'coord_logout' %}" method="post">
+    <form action="{% url 'coord_logout' %}" method="post" style="display: flex; justify-content: center; margin-top: 30px;">
         {% csrf_token %}
-        <button type="submit">Logout</button>
+        <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">Logout</button>
     </form>
 </div>
-
 {% endblock %}

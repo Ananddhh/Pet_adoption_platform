@@ -49,9 +49,7 @@
             <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
            
             <!-- <p><strong>Bio:</strong> {{ user_profile.bio }}</p> -->
-         
-
-           
+        
             <p><strong>Your Adoption Application Status:</strong> {{ user_profile.adoption_status }}</p>
             
             
@@ -59,6 +57,8 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>
             </form>
+
+            <p>Wanna go home<a style="color: rgb(0, 0, 0);" href="{% url 'homepage' %}"><button type="submit" class="btn btn-success">Home</button></a></p>
         </div>
     </div>
 {% endblock %}

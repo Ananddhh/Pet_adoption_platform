@@ -55,6 +55,15 @@
     #radio2:checked ~ .swiper-wrapper {
         transform: translateX(-100%);
     }
+    #radio3:checked ~ .swiper-wrapper {
+        transform: translateX(-200%);
+    }
+    #radio4:checked ~ .swiper-wrapper {
+        transform: translateX(-300%);
+    }
+    .slider-nav {
+        margin-top: 10px;
+    }
     .slider-nav label {
         display: inline-block;
         width: 20px;
@@ -62,9 +71,12 @@
         background-color: #ccc;
         border-radius: 50%;
         cursor: pointer;
+        margin-right: 10px;
     }
     #radio1:checked ~ .slider-nav label:nth-of-type(1),
-    #radio2:checked ~ .slider-nav label:nth-of-type(2) {
+    #radio2:checked ~ .slider-nav label:nth-of-type(2),
+    #radio3:checked ~ .slider-nav label:nth-of-type(3),
+    #radio4:checked ~ .slider-nav label:nth-of-type(4) {
         background-color: #555;
     }
 </style>
@@ -73,6 +85,8 @@
     <div class="swiper-container">
         <input type="radio" name="slider" id="radio1" checked>
         <input type="radio" name="slider" id="radio2">
+        <input type="radio" name="slider" id="radio3">
+        <input type="radio" name="slider" id="radio4">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <!-- Slide 1 content -->
@@ -87,10 +101,24 @@
                 <p>Lace up your sneakers and join us for the Furry Friends Fun Run on June 20, 2024! Held at Riverside Trail, 789 Maple Avenue, City, starting at 9:00 AM, this exciting event combines fitness, camaraderie, and a whole lot of furry fun. Whether you're a seasoned runner, a casual jogger, or simply love spending time outdoors with your four-legged companion, this event is perfect for all ages and fitness levels. Embark on a scenic journey along the riverside trail, surrounded by lush greenery and the company of fellow animal enthusiasts. Bring your dog along for the run and enjoy bonding time while staying active and healthy together.</p>
                 <h2>The Furry Friends Fun Run isn't just about crossing the finish line—it's about celebrating the special bond between humans and their pets. After the run, stick around for post-race festivities, including pet-friendly activities, vendor booths, and delicious refreshments. Whether you're participating as a solo runner, a team, or with your furry running buddy, you'll be supporting a worthy cause with every step. Proceeds from the event go towards animal welfare initiatives, including rescue, rehabilitation, and adoption efforts. Join us for a day of fitness, friendship, and furry companionship, and help make a positive impact on the lives of animals in need.</h2>
             </div>
+            <div class="swiper-slide">
+                <!-- Slide 3 content -->
+                <h1>Paws in the Park Picnic</h1>
+                <p>Mark your calendars for July 25, 2024, and pack your picnic baskets for a delightful day at the Paws in the Park Picnic! Located at Lakeside Pavilion, 101 Pine Street, City, from 12:00 PM to 3:00 PM, this event is a celebration of sunshine, smiles, and furry companionship. Gather your friends, family, and, of course, your four-legged pals for an afternoon of outdoor fun and relaxation by the lake. Spread out your picnic blankets, indulge in delicious treats, and enjoy the serene surroundings while your pets frolic in the grass. Engage in games and activities designed for both humans and pets, fostering bonds and creating lasting memories for everyone involved.</p>
+                <h2>The Paws in the Park Picnic is a chance to connect with fellow pet lovers and celebrate the joy that animals bring to our lives. Whether you're admiring the picturesque scenery, participating in pet-themed contests, or simply enjoying quality time with your furry friends, this event promises something for everyone. Share stories, exchange tips on pet care, and learn about local pet-friendly resources from community vendors and organizations. By coming together in this beautiful outdoor setting, we not only strengthen our relationships with our pets but also support initiatives aimed at promoting responsible pet ownership and animal welfare. Join us for a paw-some day filled with love, laughter, and lots of wagging tails!</h2>
+            </div>
+            <div class="swiper-slide">
+                <!-- Slide 4 content -->
+                <h1>Adopt-A-Thon at the Mall</h1>
+                <p>Get ready for a day of pet adoption excitement at the Adopt-A-Thon at the Mall on August 30, 2024! Held at City Mall, 321 Elm Street, City, from 10:00 AM to 6:00 PM, this event transforms the shopping center into a bustling hub of furry activity and heartfelt adoptions. Browse through a wide selection of adoptable pets, ranging from playful kittens to loyal dogs, all eagerly awaiting their forever homes. Meet with representatives from local shelters and rescue groups who will guide you through the adoption process and help you find the perfect match for your lifestyle and preferences. Whether you're a first-time pet parent or a seasoned adopter, there's a furry friend waiting to steal your heart at the Adopt-A-Thon.</p>
+                <h2>The Adopt-A-Thon at the Mall is more than just an adoption event—it's a celebration of second chances and new beginnings for animals in need. As you welcome a new furry family member into your home, you're not just gaining a pet; you're saving a life and making a lifelong commitment to love and care. Explore pet-themed vendor booths, participate in educational workshops, and enjoy entertainment for the whole family throughout the day. By choosing adoption, you're making a compassionate choice that positively impacts the lives of animals and strengthens our community. Join us at the Mall for a day of joy, compassion, and the promise of forever homes for deserving pets.</h2>
+            </div>
         </div>
         <div class="slider-nav">
             <label for="radio1"></label>
             <label for="radio2"></label>
+            <label for="radio3"></label>
+            <label for="radio4"></label>
         </div>
     </div>
 </div>

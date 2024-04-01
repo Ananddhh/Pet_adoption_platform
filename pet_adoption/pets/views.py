@@ -83,6 +83,9 @@ def adoption_process(request):
 def event_details(request, event_id):
     # Your view logic goes here
     return render(request, 'event_details.html')
+def event_details1(request, event_id):
+    # Your view logic goes here
+    return render(request, 'event_details1.html')
 
 def lost_found_pets(request):
     # Retrieve all lost items from the database

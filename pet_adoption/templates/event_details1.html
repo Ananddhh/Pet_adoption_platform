@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .containerr {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, p {
+        color: #333;
+        line-height: 1.6;
+    }
+    h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+    }
+    h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+    .swiper-container {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    .swiper-wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    .swiper-slide {
+        flex-shrink: 0;
+        width: 100%;
+    }
+    .swiper-container input[type="radio"] {
+        display: none;
+    }
+    #radio1:checked ~ .swiper-wrapper {
+        transform: translateX(0%);
+    }
+    #radio2:checked ~ .swiper-wrapper {
+        transform: translateX(-100%);
+    }
+    #radio3:checked ~ .swiper-wrapper {
+        transform: translateX(-200%);
+    }
+    #radio4:checked ~ .swiper-wrapper {
+        transform: translateX(-300%);
+    }
+    .slider-nav {
+        margin-top: 10px;
+    }
+    .slider-nav label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+    #radio1:checked ~ .slider-nav label:nth-of-type(1),
+    #radio2:checked ~ .slider-nav label:nth-of-type(2),
+    #radio3:checked ~ .slider-nav label:nth-of-type(3),
+    #radio4:checked ~ .slider-nav label:nth-of-type(4) {
+        background-color: #555;
+    }
+</style>
+
+<div class="containerr">
+    <div class="swiper-container">
+        <input type="radio" name="slider" id="radio1" checked>
+        <input type="radio" name="slider" id="radio2">
+        <input type="radio" name="slider" id="radio3">
+        <input type="radio" name="slider" id="radio4">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <h1>Annual Pet Expo and Adoption Fair</h1>
+                <p>Save the date for the Annual Pet Expo and Adoption Fair on September 20, 2024, where pets and people come together for a day of fun and furry companionship! Taking place at City Convention Center, 789 Oak Avenue, City, from 10:00 AM to 4:00 PM, this event showcases the best of pet-related products, services, and entertainment while also providing opportunities for pet adoption. Explore a vibrant marketplace featuring pet supplies, accessories, and treats from local vendors, and discover the latest trends in pet care and wellness. From interactive demonstrations to informative seminars, there's something for every pet enthusiast at the Annual Pet Expo.</p>
+                <h2>The highlight of the event is the pet adoption area, where you can meet adorable animals from shelters and rescue groups in search of loving homes. Whether you're looking to add a new member to your family or simply want to support a worthy cause, you'll find plenty of furry friends waiting to capture your heart. Engage with animal experts, participate in pet contests, and enjoy live entertainment throughout the day. By attending the Annual Pet Expo and Adoption Fair, you're not only celebrating the joy of pet ownership but also making a positive impact on the lives of homeless pets in your community. Join us for a day of wagging tails, happy hearts, and endless opportunities to connect with pets and pet lovers alike.</h2>
+            </div>
+            
+            <div class="swiper-slide">
+                <h1>Feline Frenzy Festival</h1>
+                <p>Welcome to the purr-fect paradise for cat enthusiasts—the Feline Frenzy Festival! Set to take place on October 15, 2024, at Cat Haven Park, 567 Whisker Lane, City, from 11:00 AM to 3:00 PM, this event celebrates all things feline and offers a plethora of activities for cat lovers of all ages. Whether you're a proud cat parent, a feline admirer, or simply curious about our whiskered friends, you're sure to find something to delight you at this meow-tastic event. Join us for a day filled with cat-themed entertainment, educational seminars, and, of course, plenty of adorable cats looking for their forever homes.</p>
+                <h2>The Feline Frenzy Festival is a unique opportunity to learn more about cats, their behavior, and their care while also supporting local shelters and rescue organizations. Browse through booths featuring cat-themed merchandise, artisanal crafts, and gourmet treats for both humans and their furry companions. Participate in interactive workshops on topics such as cat training, nutrition, and enrichment, and gain valuable insights into providing the best possible care for your feline friends. Whether you're seeking to adopt a new cat or simply want to celebrate the special bond between humans and cats, the Feline Frenzy Festival promises a day of feline fun and festivities you won't want to miss!</h2>
+            </div>
+            <div class="swiper-slide">
+                <h1>Barktoberfest Howl & Growl</h1>
+                <p>Get ready to raise the woof at Barktoberfest Howl & Growl, the ultimate canine celebration happening on November 20, 2024! Located at Dog Park Meadows, 789 Tail Wag Trail, City, from 10:00 AM to 2:00 PM, this event is a tail-wagging good time for dogs and their humans alike. Whether you're a seasoned dog owner or simply a dog lover, Barktoberfest offers a variety of activities, contests, and demonstrations designed to showcase the incredible bond between dogs and their companions. From agility courses to obedience trials, there's something for every dog to enjoy at this bark-tastic event.</p>
+                <h2>Barktoberfest Howl & Growl isn't just about fun and games—it's also an opportunity to support local shelters and rescue organizations in their mission to find loving homes for dogs in need. Meet adoptable dogs of all breeds, sizes, and ages, and learn about the adoption process from knowledgeable volunteers and staff members. Explore vendor booths offering everything from doggy fashion to gourmet treats, and indulge your pup in a day of pampering and play. By attending Barktoberfest, you're not only celebrating the joy of dog ownership but also making a positive difference in the lives of dogs awaiting their forever homes. Join us for a day of canine camaraderie, laughter, and lots of tail-wagging fun!</h2>
+            </div>
+            
+            <div class="swiper-slide">
+                <h1>Holiday Pet Paw-ty</h1>
+                <p>'Tis the season to celebrate with your furry friends at the Holiday Pet Paw-ty on December 15, 2024! Held at Festive Park, 123 Holly Lane, City, from 12:00 PM to 4:00 PM, this festive event brings together pets and their families for a day of holiday cheer and goodwill. Whether you have a cat, dog, bird, or other small companion, all are welcome to join in the merriment and enjoy a variety of pet-friendly activities and attractions. From holiday-themed photo booths to pet costume contests, there's something for every pet to enjoy at this jolly gathering.</p>
+                <h2>The Holiday Pet Paw-ty is not only a celebration of the bond between pets and their owners but also an opportunity to give back to the community. Participate in donation drives for local animal shelters and rescue groups, and spread holiday cheer to pets in need. Explore vendor booths offering unique gifts, treats, and accessories for pets and pet lovers alike, and stock up on everything you need to make the season bright for your furry friends. By attending the Holiday Pet Paw-ty, you're not only creating cherished memories with your pets but also spreading joy and goodwill to animals and their human companions throughout the community. Join us for a day of festive fun, laughter, and love as we celebrate the holiday season in the company of our beloved pets.</h2>
+            </div>
+            
+        </div>
+        <div class="slider-nav">
+            <label for="radio1"></label>
+            <label for="radio2"></label>
+            <label for="radio3"></label>
+            <label for="radio4"></label>
+        </div>
+    </div>
+</div>
+{% endblock %}

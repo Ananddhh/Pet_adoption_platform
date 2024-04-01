@@ -123,7 +123,8 @@ def user_settings(request):
 # from .models import UserProfile
 
 
-from .models import CustomUser
+from .models import UserProfile
+
 @login_required
 def user_profile(request):
     try:

@@ -280,14 +280,23 @@ nav ul li a {
     color: rgb(255, 255, 255);
 }
 
-.text-overlay p {
-    font-size: 25px;
+.text-overlay p { 
+    text-align: center;
+            margin-bottom: 20px;
+            background-color: rgba(0, 0, 0, 0.518);
+            padding: 20px;
+            border-radius: 19px;
+            margin-bottom: 30px;
+            transition: opacity 0.3s ease;
+            color: chartreuse;
+
+    /* font-size: 25px;
     background-color: rgba(0, 0, 0, 0.6);
     padding-left:1px ;
     text-align: center;
     margin-bottom: 20px;
     font-family: EB Garamond;
-    color: chartreuse;
+    color: chartreuse; */
 }
 
 /* Show the text overlay when hovering */
@@ -376,7 +385,7 @@ nav ul li a {
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000; font-size: 14px;">
       <div class="container-fluid">
           <!-- Logo -->
           <a class="navbar-brand" href="{% url 'homepage'%}" style="margin-right: auto;">

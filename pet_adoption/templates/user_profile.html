@@ -1,64 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block Styles %}
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #fff; 
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-        }
-
-        h1 {
-            text-align: center;
-            color: #007bff; 
-            margin-bottom: 20px;
-        }
-
-        .user-info {
-            margin-top: 20px;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        strong {
-            font-weight: bold;
-            color: #555; /* Medium gray text color */
-        }
-    </style>
-{% endblock %}
 {% block content %}
-
-    <div class="container">
-        <h1>User Profile</h1>
-        <div class="user-info">
-            <p><strong>Username:</strong> {{ user_profile.user.username }}</p>
-            <p><strong>Email:</strong> {{ user_profile.user.email }}</p>
-           
-            <!-- <p><strong>Bio:</strong> {{ user_profile.bio }}</p> -->
-        
-            <p><strong>Your Adoption Application Status:</strong> {{ user_profile.adoption_status }}</p>
+    <div style="max-width: 800px; margin: 50px auto; padding: 20px; background-color: #000; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); color: #fff;">
+        <h1 style="text-align: center; color: #000; margin-bottom: 20px; background-color: rgba(255, 255, 255, 0.532); padding: 10px; border-radius: 10px;">User Profile</h1>
+        <div style="margin-top: 20px; text-align: center;">
+            {% if profile %}
+                    <p><strong style="color: #fff;">Username:</strong> {{ profile.user.username }}</p>
+                    <p><strong style="color: #fff;">Email:</strong> {{ profile.user.email }}</p>
+                    <p><strong style="color: #fff;">Your Adoption Application Status:</strong> {{ profile.adoption_status }}</p>
+                {% else %}
+                    <p>No profile found.</p>
+                {% endif %}
             
-            
-            <form action="{% url 'logout' %}" method="post" class="logout-form">
+            <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Logout</button>
+                <button type="submit" style="background-color: #dc3545; border: none; border-radius: 5px; padding: 10px 20px; color: #fff; cursor: pointer; transition: background-color 0.3s;">Logout</button>
             </form>
 
-            <p>Wanna go home<a style="color: rgb(0, 0, 0);" href="{% url 'homepage' %}"><button type="submit" class="btn btn-success">Home</button></a></p>
+            <div>
+                <br>
+                
+                <p>Wanna go <a href="{% url 'homepage' %}"><button type="button" style="background-color: #28a745; border: none; border-radius: 5px; padding: 10px 20px; color: #fff; cursor: pointer; transition: background-color 0.3s;">Home</button></a></p>
+            </div>
         </div>
     </div>
 {% endblock %}

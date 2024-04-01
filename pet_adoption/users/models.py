@@ -12,6 +12,7 @@ class CustomUser(AbstractUser):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    email = models.EmailField(blank=True) 
     bio = models.TextField(blank=True)
     profile_picture = models.ImageField(upload_to='profile_pictures/', blank=True)
     STATUS_CHOICES = (

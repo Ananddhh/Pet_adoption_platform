@@ -80,6 +80,10 @@ def adoption_process(request):
         form = AdoptionApplicationForm()
     return render(request, 'adoption_process.html', {'form': form})
 
+def event_details(request, event_id):
+    # Your view logic goes here
+    return render(request, 'event_details.html')
+
 def lost_found_pets(request):
     # Retrieve all lost items from the database
     lost_items = LostItem.objects.all()

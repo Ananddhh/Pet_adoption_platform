@@ -58,14 +58,14 @@ def user_register(request):
  
 @login_required
 def about_page(request):
-    # Placeholder logic for the About page view
+    
     context = {
         'about_content': 'Learn more about our mission and goals here.'
     }
     return render(request, 'about.html', context)
 @login_required
 def contact_page(request):
-    # Placeholder logic for the Contact page view
+    
     context = {
         'contact_info': {
             'email': 'info@example.com',
@@ -77,17 +77,17 @@ def contact_page(request):
 
 @login_required
 def contact_submit_view(request):
-    # Placeholder logic for handling form submission
+    
     if request.method == 'POST':
-        # Process the form data
+       
         return HttpResponse('Form submitted successfully!')
     else:
-        # Handle GET request (if needed)
+        
         return HttpResponse('Invalid request method')
 
 
 def faq_page(request):
-    # Placeholder logic for the FAQ page view
+   
     faq_items = [
         {'question': 'How can I adopt a pet?', 'answer': 'You can browse available pets on our website and contact us for adoption details.'},
         {'question': 'What are the adoption fees?', 'answer': 'Adoption fees vary depending on the type of pet and other factors. Please contact us for more information.'},
@@ -109,8 +109,8 @@ def adoption_event(request):
 
 @login_required
 def profile(request):
-    user = request.user
-    profile = Profile.objects.get(user=user)
+    # user = request.user
+    # profile = Profile.objects.get(user=user)
     adoption_status = profile.adoption_status
     return render(request, 'profile.html', {'adoption_status': adoption_status})
 

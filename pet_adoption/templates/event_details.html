@@ -4,8 +4,9 @@
 {% block content %}
 <style>
     body {
-        background-image: url("{% static 'images/pexels-sergey-meshkov-8481550.jpg' %}");
+        /* background-image: url("{% static 'images/pexels-sergey-meshkov-8481550.jpg' %}"); */
         /* background-position: center; */
+        background-image: url("{% static 'images/ss1.png' %}");
         background-size: cover;
     }
     .containerr {
@@ -84,6 +85,20 @@
     #radio4:checked ~ .slider-nav label:nth-of-type(4) {
         background-color: #ffffff;
     }
+    .back-button {
+    background: transparent;
+    border: 2px solid #fff; /* Adding a border */
+    border-radius: 5px; /* Adding rounded corners */
+    color: #fff;
+    padding: 7px 12px 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
 </style>
 
 <div class="containerr">
@@ -127,4 +142,7 @@
         </div>
     </div>
 </div>
+<!-- Back button --><center>
+<button class="back-button" onclick="window.location.href='{% url 'adoption_event' %}'">Back</button></center>
+<br>
 {% endblock %}

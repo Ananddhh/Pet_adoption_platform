@@ -2,40 +2,67 @@
 {% load static %}
 
 {% block content %}
-<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); background-color: #ffffff; border: 2px solid #007bff;">
-    <h1 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">All Messages</h1>
+<style>
+    body{
+        background-color: black;
+        /* background-image: ; */
+    }
+    .containerrr {
+        background-color: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+        color: #ffffff; /* White font color */
+        text-align: center; /* Center-align text */
+    }
+    h1, h2, p {
+        color: #007bff; /* Blue font color for headings */
+    }
+    ul {
+        padding: 0;
+    }
+    li {
+        background-color: rgba(255, 255, 255, 0.1); /* White background with transparency */
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        padding: 20px;
+        list-style-type: none;
+    }
+</style>
+<br>
+<br>
+<div class="containerrr" style="max-width: 800px; margin: 50px auto; padding: 20px; border: 2px solid #007bff; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 24px; margin-bottom: 20px;">All Messages</h1>
 
-    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Contact Us Messages</h2>
+    <h2 style="font-size: 24px; margin-bottom: 20px;">Contact Us Messages</h2>
     {% if contact_messages %}
-        <ul style="list-style-type: none; padding: 0;">
+        <ul>
             {% for message in contact_messages %}
-                <li style="background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">{{ message.name }} - {{ message.email }} - {{ message.message }}</li>
+                <li>{{ message.name }} - {{ message.email }} - {{ message.message }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p style="text-align: center; color: #333333;">No contact messages found.</p>
+        <p>No contact messages found.</p>
     {% endif %}
 
-    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Lost & Found Pets</h2>
+    <h2 style="font-size: 24px; margin-bottom: 20px;">Lost & Found Pets</h2>
     {% if lost_pets %}
-        <ul style="list-style-type: none; padding: 0;">
+        <ul>
             {% for pet in lost_pets %}
-                <li style="background-color: #e9ecef; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">Lost Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
+                <li>Lost Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p style="text-align: center; color: #333333;">No lost pets found.</p>
+        <p>No lost pets found.</p>
     {% endif %}
     
-    <h2 style="font-size: 24px; color: #007bff; text-align: center; margin-bottom: 20px;">Found Pets</h2>
+    <h2 style="font-size: 24px; margin-bottom: 20px;">Found Pets</h2>
     {% if found_pets %}
-        <ul style="list-style-type: none; padding: 0;">
+        <ul>
             {% for pet in found_pets %}
-                <li style="background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); margin-bottom: 20px; padding: 20px;">Found Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
+                <li>Found Pet - {{ pet.name }} - Species: {{ pet.species }} - Breed: {{ pet.breed }} - Age: {{ pet.age }}</li>
             {% endfor %}
         </ul>
     {% else %}
-        <p style="text-align: center; color: #333333;">No found pets found.</p>
+        <p>No found pets found.</p>
     {% endif %}
 </div>
 {% endblock %}

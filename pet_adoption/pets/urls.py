@@ -10,6 +10,7 @@ urlpatterns = [
     # path('pet/<int:pet_id>/', views.pet_detail, name='pet_detail'),
     path('petss/<int:pk>/', views.pet_detail1, name='pet_detail1'),
     path('pets/<int:pk>/', views.pet_detail, name='pet_detail'),
+    path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
     path('adoption/', views.adoption_process, name='adoption_process'),
     path('events/<int:event_id>/', views.event_details, name='event_details'),
     path('eventss/<int:event_id>/', views.event_details1, name='event_details1'),
@@ -18,7 +19,8 @@ urlpatterns = [
     path('book_appointment/', book_appointment, name='book_appointment'),
     path('appointment_success/', appointment_success, name='appointment_success'),
     path('adoption-submit/', views.adoption_submit, name='adoption_submit'),
-    path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
+    path('pets/<int:pk>/', views.pet_detail, name='pet_detail'),
+    # path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
     path('lost-found/contact/', views.contact_submit_view, name='contact_submit'),
     # path('adoption/process/', views.adoption_process, name='adoption_process'),
     ]

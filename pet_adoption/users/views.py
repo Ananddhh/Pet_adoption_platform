@@ -120,7 +120,7 @@ def user_settings(request):
         form = UserSettingsForm(instance=request.user)
     return render(request, 'user_settings.html', {'form': form})
 
-# from .models import UserProfile
+
 
 
 from .models import UserProfile
@@ -139,5 +139,5 @@ def logout_view(request):
     return redirect('homepage')
 
 def homepage(request):
-    # Your view logic here
+    
     return render(request, 'home.html')

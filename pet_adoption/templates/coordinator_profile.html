@@ -2,22 +2,34 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body {
+    background-color: #000; 
+}
+
+</style>
 <br>
 <br>
 <br>
-<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
-    <h1 style="font-size: 36px; color: #343a40; margin-bottom: 20px; text-align: center;">Coordinator Profile</h1>
+<div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; background-color: #000000; border-radius: 8px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+    <h1 style="font-size: 36px; color: #ced4da; margin-bottom: 20px; text-align: center;">Coordinator Profile</h1>
     <div class="profile-info" style="border: 1px solid #ced4da; border-radius: 5px; padding: 15px; margin-bottom: 20px;">
         {% if coordinator %}
         <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">Username: {{ coordinator.user.username }}</p>
         <!-- <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">Contact Number: {{ coordinator.contact_number }}</p> -->
         {% else %}
-        <p style="font-size: 18px; color: #6c757d; margin-bottom: 15px;">No coordinator found for the current user.</p>
+        <p style="font-size: 18px; color: #e97431; margin-bottom: 15px;">No coordinator found for the current user.</p>
         {% endif %}
     </div>
     <form action="{% url 'coord_logout' %}" method="post" style="display: flex; justify-content: center; margin-top: 30px;">
         {% csrf_token %}
-        <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">Logout</button>
+        <button type="submit" style="padding: 10px 20px; background-color: #9a5731; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">Logout</button>
     </form>
 </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 {% endblock %}

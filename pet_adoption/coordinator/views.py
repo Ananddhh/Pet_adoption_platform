@@ -70,7 +70,7 @@ def coordinator_register(request):
         form = CoordinatorRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Additional coordinator-specific data
+            
             Coordinator.objects.create(user=user)
             return redirect('coordinator_login')
     else:
@@ -79,21 +79,21 @@ def coordinator_register(request):
 
 def coordinator_login(request):
     if request.method == 'POST':
-        # Handle POST request for logging in
+        
         
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # Redirect to coordinator dashboard or desired page
+            
             return redirect('coordinator_dashboard')
         else:
             # Handle invalid login
             return render(request, 'coordinator_login.html', {'error': 'Invalid credentials'})
     else:
-        # Handle GET request for displaying login form
-        form = CoordinatorLoginForm()  # Assuming you have a form for login
+        
+        form = CoordinatorLoginForm()  
         return render(request, 'coordinator_login.html', {'form': form})
     
 @coordinator_required
@@ -110,7 +110,7 @@ def manage_adoption_applications(request):
 def update_request_status(request, application_id):
     application = get_object_or_404(AdoptionApplication, id=application_id)
     if request.method == 'POST':
-        # Fix Pylance warning by importing AdoptionApplicationForm
+       
         form = AdoptionApplicationForm(request.POST, instance=application)
         if form.is_valid():
             form.save()
@@ -153,14 +153,14 @@ def coordinator_logout(request):
     logout(request)
     return redirect('coordinator_login') 
 
-from django.contrib.auth.models import User  # Add this import
+from django.contrib.auth.models import User  
 
 def set_coordinator_credentials(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        #if the coordinator already exists
-        coordinator = Coordinator.objects.first()  # Assuming there's only one coordinator
+        
+        coordinator = Coordinator.objects.first()  
         if coordinator:
             user = coordinator.user
             user.username = username

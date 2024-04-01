@@ -16,7 +16,7 @@
         background-color: #342e2e !important; 
     }
 </style>
-<div style="max-width: 800px; margin: 50px auto; padding: 20px; background-image: url('{% static 'images/ss.png' %}'); background-size: cover; background-repeat: no-repeat; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); color: #fff;">
+<div style="max-width: 900px;height: 430px; margin: 50px auto; padding: 20px; background-image: url('{% static 'images/ss.png' %}'); background-size: cover; background-repeat: no-repeat; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); color: #fff;">
     <h1 style="text-align: center; color: #cdffc3; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.385); padding: 10px; border-radius: 10px;">User Profile</h1>
     <div style="margin-top: 20px; text-align: center;">
         {% if profile %}
@@ -25,7 +25,7 @@
             <p><strong style="color: #040903;">Your Adoption Application Status:</strong> {{ profile.adoption_status }}</p>
             <!-- Display admin's reply -->
             {% if profile.admin_reply %}
-                <p><strong style="color: #fff;">Admin's Reply:</strong> {{ profile.admin_reply }}</p>
+                <p style="color: #000000;"> <strong style="color: #000000;">Admin's Reply:</strong> {{ profile.admin_reply }}</p>
             {% endif %}
         {% else %}
             <p>No profile found.</p>

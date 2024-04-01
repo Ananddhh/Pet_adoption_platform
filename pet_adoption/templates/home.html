@@ -254,90 +254,77 @@ nav ul li a {
             color: #000000;
         }
         .text-overlay {
-    max-width: 50%;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.1); 
-    color: #ffffff;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.text-overlay h1 {
-    font-size: 22px;
-    padding-left: 135px;
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-family: lora;
-    /* font-family: 'Indie Flower', cursive; */
-    color: rgb(255, 255, 255);
-}
-
-.text-overlay p { 
-    text-align: center;
-            margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.518);
+            max-width: 75%;
             padding: 20px;
-            border-radius: 19px;
-            margin-bottom: 30px;
-            transition: opacity 0.3s ease;
-            color: chartreuse;
+            background-color: rgba(0, 0, 0, 0.6); /* Darken the overlay */
+            color: #ffffff;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the overlay */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
 
-    /* font-size: 25px;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding-left:1px ;
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: EB Garamond;
-    color: chartreuse; */
-}
+        .text-overlay h1 {
+            font-size: 48px; /* Increase font size */
+            margin-bottom: 20px; /* Add space below heading */
+            font-weight: 700; /* Increase font weight */
+            font-family: 'Lora', serif; /* Use Lora font */
+            text-align: center; /* Center the heading */
+            color: rgb(197, 255, 140);
+        }
 
-/* Show the text overlay when hovering */
-.container-img:hover .text-overlay {
-    opacity: 1;
-}
+        .text-overlay p {
+            text-align: center; /* Center the paragraphs */
+            margin-bottom: 20px; /* Add space below paragraphs */
+            font-size: 17px; /* Increase font size */
+            color: #f3efef;
+        }
 
-/* Dim the background  when hovering */
+        /* Show the text overlay when hovering */
+        .container-img:hover .text-overlay {
+            opacity: 1;
+        }
 
-.container-img:hover .background-img {
-    opacity: 1;
-}
-.container-img .background-img {
-    transition: transform 0.3s ease; 
-}
+        /* Dim the background  when hovering */
 
-.container-img:hover .background-img {
-    transform: scale(1.03); 
-}
-        
-    </style>
-    <style>
-        
-    /* Navbar */
-    .navbar {
-        background-color: #020d19;
-        color: #ffffff;
-        margin: 0;
-    }
+        .container-img:hover .background-img {
+            opacity: 1;
+        }
+        .container-img .background-img {
+            transition: transform 0.3s ease; 
+        }
 
-    /* Align navbar items to the right */
-    .navbar-nav {
-        margin-left: auto;
-    }
+        .container-img:hover .background-img {
+            transform: scale(1.13); 
+        }
+                
+        </style>
+            <style>
+                
+            /* Navbar */
+            .navbar {
+                background-color: #020d19;
+                color: #ffffff;
+                margin: 0;
+            }
 
-    /* Style navbar links */
-    .navbar-nav .nav-link {
-        position: relative;
-        color: #ffffff;
-        padding: 8px 15px;
-    }
+            /* Align navbar items to the right */
+            .navbar-nav {
+                margin-left: auto;
+            }
+
+            /* Style navbar links */
+            .navbar-nav .nav-link {
+                position: relative;
+                color: #ffffff;
+                padding: 8px 15px;
+            }
 
     /* Add bottom border to navbar links on hover */
     .navbar-nav .nav-link::after {
@@ -439,16 +426,19 @@ nav ul li a {
       </div>
   </nav> 
     <br>
+    <br>
     
 
 
     <div class="container-img">
-        <img src="{% static 'images/tac.jpg' %}" alt="Background Image" class="background-img">
+        <img src="{% static 'images/ty.jpg' %}" alt="Background Image" class="background-img">
 
         <div class="text-overlay">
             <h1>Welcome to Our Pet Adoption Community!</h1>
+            
             <p> We are dedicated to providing loving homes for all homeless pets, ensuring they receive the care and attention they deserve.</p>
             <!-- <a href="{% url 'about' %}">Learn More</a> -->
+        
 
 
         </div>
@@ -458,6 +448,7 @@ nav ul li a {
     
 
     <!-- Testimonials section -->
+    <br>
     <div class="testimonial-section">
         <h1 class="testimonial-title">Testimonials</h1>
 

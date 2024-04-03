@@ -39,9 +39,10 @@
         }
 
         .background-img {
-            width: 100%;
+            width: 50%;
             height: 100%;
-            object-fit: cover;
+            
+            /* object-fit: cover; */
             opacity: 1;
             transition: opacity 0.5s ease;
         }
@@ -50,10 +51,10 @@
         
     .text-overlay {
         position: absolute;
-        top: 50%;
-        left: -100%; /*  from the left side */
+        top: 22%;
+        left: -100%; /* Start from the left side */
         transform: translateX(0); /* Initially hidden */
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.386);
         color: rgb(0, 0, 0);
         padding: 30px;
         width: 66%; /* Adjust width as needed */
@@ -68,7 +69,7 @@
         }
         100% {
             opacity: 1;
-            left: -30%; /* Move to the middle */
+            left: -5%; /* Move to the middle */
         }
     } 
         </style>
@@ -90,10 +91,10 @@
         <div class="row">
             <div class="col-lg-8 offset-lg-4">
                 <div class="container-img">
-                    <img src="{% static 'images/dog1.jpg' %}" alt="Background Image" class="background-img">
+                    <img src="{% static 'images/rre.jpg' %}" alt="Background Image" class="background-img">
                     <div class="text-overlay">
-                        <h1>Welcome to Coordinator Dashboard</h1>
-                        <p style="text-align: justify;"> Here, you can efficiently manage adoption requests,
+                        <h1 style="color: rgba(38, 38, 38, 0.453);">Welcome to Coordinator Dashboard</h1>
+                        <p style="text-align: center; font-size: 11px;"> Here, you can efficiently manage adoption requests,
                              coordinate appointments, and stay updated on messages. 
                             Your dedicated efforts contribute immensely to finding loving homes for our pets.
                         </p>

@@ -1,3 +1,4 @@
+
 {% load static %}
 {% block style %}
 <style>
@@ -65,7 +66,7 @@
 
 {% block content %}
 
-<div style="background-color: rgba(0, 0, 0, 0.5); background-image: url('{% static 'images/gt.jpg' %}');">
+<div style="background-color: rgba(0, 0, 0, 0.5); background-image: url('{% static 'images/gt.jpg' %}');background-size: cover;">
 
     <br>
     <h2 style="color: #ffffff; text-align: center;" class="adoption-events-title">Adoption Events</h2>
@@ -142,6 +143,7 @@
     
     </div>
 </section>
+<button class="back-button" onclick="window.location.href='{% url 'homepage' %}'">Back to home</button></center>
 </div>
 
 

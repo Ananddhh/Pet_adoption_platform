@@ -26,6 +26,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #000000;
+
 }
 
 .container {
@@ -282,7 +283,7 @@ nav ul li a {
         .text-overlay p {
             text-align: center; /* Center the paragraphs */
             margin-bottom: 20px; /* Add space below paragraphs */
-            font-size: 17px; /* Increase font size */
+            font-size: 14px; /* Increase font size */
             color: #f3efef;
         }
 
@@ -323,7 +324,7 @@ nav ul li a {
             .navbar-nav .nav-link {
                 position: relative;
                 color: #ffffff;
-                padding: 8px 15px;
+                padding: 5px 10px;
             }
 
     /* Add bottom border to navbar links on hover */
@@ -370,7 +371,7 @@ nav ul li a {
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000; font-size: 14px;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #000000; font-size: 13px;">
       <div class="container-fluid">
           <!-- Logo -->
           <a class="navbar-brand" href="{% url 'homepage'%}" style="margin-right: auto;">
@@ -384,36 +385,39 @@ nav ul li a {
           <!-- Navbar Links --> 
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ms-auto">
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                       <a class="nav-link" href="{% url 'lost_found_pets' %}" style="color: #ffffff;">Lost & found</a>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'about' %}" style="color: #ffffff;">About</a>
                   </li>
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'contact' %}" style="color: #ffffff;">Contact</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                       <a class="nav-link" href="{% url 'pet_list' %}" style="color: #ffffff;">Pets</a>
-                  </li>
+                  </li> -->
                   <li class="nav-item">
                       <a class="nav-link" href="{% url 'book_appointment' %}" style="color: #ffffff;">Book Appointment</a>
                   </li>
-                  <li class="nav-item">
+                  <!-- <li class="nav-item">
                     <a class="nav-link"  href="{% url 'faq' %}"  style="color: #ffffff;">FAQ</a>
-                </li>
+                </li> -->
                   
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false" style="color: #ffffff;">
                         More
                     </a>
-                    <ul class="dropdown-menu custom-dropdown dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+                    <ul class="dropdown-menu custom-dropdown dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink" style="font-size: 14px;">
                         
                         <li><a class="dropdown-item" href="{% url 'user_login' %}" >Login</a></li>
                         
                         <li><a class="dropdown-item" href="{% url 'user_register' %}" >Register</a></li>
-                        <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}">Coordinator Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}">C D</a></li>
+                        <li><a class="dropdown-item" href="{% url 'pet_list' %}" >Pets</a></li>
+                        <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}">Lost & found</a></li>
                     </ul>
                     
                     

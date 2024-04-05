@@ -64,7 +64,7 @@
     <main>
         {% for pet in pets %}
         <li class="lii">
-            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ pet.image.url }}"></a>
+            <a href="{% url 'pet_detail' pk=pet.pk %}"><img src="{{ MEDIA_URL }}{{ pet.image|basename }}"></a>
             <div class="pet-info">
                 <h2>{{ pet.name }}</h2>
                 <p>Species: {{ pet.species }}</p>
@@ -78,3 +78,4 @@
     <br>
     <br>
 {% endblock %}
+    

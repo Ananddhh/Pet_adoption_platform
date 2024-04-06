@@ -15,7 +15,7 @@ class Pet(models.Model):
     age = models.IntegerField()
     available = models.BooleanField(default=True)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='pets/', blank=True)
+    image = models.ImageField(upload_to='petss/', blank=True)
 
     def __str__(self):
         return self.name

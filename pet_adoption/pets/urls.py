@@ -1,3 +1,5 @@
+from django.conf.urls.static import static
+from django.conf import settings
 from django.urls import path
 from . import views
 # from .views import all_messages
@@ -23,7 +25,7 @@ urlpatterns = [
     # path('adopt/<int:pet_id>/', views.adopt_pet, name='adopt_pet'),
     path('lost-found/contact/', views.contact_submit_view, name='contact_submit'),
     # path('adoption/process/', views.adoption_process, name='adoption_process'),
-    ]
+    ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # from django.urls import path
 # from . import views

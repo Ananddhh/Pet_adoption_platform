@@ -11,10 +11,10 @@ from .models import AdoptionApplication
 from .models import Pet, AdoptionRequest
 from .forms import AdoptionApplicationForm
 from .models import Pet, LostPet, FoundPet, Appointment, AdoptionRequest, ContactSubmission
-# from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404,redirect
 # from .models import ContactSubmission
 from coordinator.decorators import coordinator_required
+from django.contrib.auth.decorators import login_required
 
 def contact_submit_view(request):
     if request.method == 'POST':
@@ -30,29 +30,30 @@ def contact_submit_view(request):
         form = ContactForm()
     return render(request, 'lost_found.html', {'form': form})
 
-
-from django.shortcuts import redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Pet, AdoptionRequest
-def adopt_pet(request, pk):  
-    pet = get_object_or_404(Pet, pk=pk)
-    
-    if not request.user.is_authenticated:
-        return redirect('login')
 
-    existing_request = AdoptionRequest.objects.filter(user=request.user, pet=pet).first()
-    if existing_request:
-        messages.warning(request, "You have already submitted a request for this pet.")
-        return redirect('pet_detail', pk=pet.pk)  # instead of pet_id
-    
-    try:
-        adoption_request = AdoptionRequest.objects.create(user=request.user, pet=pet)
-        messages.success(request, f"Your adoption request for {pet.name} has been submitted successfully.")
-        return redirect('pet_detail', pk=pet.pk)  # instead of pet_id
-    except Exception as e:
+@login_required
+def adopt_pet(request, pet_id):
+    pet = get_object_or_404(Pet, pk=pet_id)
+
+    if request.method == 'POST':
+        existing_request = AdoptionRequest.objects.filter(user=request.user, pet=pet).first()
+        if existing_request:
+            messages.warning(request, "You have already submitted a request for this pet.")
+            return redirect('pet_detail', pk=pet.pk)
         
-        messages.error(request, "Failed to submit adoption request. Please try again later.")
-        return redirect('pet_detail', pk=pet.pk) 
+        try:
+            adoption_request = AdoptionRequest.objects.create(user=request.user, pet=pet)
+            messages.success(request, f"Your adoption request for {pet.name} has been submitted successfully.")
+            return redirect('pet_detail', pk=pet.pk)
+        except Exception as e:
+            messages.error(request, "Failed to submit adoption request. Please try again later.")
+            return redirect('pet_detail', pk=pet.pk)
+
+    return render(request, 'pet_detail.html', {'pet': pet})
 
 
 

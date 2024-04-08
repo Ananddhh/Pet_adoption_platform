@@ -132,12 +132,18 @@
     <img class="pet-image" src="{{ pet.image.url }}" alt="{{ pet.name }}">
     <br><br>
 
+    
     <div class="pet-detailss animated-slide">
         <p><strong>Species:</strong> {{ pet.species }}</p>
         <p><strong>Breed:</strong> {{ pet.breed }}</p>
         <p><strong>Age:</strong> {{ pet.age }}</p>
         <p><strong>Available:</strong> <span class="availability">{% if pet.available %}Yes{% else %}No{% endif %}</span></p>
-        <a href="{% url 'adopt_pet' pet_id=pet.id %}" class="adopt-button animated-button">Adopt Now</a>
+        
+        <!-- Form for adoption -->
+        <form action="{% url 'adopt_pet' pet_id=pet.pk %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="adopt-button animated-button">Adopt Now</button>
+        </form>
     </div>
 </div>
 

@@ -415,6 +415,9 @@ nav ul li a {
                         
                         <li><a class="dropdown-item" href="{% url 'user_register' %}" >Register</a></li>
                         <li><a class="dropdown-item" href="{% url 'coordinator_dashboard' %}">C D</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                        {% endif %}
                         <li><a class="dropdown-item" href="{% url 'pet_list' %}" >Pets</a></li>
                         <li><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
                         <li><a class="dropdown-item" href="{% url 'lost_found_pets' %}">Lost & found</a></li>

@@ -140,10 +140,10 @@
         <p><strong>Available:</strong> <span class="availability">{% if pet.available %}Yes{% else %}No{% endif %}</span></p>
         
         <!-- Form for adoption -->
-        <form action="{% url 'adopt_pet' pet_id=pet.pk %}" method="post">
+        <!-- <form action="{% url 'adopt_pet' pet_id=pet.pk %}" method="post">
             {% csrf_token %}
             <button type="submit" class="adopt-button animated-button">Adopt Now</button>
-        </form>
+        </form> -->
     </div>
 </div>
 
